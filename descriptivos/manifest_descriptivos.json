@@ -1,0 +1,29 @@
+{
+  "stage": "exploratory_observed_only",
+  "input_sha256": {
+    "normalizacion/matriz_ishii_mmc2_mM.csv": "4855e3d035a93a8098d9ad52ea04642592965e42e04dc9dab9331ba449a3e15d",
+    "normalizacion/matriz_ishii_mmc2_R.csv": "ab7171ad9c847f01c010b8ae21c2b58dfa737630afd7d85dc7dffa4e452e67c4"
+  },
+  "script_sha256": "e26782e351e167eabaeb5ad0f575e9666f16e694a06529eb5f1f81646843f0f8",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
+    "scipy": "1.17.0"
+  },
+  "SD_ddof": 1,
+  "quantiles": "linear",
+  "correlation": "Spearman pairwise complete, min 8",
+  "jitter_seed": 20261015,
+  "outputs_sha256": {
+    "cobertura_muestras_ishii.csv": "4225714938eac4fee1dd00e0b63ab240e4a16ab3dfca1bf29b4f702f724f02d2",
+    "estadisticos.csv": "41f52f34191148afb60ee62452eb72c38720ed29d93c8d08699f632bfb8970ec",
+    "correlacion_spearman_ishii.csv": "d1a0ce8b5b246d9fe3e17059ed7d9fea487b4390ab3b274f869c4464ee20540c",
+    "03_cobertura.png": "f2b542e367e8264534248dcc1d503b52c7b21a4f3d66d290316205b5b726e13c",
+    "01_distribuciones.png": "aa723ad5648e62d03d48961cfcab3ee628c263d4fdf04890c678087a80e47a6e",
+    "n_pares_ishii.csv": "0bf40d7789d0addeebb14a9eaf72eb76153f55dc675c93a6ca5e62a32352993b",
+    "04_correlaciones_ishii.png": "069e23b5a80c3f383c9c676d68f87b719400ee1ee6fa5f9be939d827cb8f7d91",
+    "02_mapa_muestras.png": "e9dc979cd9b219d12ffbbef89de0981333f350ca615b52df8000056fa16a3636",
+    "graficos_exploratorios.pdf": "c09edf79ab7eb2f03442976bcc306d69abc4cac5ef55b8cc7b1be074aa7cc932"
+  }
+}

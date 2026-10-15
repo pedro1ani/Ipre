@@ -1,0 +1,2 @@
+﻿factor_id,value,unit,definition,scope,source_file,source_sheet,source_cell,definition_cells,methods_source,methods_pdf_page,methods_section,factor_sd,factor_uncertainty_status,origin_limit
+GEROSA_CYTOSOLIC_VOLUME,2.3,mL/gCDW,intracellular cytosolic volume per dry biomass,All conditions; MMC2 and MMC3 intracellular metabolites,mmc2.xlsx,Conversion Factors,B6,A5:B6,Gerosa_methods.pdf,9,Intracellular metabolite concentrations by LC-MS/MS,,not_reported,Source says previously determined; original measurement protocol and uncertainty not specified here

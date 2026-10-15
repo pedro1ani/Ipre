@@ -1,0 +1,5 @@
+dataset_id,compartment,cells,observed,missing
+ISHII2007,extracellular,264,264,0
+ISHII2007,intracellular,19686,4813,14873
+MMC2,intracellular,344,342,2
+MMC3,intracellular,189,189,0

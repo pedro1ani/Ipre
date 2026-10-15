@@ -1,0 +1,46 @@
+{
+  "source_sha256": {
+    "ishii.xlsx": "c9f0d2fbb18209cbb9c4bd4fd9098ac31a07c7f3450997bad15eb9ea8da07bf2",
+    "mmc3.xlsx": "d3c58968a984351332caa32fe9c98381b59c82ee2b4c1a60f794a82b7869d364",
+    "mmc2.xlsx": "7382ada7720efec90f9c32d6779f3fce386370ba9e57753f7dc10d92405aeac7",
+    "Ishii_methods.pdf": "cb6183c58ceaf56e9dc06c99a09f5e4bd0fdb93dc9534c1aad2092f9649414fd",
+    "ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae",
+    "Gerosa_methods.pdf": "754715210c26d57a36ef8cc4bacb3ada11c557e7bded9f10e5e2905352b8d0a4"
+  },
+  "script_sha256": "256e9bc19f98e740438d1768e644a7ca986df27e11e5ad7957c8c602ad2665ec",
+  "factor": {
+    "factor_id": "GEROSA_CYTOSOLIC_VOLUME",
+    "value": 2.3,
+    "unit": "mL/gCDW",
+    "definition": "intracellular cytosolic volume per dry biomass",
+    "scope": "All conditions; MMC2 and MMC3 intracellular metabolites",
+    "source_file": "mmc2.xlsx",
+    "source_sheet": "Conversion Factors",
+    "source_cell": "B6",
+    "definition_cells": "A5:B6",
+    "methods_source": "Gerosa_methods.pdf",
+    "methods_pdf_page": 9,
+    "methods_section": "Intracellular metabolite concentrations by LC-MS/MS",
+    "factor_sd": null,
+    "factor_uncertainty_status": "not_reported",
+    "origin_limit": "Source says previously determined; original measurement protocol and uncertainty not specified here"
+  },
+  "checks": {
+    "all_original_values_checked_against_workbooks": true,
+    "Gerosa_SD_checked": true,
+    "missing_pattern_preserved": true,
+    "Ishii_unchanged": true,
+    "sources_unchanged": true,
+    "reverse_conversion_passed": true
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "output_sha256": {
+    "factor_evidence.txt": "d89e23010748f34dc0ca208427800fdab47701b633e7c51a1db308b36be2c22c",
+    "MMC3_mM.csv": "199efbe44aab703e927f1a1caeec6011d0971aad941f31487a429b9ea257cc05",
+    "ISHII2007_mM.csv": "847875248261d8b9b010d92de0f802487174f66d43b1fda6e25edaa5fdfb11f9",
+    "conversion_factors.csv": "2d612e446c9a60dbbdcb11b60bc895648836845bbd52b12bc6efa31c35b4fff6",
+    "summary.csv": "7692085b8d97da7131d09e914767db38b3f0908d8031e13cd7c454b804524c06",
+    "MMC2_mM.csv": "2694eac8361047916eab7461dfc33295c06fc34aa54c3f580fbb1308d16d45fe",
+    "concentraciones_mM.db": "cf859e4fac1eedcec031b4b9b3d0fc5c8a3a838a4e178135ce64e3cb9173268b"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "reference_condition": "MMC2_GLUCOSE",
+  "targets": ["fum[c]", "pep[c]", "s7p[c]", "succ[c]"],
+  "ishii_analyte_ids": {
+    "fum[c]": "ISHII:metabolites:29",
+    "pep[c]": "ISHII:metabolites:96",
+    "s7p[c]": "ISHII:metabolites:179",
+    "succ[c]": "ISHII:metabolites:33",
+    "pyr[c]": "ISHII:metabolites:9",
+    "akg[c]": "ISHII:metabolites:64",
+    "cit[c]": "ISHII:metabolites:523"
+  },
+  "source_only_samples": ["KO05x"],
+  "mmc2_conditions": ["MMC2_ACETATE", "MMC2_FRUCTOSE", "MMC2_GALACTOSE", "MMC2_GLUCONATE", "MMC2_GLUCOSE", "MMC2_GLYCEROL", "MMC2_PYRUVATE", "MMC2_SUCCINATE"]
+}

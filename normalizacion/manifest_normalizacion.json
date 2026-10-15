@@ -1,0 +1,49 @@
+{
+  "status": "SUCCESS",
+  "stage": "normalized_no_imputation",
+  "summary": {
+    "ishii": {
+      "rows": 30,
+      "columns": 7,
+      "observed": 138,
+      "missing": 72,
+      "target_observed": 101,
+      "target_missing": 19
+    },
+    "ishii_mmc2": {
+      "rows": 38,
+      "columns": 7,
+      "observed": 192,
+      "missing": 74,
+      "target_observed": 132,
+      "target_missing": 20
+    }
+  },
+  "input_sha256": {
+    "data/concentraciones_mM.db": "cf859e4fac1eedcec031b4b9b3d0fc5c8a3a838a4e178135ce64e3cb9173268b",
+    "sources/ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae",
+    "config_normalizacion.json": "b601ba3a3ff6c8a2fc7b23dce890e8f154501a4337ebcdcfa37996f9cdeba999",
+    "normalizar.py": "d2a6c565b85b5a775464c43a475990bc5882cb5c97a32bc579974a6eeccc0e50"
+  },
+  "checks": {
+    "positive_observed_references": true,
+    "reference_SD_documented": true,
+    "unique_cells": true,
+    "missing_preserved": true,
+    "reversible": true,
+    "glucose_ratios_one": true,
+    "inputs_unchanged": true
+  },
+  "output_sha256": {
+    "condiciones_mmc2.csv": "6e8f433c95c7ebe0757d6a54ebfb3d0ace9e1235a0f864d8807001f491ff017c",
+    "matriz_ishii_R.csv": "cf1a1d1c230bd3807c0cc376886850d33684efdd89a8dd13d584b15ad8ae08f8",
+    "matriz_ishii_mM.csv": "6f95d36c65f043bd119ecc4f20337c262f6e6300d3f6bc3af639634378da2463",
+    "matriz_ishii_mmc2_R.csv": "ab7171ad9c847f01c010b8ae21c2b58dfa737630afd7d85dc7dffa4e452e67c4",
+    "matriz_ishii_mmc2_mM.csv": "4855e3d035a93a8098d9ad52ea04642592965e42e04dc9dab9331ba449a3e15d",
+    "matriz_ishii_mmc2_observado.csv": "f3b76c3877e40ce9dc13a2e15494777e356a63e9155b045fc0ad625594261012",
+    "matriz_ishii_observado.csv": "c6c9113c851584528ad3bc58144d24172e1bad9cbfed6bc822e04a550dcb830b",
+    "muestras_y_exclusiones.csv": "bd851e8e37e9a4b018a18481acb69caaa916f9d8f6dc2d4361955c621c3139f4",
+    "referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
+    "trazabilidad_celdas.csv": "ded1866a706b47bbab1d8bc7ef43bcc5fd16cd175e67a12a53da1f7c6aaf8237"
+  }
+}
