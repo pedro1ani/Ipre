@@ -1,4 +1,4 @@
-"""Tres imputadores sklearn con diagnóstico por celda. Sin KNN propio ni PCA."""
+"""Tres imputadores sklearn con diagnóstico por celda."""
 import warnings
 import numpy as np
 import pandas as pd
