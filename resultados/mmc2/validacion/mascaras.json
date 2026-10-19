@@ -1,0 +1,535 @@
+{
+  "schema": 1,
+  "fingerprint": {
+    "config_imputacion_mmc2.json": "b35b1572bf2ed331d50339efdbd2081221612bf4871af3cbeed42618795b93b1",
+    "normalizacion/matriz_mmc2_R.csv": "81f0f8779f2523e77f44caf2f7e594498fccaeb37da3ab87ea73f7e2b81f5edf",
+    "normalizacion/matriz_mmc2_mM.csv": "6e8ca09087763aa733e829e79faf7c422114afd7218fc91730143ad22f6b16bd",
+    "normalizacion/muestras_y_exclusiones.csv": "23ea47bc14a8843c6b368fdf158096ec8468bd1a681b29fcdcecafad656de433",
+    "normalizacion/referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
+    "imputadores.py": "5f00a0959594db5df31b4dbf854ab6a8da2ab8978e2a0015575279e6b2a6b891",
+    "ejecutar_imputacion.py": "698349960c8264516d38fe69ad086e2e72ef71f4d3d8166aed7b3ecb1f67a9d6"
+  },
+  "feature_order": [
+    "fum[c]",
+    "pep[c]",
+    "s7p[c]",
+    "succ[c]",
+    "pyr[c]",
+    "akg[c]",
+    "cit[c]"
+  ],
+  "sample_order": [
+    "MMC2_ACETATE",
+    "MMC2_FRUCTOSE",
+    "MMC2_GALACTOSE",
+    "MMC2_GLUCONATE",
+    "MMC2_GLUCOSE",
+    "MMC2_GLYCEROL",
+    "MMC2_PYRUVATE",
+    "MMC2_SUCCINATE"
+  ],
+  "trials": [
+    {
+      "trial_id": "perturbation:MMC2_ACETATE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_ACETATE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_ACETATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_ACETATE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_ACETATE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_ACETATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_ACETATE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_ACETATE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_ACETATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_ACETATE:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_ACETATE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_ACETATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_FRUCTOSE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_FRUCTOSE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_FRUCTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_FRUCTOSE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_FRUCTOSE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_FRUCTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_FRUCTOSE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_FRUCTOSE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_FRUCTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_FRUCTOSE:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_FRUCTOSE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_FRUCTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GALACTOSE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GALACTOSE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_GALACTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GALACTOSE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GALACTOSE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_GALACTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GALACTOSE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GALACTOSE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_GALACTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GALACTOSE:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GALACTOSE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GALACTOSE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLUCONATE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLUCONATE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_GLUCONATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLUCONATE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLUCONATE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_GLUCONATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLUCONATE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLUCONATE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_GLUCONATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLUCONATE:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLUCONATE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GLUCONATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLYCEROL:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLYCEROL",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_GLYCEROL"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLYCEROL:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLYCEROL",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_GLYCEROL"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLYCEROL:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLYCEROL",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_GLYCEROL"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_GLYCEROL:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_GLYCEROL",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GLYCEROL"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_PYRUVATE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_PYRUVATE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_PYRUVATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_PYRUVATE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_PYRUVATE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_PYRUVATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_PYRUVATE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_PYRUVATE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_PYRUVATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_PYRUVATE:succ[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_PYRUVATE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_PYRUVATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_SUCCINATE:fum[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_SUCCINATE",
+      "hidden": [
+        "fum[c]"
+      ],
+      "score": [
+        "fum[c]"
+      ],
+      "excluded": [
+        "MMC2_SUCCINATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_SUCCINATE:pep[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_SUCCINATE",
+      "hidden": [
+        "pep[c]"
+      ],
+      "score": [
+        "pep[c]"
+      ],
+      "excluded": [
+        "MMC2_SUCCINATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "perturbation:MMC2_SUCCINATE:s7p[c]",
+      "experiment": "perturbation",
+      "sample_id": "MMC2_SUCCINATE",
+      "hidden": [
+        "s7p[c]"
+      ],
+      "score": [
+        "s7p[c]"
+      ],
+      "excluded": [
+        "MMC2_SUCCINATE"
+      ],
+      "pattern_id": ""
+    },
+    {
+      "trial_id": "real_patterns:MMC2_ACETATE:P01",
+      "experiment": "real_patterns",
+      "sample_id": "MMC2_ACETATE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_ACETATE"
+      ],
+      "pattern_id": "P01"
+    },
+    {
+      "trial_id": "real_patterns:MMC2_FRUCTOSE:P01",
+      "experiment": "real_patterns",
+      "sample_id": "MMC2_FRUCTOSE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_FRUCTOSE"
+      ],
+      "pattern_id": "P01"
+    },
+    {
+      "trial_id": "real_patterns:MMC2_GALACTOSE:P01",
+      "experiment": "real_patterns",
+      "sample_id": "MMC2_GALACTOSE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GALACTOSE"
+      ],
+      "pattern_id": "P01"
+    },
+    {
+      "trial_id": "real_patterns:MMC2_GLUCONATE:P01",
+      "experiment": "real_patterns",
+      "sample_id": "MMC2_GLUCONATE",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GLUCONATE"
+      ],
+      "pattern_id": "P01"
+    },
+    {
+      "trial_id": "real_patterns:MMC2_GLYCEROL:P01",
+      "experiment": "real_patterns",
+      "sample_id": "MMC2_GLYCEROL",
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "excluded": [
+        "MMC2_GLYCEROL"
+      ],
+      "pattern_id": "P01"
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_id": "P01",
+      "source_samples": [
+        "MMC2_SUCCINATE"
+      ],
+      "hidden": [
+        "succ[c]"
+      ],
+      "score": [
+        "succ[c]"
+      ],
+      "eligible_samples": [
+        "MMC2_ACETATE",
+        "MMC2_FRUCTOSE",
+        "MMC2_GALACTOSE",
+        "MMC2_GLUCONATE",
+        "MMC2_GLUCOSE",
+        "MMC2_GLYCEROL"
+      ]
+    }
+  ]
+}

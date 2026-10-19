@@ -1,0 +1,940 @@
+[
+  {
+    "fit_id": 0,
+    "excluded": [
+      "MMC2_ACETATE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 1,
+    "excluded": [
+      "MMC2_ACETATE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9230077737749351,
+      1.0367648816452177,
+      0.7682901708538966,
+      0.7486878754115637,
+      1.3749162357410423,
+      0.7551755482213478,
+      1.6081021182785398
+    ],
+    "scaler_scale": [
+      2.5725122198715016,
+      0.5820175907196035,
+      0.45789668182455223,
+      0.155392954786558,
+      0.7947065039290507,
+      0.37779809892579685,
+      2.1680496266713982
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 2,
+    "excluded": [
+      "MMC2_ACETATE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9230077737749351,
+      1.0367648816452177,
+      0.7682901708538966,
+      0.7486878754115637,
+      1.3749162357410423,
+      0.7551755482213478,
+      1.6081021182785398
+    ],
+    "scaler_scale": [
+      2.5725122198715016,
+      0.5820175907196035,
+      0.45789668182455223,
+      0.155392954786558,
+      0.7947065039290507,
+      0.37779809892579685,
+      2.1680496266713982
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 16,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 3,
+    "excluded": [
+      "MMC2_FRUCTOSE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 4,
+    "excluded": [
+      "MMC2_FRUCTOSE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.8980641094755775,
+      0.9659739577380478,
+      0.7809426507819197,
+      0.7535069908640194,
+      1.643917969883766,
+      0.7031414043264773,
+      1.7556433339885449
+    ],
+    "scaler_scale": [
+      2.579500562385442,
+      0.5892819619761265,
+      0.44332994375362406,
+      0.15615325029539137,
+      0.7347088446162394,
+      0.39811151310692916,
+      2.135398365452487
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 5,
+    "excluded": [
+      "MMC2_FRUCTOSE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.8980641094755775,
+      0.9659739577380478,
+      0.7809426507819197,
+      0.7535069908640194,
+      1.643917969883766,
+      0.7031414043264773,
+      1.7556433339885449
+    ],
+    "scaler_scale": [
+      2.579500562385442,
+      0.5892819619761265,
+      0.44332994375362406,
+      0.15615325029539137,
+      0.7347088446162394,
+      0.39811151310692916,
+      2.135398365452487
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 66,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 6,
+    "excluded": [
+      "MMC2_GALACTOSE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 7,
+    "excluded": [
+      "MMC2_GALACTOSE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      2.0182226382212702,
+      1.0645449508255846,
+      0.765239903813604,
+      0.7347064870717133,
+      1.3589639045881254,
+      0.792570782285198,
+      1.7399343253135844
+    ],
+    "scaler_scale": [
+      2.5276189675757212,
+      0.559909780994915,
+      0.460924158617163,
+      0.1470366040716184,
+      0.777933341513475,
+      0.3234970801729451,
+      2.1427679544006457
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 8,
+    "excluded": [
+      "MMC2_GALACTOSE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      2.0182226382212702,
+      1.0645449508255846,
+      0.765239903813604,
+      0.7347064870717133,
+      1.3589639045881254,
+      0.792570782285198,
+      1.7399343253135844
+    ],
+    "scaler_scale": [
+      2.5276189675757212,
+      0.559909780994915,
+      0.460924158617163,
+      0.1470366040716184,
+      0.777933341513475,
+      0.3234970801729451,
+      2.1427679544006457
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 33,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 9,
+    "excluded": [
+      "MMC2_GLUCONATE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 10,
+    "excluded": [
+      "MMC2_GLUCONATE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9513249878260945,
+      1.0136579860181543,
+      0.5871413943394409,
+      0.7708561138324602,
+      1.6518528019814875,
+      0.7128790134501045,
+      1.7564635785637397
+    ],
+    "scaler_scale": [
+      2.5622021906023713,
+      0.5918922715353143,
+      0.34171689305715386,
+      0.1501478540419548,
+      0.7222937463367951,
+      0.3985450398566306,
+      2.1349874627180254
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 11,
+    "excluded": [
+      "MMC2_GLUCONATE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9513249878260945,
+      1.0136579860181543,
+      0.5871413943394409,
+      0.7708561138324602,
+      1.6518528019814875,
+      0.7128790134501045,
+      1.7564635785637397
+    ],
+    "scaler_scale": [
+      2.5622021906023713,
+      0.5918922715353143,
+      0.34171689305715386,
+      0.1501478540419548,
+      0.7222937463367951,
+      0.3985450398566306,
+      2.1349874627180254
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 19,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 12,
+    "excluded": [
+      "MMC2_GLYCEROL"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 13,
+    "excluded": [
+      "MMC2_GLYCEROL"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9967542505380333,
+      1.009519982906003,
+      0.7587100595586772,
+      0.7939305806999623,
+      1.4928809352499217,
+      0.718884242793056,
+      1.7800170729312
+    ],
+    "scaler_scale": [
+      2.5403047131281076,
+      0.5928831656923407,
+      0.4668035522274274,
+      0.11648439082920732,
+      0.8461901740009947,
+      0.39786282364830433,
+      2.1220725283531787
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 14,
+    "excluded": [
+      "MMC2_GLYCEROL"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9967542505380333,
+      1.009519982906003,
+      0.7587100595586772,
+      0.7939305806999623,
+      1.4928809352499217,
+      0.718884242793056,
+      1.7800170729312
+    ],
+    "scaler_scale": [
+      2.5403047131281076,
+      0.5928831656923407,
+      0.4668035522274274,
+      0.11648439082920732,
+      0.8461901740009947,
+      0.39786282364830433,
+      2.1220725283531787
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 83,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 15,
+    "excluded": [
+      "MMC2_PYRUVATE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 16,
+    "excluded": [
+      "MMC2_PYRUVATE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9274308296147407,
+      1.0660085885958075,
+      0.6934071209907289,
+      0.7668601407071689,
+      1.4850515293969875,
+      0.7283795347598039,
+      0.8672402654088627
+    ],
+    "scaler_scale": [
+      2.571068979293455,
+      0.5584142232344643,
+      0.48469262557308707,
+      0.15277947256129965,
+      0.7836545746407315,
+      0.39529518757177906,
+      0.37488412302173946
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 17,
+    "excluded": [
+      "MMC2_PYRUVATE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_SUCCINATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      1.9274308296147407,
+      1.0660085885958075,
+      0.6934071209907289,
+      0.7668601407071689,
+      1.4850515293969875,
+      0.7283795347598039,
+      0.8672402654088627
+    ],
+    "scaler_scale": [
+      2.571068979293455,
+      0.5584142232344643,
+      0.48469262557308707,
+      0.15277947256129965,
+      0.7836545746407315,
+      0.39529518757177906,
+      0.37488412302173946
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 15,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 18,
+    "excluded": [
+      "MMC2_SUCCINATE"
+    ],
+    "method": "SimpleImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": null,
+    "scaler_scale": null,
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 19,
+    "excluded": [
+      "MMC2_SUCCINATE"
+    ],
+    "method": "KNNImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      0.9102645127584961,
+      0.8014075754989823,
+      0.656105034064179,
+      0.7546082609006094,
+      1.3069354073714172,
+      0.601954264941262,
+      1.7601418184011546
+    ],
+    "scaler_scale": [
+      0.27663634899127604,
+      0.2391195853030844,
+      0.4626346041736478,
+      0.14459498256757314,
+      0.7031283220507539,
+      0.2551678350950883,
+      2.1331128420464656
+    ],
+    "iterations": null,
+    "converged": null,
+    "warnings": [],
+    "regressor_fits": 0,
+    "regressor_max_iterations_used": 0,
+    "regressor_fits_at_limit": 0
+  },
+  {
+    "fit_id": 20,
+    "excluded": [
+      "MMC2_SUCCINATE"
+    ],
+    "method": "IterativeImputer",
+    "train_ids": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE"
+    ],
+    "active_features": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]",
+      "pyr[c]",
+      "akg[c]",
+      "cit[c]"
+    ],
+    "empty_features": [],
+    "scaler_mean": [
+      0.9102645127584961,
+      0.8014075754989823,
+      0.656105034064179,
+      0.7546082609006094,
+      1.3069354073714172,
+      0.601954264941262,
+      1.7601418184011546
+    ],
+    "scaler_scale": [
+      0.27663634899127604,
+      0.2391195853030844,
+      0.4626346041736478,
+      0.14459498256757314,
+      0.7031283220507539,
+      0.2551678350950883,
+      2.1331128420464656
+    ],
+    "iterations": 2,
+    "converged": true,
+    "warnings": [],
+    "regressor_fits": 14,
+    "regressor_max_iterations_used": 35,
+    "regressor_fits_at_limit": 0
+  }
+]

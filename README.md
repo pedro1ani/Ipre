@@ -1,42 +1,57 @@
-# IPre — Validación e imputación de Ishii
+# IPre — Imputación de una base por ejecución
 
-Se mantienen las 30 muestras Ishii, siete metabolitos y cuatro objetivos: fumarato, PEP, s7p y succinato. Se comparan dos escenarios separados: entrenamiento Ishii y entrenamiento Ishii + ocho condiciones admisibles de MMC2. Las verdades de evaluación y las estadísticas finales pertenecen exclusivamente a Ishii. Incorporar MMC2 no presupone equivalencia entre estudios.
+## Los dos códigos principales
 
-## Flujo principal reproducible
+**ejecutar_imputacion.py** prepara los datos y contiene las dos secciones del análisis. **imputadores.py** implementa la interfaz de los tres métodos de scikit-learn. El ejecutor usa una sola matriz de entrada, elegida con --dataset; no combina Ishii y MMC2.
+
+### Sección 1: evaluar con mediciones conocidas
+
+Oculta valores originales, entrena sin la muestra ni su grupo y estima los valores ocultados. Usa exactamente las mismas máscaras para mediana, KNN e Iterative. Compara estimación con medición mediante MAE en mM y ratios, cobertura y celdas comunes. Guarda resultados en validacion/ antes de pasar a la segunda sección.
+
+### Sección 2: imputar candidatos reales
+
+Identifica como candidatos los faltantes de los cuatro objetivos (fumarato, PEP, s7p y succinato). Aplica cada método por separado, conservando todas las mediciones originales. Guarda candidatos, diagnósticos, matrices y estadísticas antes/después en imputacion/. Los otros tres metabolitos son predictores: sus ausencias no se rellenan en las matrices finales.
+
+## Ejecutar
 
 ```bash
 python -m pip install -r requirements_imputacion.txt
-python ejecutar_estudio.py --output resultados_nuevos
-python verificar_estudio.py --results resultados_nuevos
-python -m pip install -r requirements_descriptivos.txt
-python graficar_estudio.py --results resultados_nuevos
+python ejecutar_imputacion.py --dataset ishii --output resultados_ishii_nuevos
 ```
 
-La carpeta de salida debe ser nueva. Se reutiliza `validacion_comun/` solo si la huella de las entradas y la colección reconstruida coinciden exactamente. Para una matriz modificada debe seleccionarse una carpeta nueva mediante `--masks mascaras_nuevas`. Se guardan primero todas las evaluaciones y después se estiman los huecos reales. No se ajustan hiperparámetros con los resultados de evaluación.
+Para analizar MMC2 de forma independiente:
 
-Los resultados entregados están en `resultados_estudio/`. Leer **docs/VALIDACION_Y_RESULTADOS.md** antes de interpretar las matrices. Contiene diseño, cifras, límites y guía de archivos. **docs/IMPUTACION.md** documenta parámetros, sustituciones y reglas de soporte. No hay KNN propio ni PCA.
+```bash
+python ejecutar_imputacion.py --dataset mmc2 --output resultados_mmc2_nuevos
+```
 
-## Organización
+La carpeta de salida debe ser nueva. Sin argumentos se selecciona Ishii y resultados/ishii. Se entregan ejecuciones independientes verificadas en resultados/ishii y resultados/mmc2. No es necesario ejecutar otro código para obtener evaluación e imputación; se retiró ejecutar_estudio.py.
 
-- `validacion_comun/`: colección única de máscaras, verdades originales Ishii y series analíticas.
-- `resultados_estudio/validacion/`: predicciones, MAE en mM y R, cobertura, motivos y comparaciones sobre las mismas celdas.
-- `resultados_estudio/imputacion/`: candidatos y matrices por método, escenario y política de aceptación; observaciones originales intactas.
-- `resultados_estudio/estadisticas/`: antes/después sobre las 30 muestras, con subconjuntos propios y comunes.
-- `resultados_estudio/figuras/`: tres gráficos y PDF.
-- `normalizacion/`: matrices fuente separadas Ishii (30 × 7, 138 medidos, 72 ausencias) y MMC2 (8 × 7, 54 medidos, 2 ausencias), referencias positivas de glucosa Gerosa con SD y trazabilidad.
-- `data/` y `sources/`: concentraciones, conversiones, metadatos y fuentes conservadas; no se escriben imputaciones en ellas.
-- `descriptivos/`: análisis exploratorio de observados por estudio, previo a imputación.
+Cada salida tiene solo dos carpetas de análisis: validacion/ e imputacion/, más ajustes.json y manifest.json para trazabilidad. Los gráficos opcionales se guardan en figuras/.
 
-La referencia Gerosa es fija por metabolito para todas las muestras. KNN e Iterative estandarizan exclusivamente con entrenamiento, sin logaritmos. KO05x se conserva con metadatos incompletos; se excluye junto con KO05 al evaluar su perturbación.
+## Ver y comprobar
 
-## Aplicación independiente posterior a MMC2
+```bash
+python verificar_estudio.py --results resultados/ishii
+python -m pip install -r requirements_descriptivos.txt
+python graficar_estudio.py --results resultados/ishii
+python -m unittest discover -s tests -v
+```
 
-El comando auxiliar `python ejecutar_imputacion.py --dataset mmc2 --output resultados_mmc2_nuevos` aplica los mismos métodos exclusivamente a MMC2. No se ejecutó en esta entrega y no sustituye una validación específica de MMC2. Su configuración independiente es `config_imputacion_mmc2.json`; piruvato sigue siendo predictor, no objetivo. El comando auxiliar también admite `--dataset ishii`, pero para evaluar antes de imputar debe utilizarse el flujo principal anterior.
+Los gráficos comparan directamente valor medido ocultado (eje horizontal) con valor imputado (eje vertical). La diagonal representa acierto exacto. Son gráficos de validación, no de huecos reales cuya verdad es desconocida.
 
-## Comprobaciones y reconstrucción
+## Archivos de apoyo
 
-`python verificar_proyecto.py` verifica hashes, integridad y conversiones. `python verificar_estudio.py` comprueba particiones, escalado, verdades, máscaras, errores, observaciones intactas y comparaciones comunes. `python -m unittest discover -s tests -v` ejecuta 15 pruebas.
+| Archivo | Función |
+|---|---|
+| normalizar.py | Construye las matrices en mM y ratios a partir de los datos preparados. |
+| convertir_unidades.py | Reconstruye la conversión desde fuentes; no hace falta repetirla para imputar. |
+| analizar_descriptivos.py | Describe únicamente mediciones originales. |
+| graficar_estudio.py | Grafica resultados existentes; no entrena. |
+| verificar_estudio.py | Revisa cada ejecución independiente. |
+| verificar_proyecto.py | Revisa integridad y conversiones de la distribución. |
+| config_imputacion_ishii.json / config_imputacion_mmc2.json | Parámetros y objetivos del estudio seleccionado. |
 
-`python normalizar.py --output normalizacion_nueva` reconstruye matrices separadas. `python analizar_descriptivos.py --output descriptivos_nuevos` reconstruye descriptivos observados. `convertir_unidades.py` reconstruye la capa mM en una copia separada con data/ vacía, usando requirements.txt; no regenera todos los manifiestos. No hace falta ejecutarlo sobre esta distribución ni usar Python -O.
+sources/ y data/ conservan las fuentes y conversiones. normalizacion/ contiene las matrices preparadas. docs/IMPUTACION.md describe el motor y docs/VALIDACION_Y_RESULTADOS.md el diseño y las limitaciones. Los registros técnicos permiten reproducir los resultados, pero no son entradas adicionales que el usuario deba seleccionar.
 
-Semilla, orden, versiones y hashes quedan registrados en configuraciones y manifiestos. Dos ejecuciones completas produjeron 24 archivos CSV/JSON idénticos byte a byte en el mismo entorno. Los gráficos no están incluidos en esa comparación binaria.
+Se mantienen las 30 muestras Ishii: 29 con dilución 0,2 h⁻¹ documentada y KO05x con metadatos incompletos. Todos los escaladores y modelos se ajustan exclusivamente con entrenamiento; no se usan logaritmos. La referencia Gerosa glucosa sigue fija, con incertidumbre documentada; no se propaga su incertidumbre a los ratios.

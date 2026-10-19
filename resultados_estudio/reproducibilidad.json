@@ -1,6 +1,0 @@
-{
-  "two_independent_runs_identical": true,
-  "checked_files": 24,
-  "scope": "all pipeline CSV/JSON outputs, same pinned environment; figures not included in byte comparison",
-  "masks_reused": true
-}

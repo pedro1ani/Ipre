@@ -4,11 +4,9 @@ Implementación: scikit-learn 1.8.0. Se usan exclusivamente SimpleImputer, KNNIm
 
 ## Alcance y ejecución
 
-El flujo principal es `python ejecutar_estudio.py --output resultados_nuevos`: valida los tres métodos en Ishii y en Ishii + MMC2 con máscaras comunes, y después estima los 19 huecos objetivo de Ishii por método y escenario (114 candidatos). La imputación real excluye el grupo de perturbación de la consulta: KO05/KO05x juntos y todos los controles WT juntos. Las siete variables pueden completarse internamente, pero solo se exportan imputaciones de los cuatro objetivos; los otros tres predictores conservan sus ausencias originales.
+Único ejecutor: ejecutar_imputacion.py --dataset ishii|mmc2. Primero evalúa mediciones ocultadas y después estima candidatos reales. Ambos bloques usan AuditedImputer de imputadores.py. Cada entrenamiento se obtiene exclusivamente de la matriz seleccionada; no hay concatenación de estudios.
 
-Instalación: `python -m pip install -r requirements_imputacion.txt`. Diseño y resultados en `VALIDACION_Y_RESULTADOS.md`. Configuración del estudio: `config_validacion.json`, con parámetros de métodos en `config_imputacion_ishii.json` para ambos escenarios.
-
-El ejecutor auxiliar `ejecutar_imputacion.py --dataset ishii|mmc2` permanece disponible para aplicaciones independientes. No ofrece opción combinada ni contiene una prohibición interna por origen. La comparación combinada se implementa en el nuevo ejecutor de estudio. No se han imputado muestras MMC2; su aplicación futura requiere validación independiente. En particular, no evaluar Gerosa glucosa como un valor ocultado mientras el denominador revela su concentración.
+Para Ishii se excluye el grupo completo (incluye KO05/KO05x y los controles WT conjuntos); para MMC2 se excluye la condición consultada. Los cuatro objetivos son fumarato, PEP, s7p y succinato; piruvato, akg y citrato actúan como predictores. Cambiar el estudio selecciona su configuración independiente.
 
 ## Parámetros y escalas
 
@@ -60,19 +58,13 @@ Iterative detiene el ajuste por la regla de sklearn sobre el cambio máximo de l
 
 Además, el registro informa el máximo número de iteraciones de BayesianRidge y cuántos ajustes internos alcanzaron su límite. No se confunde convergencia del regresor con convergencia del imputador externo.
 
-En el estudio completo hay 37 entrenamientos distintos por escenario para cada método, reutilizados cuando las exclusiones coinciden. Iterative converge en 31/37 ajustes Ishii y 4/37 combinados. En el subconjunto de siete ajustes usado para huecos reales converge en 7/7 Ishii y 1/7 combinados. La consulta del único ajuste combinado convergente carece de predictores observados; por tanto no aporta imputaciones reales con soporte.
+## Resultados y diagnóstico
 
-## Salidas y políticas
+En cada carpeta resultados/<dataset>/, validacion/ contiene las máscaras y las comparaciones con mediciones conocidas; imputacion/ contiene las estimaciones de los faltantes originales y estadísticas. ajustes.json registra entrenamiento, escaladores, iteraciones y advertencias mediante fit_id. manifest.json registra parámetros, versiones y hashes.
 
-Las salidas principales están en `resultados_estudio/`. `ajustes_y_particiones.json` permite vincular cada candidato a su entrenamiento mediante fit_id y contiene IDs, escaladores, iteraciones y advertencias. Los CSV de validación e imputación conservan candidatos, soporte y mecanismo.
+available conserva todos los candidatos finitos, incluyendo sustituciones generales y ajustes no convergentes. supported_plus_baseline exige supported a KNN e Iterative, pero mantiene explícitamente la mediana como referencia general. No convertir esa excepción en evidencia de soporte individual. Las estadísticas se entregan sobre celdas propias y sobre la intersección común de los tres métodos.
 
-`available` conserva todos los candidatos finitos, incluidas sustituciones generales y ajustes sin convergencia. `supported_plus_baseline` acepta solo supported para KNN e Iterative y mantiene explícitamente la mediana como referencia general. Esta excepción no convierte la mediana en una estimación individual con soporte. Las matrices incluyen esa política en el nombre; las bases y matrices fuente permanecen intactas.
-
-Las estadísticas distinguen celdas propias, comunes a tres métodos dentro de cada escenario y comunes a los seis resultados. Una intersección vacía no permite evaluar cambios comparables por imputación.
-
-## Verificación de implementación
-
-Quince pruebas automatizadas cubren comportamientos del motor, entradas, máscaras, exclusión completa de grupos/series y ausencia de influencia de valores ocultados sobre la predicción. El verificador del estudio comprueba además el entrenamiento del escalador, las verdades originales y la preservación de las mediciones. Dos ejecuciones completas dieron los mismos 24 archivos CSV/JSON. Estas comprobaciones verifican implementación y reproducibilidad; no garantizan precisión científica en los huecos reales.
+Los métodos y parámetros permanecen iguales al flujo anterior. Las 1.305 predicciones de validación Ishii conservan sus valores y etiquetas de soporte tras la simplificación. Se verificaron las dos ejecuciones y las 15 pruebas del motor y las máscaras. Esto demuestra consistencia de implementación, no certeza científica de los valores imputados.
 
 ## Documentación oficial consultada
 

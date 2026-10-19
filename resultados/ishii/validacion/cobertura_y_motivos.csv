@@ -1,0 +1,112 @@
+﻿policy,method,experiment,metabolite_id,reason,cells
+available,IterativeImputer,analytical_series,fum[c],responded,23
+available,IterativeImputer,analytical_series,pep[c],responded,22
+available,IterativeImputer,analytical_series,s7p[c],responded,29
+available,IterativeImputer,analytical_series,succ[c],responded,27
+available,IterativeImputer,perturbation,fum[c],responded,23
+available,IterativeImputer,perturbation,pep[c],responded,22
+available,IterativeImputer,perturbation,s7p[c],responded,29
+available,IterativeImputer,perturbation,succ[c],responded,27
+available,IterativeImputer,real_patterns,fum[c],responded,73
+available,IterativeImputer,real_patterns,pep[c],responded,85
+available,IterativeImputer,real_patterns,s7p[c],responded,21
+available,IterativeImputer,real_patterns,succ[c],responded,54
+available,KNNImputer,analytical_series,fum[c],responded,23
+available,KNNImputer,analytical_series,pep[c],responded,22
+available,KNNImputer,analytical_series,s7p[c],responded,29
+available,KNNImputer,analytical_series,succ[c],responded,27
+available,KNNImputer,perturbation,fum[c],responded,23
+available,KNNImputer,perturbation,pep[c],responded,22
+available,KNNImputer,perturbation,s7p[c],responded,29
+available,KNNImputer,perturbation,succ[c],responded,27
+available,KNNImputer,real_patterns,fum[c],responded,73
+available,KNNImputer,real_patterns,pep[c],responded,85
+available,KNNImputer,real_patterns,s7p[c],responded,21
+available,KNNImputer,real_patterns,succ[c],responded,54
+available,SimpleImputer,analytical_series,fum[c],responded,23
+available,SimpleImputer,analytical_series,pep[c],responded,22
+available,SimpleImputer,analytical_series,s7p[c],responded,29
+available,SimpleImputer,analytical_series,succ[c],responded,27
+available,SimpleImputer,perturbation,fum[c],responded,23
+available,SimpleImputer,perturbation,pep[c],responded,22
+available,SimpleImputer,perturbation,s7p[c],responded,29
+available,SimpleImputer,perturbation,succ[c],responded,27
+available,SimpleImputer,real_patterns,fum[c],responded,73
+available,SimpleImputer,real_patterns,pep[c],responded,85
+available,SimpleImputer,real_patterns,s7p[c],responded,21
+available,SimpleImputer,real_patterns,succ[c],responded,54
+supported_plus_baseline,IterativeImputer,analytical_series,fum[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,7
+supported_plus_baseline,IterativeImputer,analytical_series,fum[c],responded,16
+supported_plus_baseline,IterativeImputer,analytical_series,pep[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,7
+supported_plus_baseline,IterativeImputer,analytical_series,pep[c],responded,15
+supported_plus_baseline,IterativeImputer,analytical_series,s7p[c],limited_support: conditional_iterative_model_with_internal_fills,3
+supported_plus_baseline,IterativeImputer,analytical_series,s7p[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,7
+supported_plus_baseline,IterativeImputer,analytical_series,s7p[c],responded,18
+supported_plus_baseline,IterativeImputer,analytical_series,s7p[c],training_only: iterative_population_only_no_informative_observation,1
+supported_plus_baseline,IterativeImputer,analytical_series,succ[c],limited_support: conditional_iterative_model_with_internal_fills,3
+supported_plus_baseline,IterativeImputer,analytical_series,succ[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,7
+supported_plus_baseline,IterativeImputer,analytical_series,succ[c],responded,17
+supported_plus_baseline,IterativeImputer,perturbation,fum[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,4
+supported_plus_baseline,IterativeImputer,perturbation,fum[c],responded,19
+supported_plus_baseline,IterativeImputer,perturbation,pep[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,4
+supported_plus_baseline,IterativeImputer,perturbation,pep[c],responded,18
+supported_plus_baseline,IterativeImputer,perturbation,s7p[c],limited_support: conditional_iterative_model_with_internal_fills,3
+supported_plus_baseline,IterativeImputer,perturbation,s7p[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,4
+supported_plus_baseline,IterativeImputer,perturbation,s7p[c],responded,21
+supported_plus_baseline,IterativeImputer,perturbation,s7p[c],training_only: iterative_population_only_no_informative_observation,1
+supported_plus_baseline,IterativeImputer,perturbation,succ[c],limited_support: conditional_iterative_model_with_internal_fills,3
+supported_plus_baseline,IterativeImputer,perturbation,succ[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,4
+supported_plus_baseline,IterativeImputer,perturbation,succ[c],responded,20
+supported_plus_baseline,IterativeImputer,real_patterns,fum[c],limited_support: conditional_iterative_model_with_internal_fills,17
+supported_plus_baseline,IterativeImputer,real_patterns,fum[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,11
+supported_plus_baseline,IterativeImputer,real_patterns,fum[c],responded,24
+supported_plus_baseline,IterativeImputer,real_patterns,fum[c],training_only: iterative_population_only_no_informative_observation,17
+supported_plus_baseline,IterativeImputer,real_patterns,fum[c],training_only: iterative_population_only_no_informative_observation; not_converged,4
+supported_plus_baseline,IterativeImputer,real_patterns,pep[c],limited_support: conditional_iterative_model_with_internal_fills,17
+supported_plus_baseline,IterativeImputer,real_patterns,pep[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,15
+supported_plus_baseline,IterativeImputer,real_patterns,pep[c],responded,32
+supported_plus_baseline,IterativeImputer,real_patterns,pep[c],training_only: iterative_population_only_no_informative_observation,17
+supported_plus_baseline,IterativeImputer,real_patterns,pep[c],training_only: iterative_population_only_no_informative_observation; not_converged,4
+supported_plus_baseline,IterativeImputer,real_patterns,s7p[c],training_only: iterative_population_only_no_informative_observation,17
+supported_plus_baseline,IterativeImputer,real_patterns,s7p[c],training_only: iterative_population_only_no_informative_observation; not_converged,4
+supported_plus_baseline,IterativeImputer,real_patterns,succ[c],limited_support: conditional_iterative_model_with_internal_fills,17
+supported_plus_baseline,IterativeImputer,real_patterns,succ[c],limited_support: conditional_iterative_model_with_internal_fills; not_converged,8
+supported_plus_baseline,IterativeImputer,real_patterns,succ[c],responded,8
+supported_plus_baseline,IterativeImputer,real_patterns,succ[c],training_only: iterative_population_only_no_informative_observation,17
+supported_plus_baseline,IterativeImputer,real_patterns,succ[c],training_only: iterative_population_only_no_informative_observation; not_converged,4
+supported_plus_baseline,KNNImputer,analytical_series,fum[c],responded,23
+supported_plus_baseline,KNNImputer,analytical_series,pep[c],responded,22
+supported_plus_baseline,KNNImputer,analytical_series,s7p[c],limited_support: neighbor_mean,24
+supported_plus_baseline,KNNImputer,analytical_series,s7p[c],responded,4
+supported_plus_baseline,KNNImputer,analytical_series,s7p[c],training_only: automatic_training_mean_no_defined_distance,1
+supported_plus_baseline,KNNImputer,analytical_series,succ[c],limited_support: neighbor_mean,24
+supported_plus_baseline,KNNImputer,analytical_series,succ[c],responded,3
+supported_plus_baseline,KNNImputer,perturbation,fum[c],responded,23
+supported_plus_baseline,KNNImputer,perturbation,pep[c],responded,22
+supported_plus_baseline,KNNImputer,perturbation,s7p[c],limited_support: neighbor_mean,24
+supported_plus_baseline,KNNImputer,perturbation,s7p[c],responded,4
+supported_plus_baseline,KNNImputer,perturbation,s7p[c],training_only: automatic_training_mean_no_defined_distance,1
+supported_plus_baseline,KNNImputer,perturbation,succ[c],limited_support: neighbor_mean,24
+supported_plus_baseline,KNNImputer,perturbation,succ[c],responded,3
+supported_plus_baseline,KNNImputer,real_patterns,fum[c],limited_support: neighbor_mean,37
+supported_plus_baseline,KNNImputer,real_patterns,fum[c],responded,15
+supported_plus_baseline,KNNImputer,real_patterns,fum[c],training_only: automatic_training_mean_no_defined_distance,21
+supported_plus_baseline,KNNImputer,real_patterns,pep[c],limited_support: neighbor_mean,39
+supported_plus_baseline,KNNImputer,real_patterns,pep[c],responded,25
+supported_plus_baseline,KNNImputer,real_patterns,pep[c],training_only: automatic_training_mean_no_defined_distance,21
+supported_plus_baseline,KNNImputer,real_patterns,s7p[c],training_only: automatic_training_mean_no_defined_distance,21
+supported_plus_baseline,KNNImputer,real_patterns,succ[c],limited_support: neighbor_mean,32
+supported_plus_baseline,KNNImputer,real_patterns,succ[c],responded,1
+supported_plus_baseline,KNNImputer,real_patterns,succ[c],training_only: automatic_training_mean_no_defined_distance,21
+supported_plus_baseline,SimpleImputer,analytical_series,fum[c],responded,23
+supported_plus_baseline,SimpleImputer,analytical_series,pep[c],responded,22
+supported_plus_baseline,SimpleImputer,analytical_series,s7p[c],responded,29
+supported_plus_baseline,SimpleImputer,analytical_series,succ[c],responded,27
+supported_plus_baseline,SimpleImputer,perturbation,fum[c],responded,23
+supported_plus_baseline,SimpleImputer,perturbation,pep[c],responded,22
+supported_plus_baseline,SimpleImputer,perturbation,s7p[c],responded,29
+supported_plus_baseline,SimpleImputer,perturbation,succ[c],responded,27
+supported_plus_baseline,SimpleImputer,real_patterns,fum[c],responded,73
+supported_plus_baseline,SimpleImputer,real_patterns,pep[c],responded,85
+supported_plus_baseline,SimpleImputer,real_patterns,s7p[c],responded,21
+supported_plus_baseline,SimpleImputer,real_patterns,succ[c],responded,54

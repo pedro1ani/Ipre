@@ -1,0 +1,4 @@
+﻿sample_id,metabolite_id,method,estimate_R,n_target_observed,n_observed_predictors,n_informative_predictors,support,mechanism,n_usable_neighbors,neighbor_ids,min_shared_predictors,iterations,converged,roundoff_zero_corrected,fit_id,case_id,trial_id,experiment,truth_R,truth_mM,estimate_mM,absolute_error_R,absolute_error_mM,excluded_group
+MMC2_SUCCINATE,succ[c],SimpleImputer,0.76121588112014915,7,6,6,training_only,training_median,,,,,,False,18,,,,,,0.90228850425043128,,,MMC2_SUCCINATE
+MMC2_SUCCINATE,succ[c],KNNImputer,0.85044881831834418,7,6,6,supported,neighbor_mean,3,MMC2_FRUCTOSE;MMC2_GLUCOSE;MMC2_ACETATE,6,,,False,19,,,,,,1.0080585695254145,,,MMC2_SUCCINATE
+MMC2_SUCCINATE,succ[c],IterativeImputer,0.75533953730749248,7,6,6,supported,conditional_iterative_model_with_internal_fills,,,,2,True,False,20,,,,,,0.89532312478228226,,,MMC2_SUCCINATE

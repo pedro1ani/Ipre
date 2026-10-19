@@ -1,0 +1,88 @@
+{
+  "dataset": "ishii",
+  "status": "SUCCESS",
+  "config": {
+    "seed": 20261019,
+    "methods": [
+      "SimpleImputer",
+      "KNNImputer",
+      "IterativeImputer"
+    ],
+    "simple": {
+      "strategy": "median"
+    },
+    "knn": {
+      "n_neighbors": 3,
+      "weights": "uniform",
+      "metric": "nan_euclidean"
+    },
+    "iterative": {
+      "estimator": "BayesianRidge",
+      "max_iter": 50,
+      "tol": 0.001,
+      "regressor_max_iter": 300,
+      "regressor_tol": 0.001,
+      "initial_strategy": "median",
+      "skip_complete": false,
+      "sample_posterior": false,
+      "imputation_order": "ascending"
+    },
+    "preprocessing": "SimpleImputer: raw R; KNN/Iterative: StandardScaler on training R only, no log",
+    "support": {
+      "minimum_donors": 3,
+      "minimum_observed_predictors": 2
+    },
+    "empty_target_policy": "abstain_without_filling_zero",
+    "nonconvergence_policy": "retain_candidate_flagged_limited_not_accepted_as_supported",
+    "training_exclusion": "entire perturbation group within Ishii only",
+    "export_scope": "real missing target cells within selected dataset only",
+    "dataset": "ishii",
+    "targets": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]"
+    ]
+  },
+  "input_sha256": {
+    "config_imputacion_ishii.json": "293a1aeffdb206c0ed6701d114b3bf25eae06b5d4c1b70b0b95be0bae228f534",
+    "normalizacion/matriz_ishii_R.csv": "cf1a1d1c230bd3807c0cc376886850d33684efdd89a8dd13d584b15ad8ae08f8",
+    "normalizacion/matriz_ishii_mM.csv": "6f95d36c65f043bd119ecc4f20337c262f6e6300d3f6bc3af639634378da2463",
+    "normalizacion/muestras_y_exclusiones.csv": "23ea47bc14a8843c6b368fdf158096ec8468bd1a681b29fcdcecafad656de433",
+    "normalizacion/referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
+    "imputadores.py": "5f00a0959594db5df31b4dbf854ab6a8da2ab8978e2a0015575279e6b2a6b891",
+    "ejecutar_imputacion.py": "698349960c8264516d38fe69ad086e2e72ef71f4d3d8166aed7b3ecb1f67a9d6",
+    "sources/ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae"
+  },
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  },
+  "validation_attempts": 1305,
+  "real_attempts": 57,
+  "unavailable_tests": [],
+  "excluded_evaluation_samples": [],
+  "output_sha256": {
+    "ajustes.json": "96199b8c32a60c8282c5d026dd0d611f972aef77cee994013e71b8c7afa12d2c",
+    "imputacion/available_IterativeImputer_mM.csv": "248872eb9e494b0559fbadea2d4721b9dadfec2cd2f5bd513416ee4be076dbd2",
+    "imputacion/available_KNNImputer_mM.csv": "c403eb0da158ad8ddfc73d506e608435dbbff0c8a5a0332cb11042fd6e575f02",
+    "imputacion/available_SimpleImputer_mM.csv": "d3079229f55fc2634d6b00ae1743dd2e801df26ac846c359fb3624ebbb71e70a",
+    "imputacion/candidatos_y_soporte.csv": "e516ab1b8249f305686e79675d1fa20904192a2ed9f849fa114cf4144c08a841",
+    "imputacion/casillas_comunes.csv": "83c13bcda7b98e89584d7f5dda38f69e6803af6bc040f1bd413122491790dec1",
+    "imputacion/estadisticas_antes_despues.csv": "6018b3a5096a18e1e9e446745d1c7f8ac7000f44ce3543d2e9b969a573685fb9",
+    "imputacion/supported_plus_baseline_IterativeImputer_mM.csv": "03383b332d95231baac7c398ed5f30413e614a18d7a63f202b17a420872dcc27",
+    "imputacion/supported_plus_baseline_KNNImputer_mM.csv": "2f4c2f26d415d2a82fbe81282920c828a9184a1270a63e0a82dafb17e52f45a4",
+    "imputacion/supported_plus_baseline_SimpleImputer_mM.csv": "d3079229f55fc2634d6b00ae1743dd2e801df26ac846c359fb3624ebbb71e70a",
+    "validacion/casos_comunes.csv": "98117f8bbd1d8027d48270a12aaab790cb27955cc7ec2776053db558dc3f165e",
+    "validacion/cobertura_y_motivos.csv": "457d6fb2a8d8ac3ac5d80c69d27201726a593896f4cb184c1772eaf7a0511e9a",
+    "validacion/estado.json": "f63f7ce127a96f75b19a798e2ac6b121a4c7697b89bcbb747e657f0dede08939",
+    "validacion/mascaras.json": "8f8b4699d7936a20f5e173e2f471aa54e7d6c1af15915c97e5e5613ede34877d",
+    "validacion/metricas.csv": "3b8ca5b4c179b114b8a23603d2af9c0a1940450ea330cbb952c6fb1e12024db4",
+    "validacion/predicciones.csv": "41bc04b26b0b3ce95600f63b624ab17890f83266750726bcd61fe436874e2e7c",
+    "validacion/series_analiticas.csv": "6fc9220688882f4b1471bb01732b3563381104a3008cf224c237b50280dcb9f9",
+    "validacion/verdades.csv": "e3a052f0b36810dee26c0f2644f8b68e86296f3e41bc010181379141c5127cab"
+  }
+}

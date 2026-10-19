@@ -1,0 +1,90 @@
+{
+  "dataset": "mmc2",
+  "status": "SUCCESS",
+  "config": {
+    "seed": 20261019,
+    "methods": [
+      "SimpleImputer",
+      "KNNImputer",
+      "IterativeImputer"
+    ],
+    "simple": {
+      "strategy": "median"
+    },
+    "knn": {
+      "n_neighbors": 3,
+      "weights": "uniform",
+      "metric": "nan_euclidean"
+    },
+    "iterative": {
+      "estimator": "BayesianRidge",
+      "max_iter": 50,
+      "tol": 0.001,
+      "regressor_max_iter": 300,
+      "regressor_tol": 0.001,
+      "initial_strategy": "median",
+      "skip_complete": false,
+      "sample_posterior": false,
+      "imputation_order": "ascending"
+    },
+    "preprocessing": "SimpleImputer: raw R; KNN/Iterative: StandardScaler on training R only, no log",
+    "support": {
+      "minimum_donors": 3,
+      "minimum_observed_predictors": 2
+    },
+    "empty_target_policy": "abstain_without_filling_zero",
+    "nonconvergence_policy": "retain_candidate_flagged_limited_not_accepted_as_supported",
+    "training_exclusion": "held-out condition within MMC2 only",
+    "export_scope": "real missing target cells within selected dataset only",
+    "dataset": "mmc2",
+    "targets": [
+      "fum[c]",
+      "pep[c]",
+      "s7p[c]",
+      "succ[c]"
+    ]
+  },
+  "input_sha256": {
+    "config_imputacion_mmc2.json": "b35b1572bf2ed331d50339efdbd2081221612bf4871af3cbeed42618795b93b1",
+    "normalizacion/matriz_mmc2_R.csv": "81f0f8779f2523e77f44caf2f7e594498fccaeb37da3ab87ea73f7e2b81f5edf",
+    "normalizacion/matriz_mmc2_mM.csv": "6e8ca09087763aa733e829e79faf7c422114afd7218fc91730143ad22f6b16bd",
+    "normalizacion/muestras_y_exclusiones.csv": "23ea47bc14a8843c6b368fdf158096ec8468bd1a681b29fcdcecafad656de433",
+    "normalizacion/referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
+    "imputadores.py": "5f00a0959594db5df31b4dbf854ab6a8da2ab8978e2a0015575279e6b2a6b891",
+    "ejecutar_imputacion.py": "698349960c8264516d38fe69ad086e2e72ef71f4d3d8166aed7b3ecb1f67a9d6"
+  },
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  },
+  "validation_attempts": 96,
+  "real_attempts": 3,
+  "unavailable_tests": [
+    "analytical_series: no metadata homologous to Ishii"
+  ],
+  "excluded_evaluation_samples": [
+    "MMC2_GLUCOSE: reference reveals truth"
+  ],
+  "output_sha256": {
+    "ajustes.json": "6b212932736d13200d88dfda51bff6ffec8f7ec532ef21445a7e7ac86919a8b2",
+    "imputacion/available_IterativeImputer_mM.csv": "0a4f8b7908247fe00e2de9b2d9fbba0612ed2e682a5216fa5427795e3e29d6d5",
+    "imputacion/available_KNNImputer_mM.csv": "5e97f70f4926a04f2b5c2f8cfac768043ea0d9e23411cabb6765b012897ab1b0",
+    "imputacion/available_SimpleImputer_mM.csv": "b016bce430a5a454f5485e0370ea524b4f727c25ccc744fe8181c9b42260c77a",
+    "imputacion/candidatos_y_soporte.csv": "806a8bb0150a327ee326264fd8689cec718d3195c7bd28240dd2ee62dba4d01b",
+    "imputacion/casillas_comunes.csv": "98cd4dafc0a9a11ac46359c035eeb7fe963a1f86cabd8e53d81ee4563378f72f",
+    "imputacion/estadisticas_antes_despues.csv": "896816a3a8b610d663e9a09193dac76195ce6a79f9eb61ebaeb6ddcd8052c96a",
+    "imputacion/supported_plus_baseline_IterativeImputer_mM.csv": "0a4f8b7908247fe00e2de9b2d9fbba0612ed2e682a5216fa5427795e3e29d6d5",
+    "imputacion/supported_plus_baseline_KNNImputer_mM.csv": "5e97f70f4926a04f2b5c2f8cfac768043ea0d9e23411cabb6765b012897ab1b0",
+    "imputacion/supported_plus_baseline_SimpleImputer_mM.csv": "b016bce430a5a454f5485e0370ea524b4f727c25ccc744fe8181c9b42260c77a",
+    "validacion/casos_comunes.csv": "5d5b7ba02e53aa08e9ab2e1763d0eff25dfb2827cc4327baa1b8f5977be1ee46",
+    "validacion/cobertura_y_motivos.csv": "e5ca6f2ac6b682cc432f56bef93235afd9e338b6a0aa673a68a942e9c8587586",
+    "validacion/estado.json": "61c4521324a3f603e0d34b162d391a610fc2556492330a6252dd64e4f226204e",
+    "validacion/mascaras.json": "75ac07069df7a6d363546dcd01c17205bc2636f98607794679b893616ab35022",
+    "validacion/metricas.csv": "0a695e3547bb6b7243cef5c87268d41a334402fd36e18668fcc5de1ef53de83b",
+    "validacion/predicciones.csv": "9fb8fe4df94f31fec44b125829cc2f98d816a4d999ebd34a476070c9de9f16aa",
+    "validacion/verdades.csv": "86c78ba439c4d1efe3cc647e0bed53505bf4c296ed856320970790973876bf4f"
+  }
+}

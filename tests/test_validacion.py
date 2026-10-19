@@ -9,10 +9,10 @@ from imputadores import AuditedImputer,METHODS
 class ValidationTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.collection=json.loads((ROOT/'validacion_comun/masks.json').read_text())
+  cls.collection=json.loads((ROOT/'resultados/ishii/validacion/mascaras.json').read_text())
   cls.ish=pd.read_csv(ROOT/'normalizacion/matriz_ishii_R.csv',index_col=0)
   cls.meta=pd.read_csv(ROOT/'normalizacion/muestras_y_exclusiones.csv',index_col=0)
-  cls.series=pd.read_csv(ROOT/'validacion_comun/series_analiticas.csv',index_col=0)
+  cls.series=pd.read_csv(ROOT/'resultados/ishii/validacion/series_analiticas.csv',index_col=0)
   cls.cfg=json.loads((ROOT/'config_imputacion_ishii.json').read_text())
  def test_masks_score_only_originals_and_patterns_exact(self):
   for t in self.collection['trials']:

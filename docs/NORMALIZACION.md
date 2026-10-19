@@ -5,7 +5,7 @@
 | Ishii | 30 × 7 | 138 | 72 | 101 | 19 |
 | MMC2 | 8 × 7 | 54 | 2 | 31 | 1 |
 
-El estudio construye el entrenamiento Ishii + MMC2 en memoria después de aplicar las exclusiones Ishii; las matrices fuente permanecen separadas. `normalizacion/` entrega por separado `matriz_ishii_*` y `matriz_mmc2_*` en mM, ratios R y máscara de observado (1 medido, 0 faltante). Las celdas vacías son ausencias, no ceros. Orden: fumarato, PEP, s7p, succinato, piruvato, α-cetoglutarato y citrato. Los primeros cuatro son objetivos actuales.
+Cada ejecución entrena exclusivamente con una matriz seleccionada: Ishii o MMC2. `normalizacion/` entrega por separado `matriz_ishii_*` y `matriz_mmc2_*` en mM, ratios R y máscara de observado (1 medido, 0 faltante). Las celdas vacías son ausencias, no ceros. Orden: fumarato, PEP, s7p, succinato, piruvato, α-cetoglutarato y citrato. Los primeros cuatro son objetivos actuales.
 
 ## Ishii
 
@@ -13,9 +13,9 @@ El estudio construye el entrenamiento Ishii + MMC2 en memoria después de aplica
 
 Para citrato se usa la fila analítica ISHII:metabolites:523 (Nucleotide), con mediciones. No se combina con la fila 133 (Anion), sin valores. Las otras seis variables son Anion. `config_normalizacion.json` fija estas identidades.
 
-## MMC2, entrenamiento auxiliar y aplicación futura
+## MMC2, aplicación independiente
 
-Ocho condiciones estacionarias: acetato, fructosa, galactosa, gluconato, glucosa, glicerol, piruvato y succinato. Identidades resueltas, compartimento intracelular y señales no compuestas. Se conservan dos ausencias por cuantificación no fiable: piruvato en condición piruvato y succinato en condición succinato. No se imputó MMC2 en esta entrega.
+Ocho condiciones estacionarias: acetato, fructosa, galactosa, gluconato, glucosa, glicerol, piruvato y succinato. Identidades resueltas, compartimento intracelular y señales no compuestas. Se conservan dos ausencias por cuantificación no fiable: piruvato en condición piruvato y succinato en condición succinato. Se entrega una ejecución independiente de evaluación e imputación MMC2.
 
 Los metadatos de muestras y condiciones mantienen dataset_id. Compartir el formato y el motor de cálculo permite aplicar la metodología por separado sin suponer equivalencia biológica entre estudios.
 
@@ -23,7 +23,7 @@ Los metadatos de muestras y condiciones mantienen dataset_id. Compartir el forma
 
 R_ij = concentración_ij [mM] / concentración_Gerosa_glucosa,j [mM].
 
-Se conserva la misma referencia positiva y medida por metabolito, con SD y coordenadas de origen en `referencias_glucosa.csv`. La normalización por sí sola no introduce filas MMC2; el segundo escenario las incorpora explícitamente al entrenamiento. No se divide por el metabolito glucosa.
+Se conserva la misma referencia positiva y medida por metabolito, con SD y coordenadas de origen en `referencias_glucosa.csv`. La normalización de Ishii no introduce filas MMC2 en su entrenamiento. No se divide por el metabolito glucosa.
 
 La SD Gerosa corresponde al factor de volumen nominal 2,3 mL/gCDW, sin incertidumbre del propio factor. Se conservan las incertidumbres de origen, sin propagar SD del ratio: el denominador es compartido y faltan covarianzas. La fila MMC2_GLUCOSE tiene siete unos porque se divide por sí misma. No se debe ocultar ese objetivo para validación mientras el denominador continúa revelando su valor.
 
