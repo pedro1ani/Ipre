@@ -1,4 +1,4 @@
-"""Imputa un único estudio por ejecución. Por defecto Ishii; MMC2 es independiente."""
+"""Imputa un único estudio por ejecución"""
 from pathlib import Path
 import argparse,hashlib,json,importlib.metadata,platform
 import pandas as pd
