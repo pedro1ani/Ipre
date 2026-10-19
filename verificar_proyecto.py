@@ -55,7 +55,7 @@ def main():
     print('Conjunto / compartimento / posiciones / valores observados')
     for row in counts:
         print(' / '.join(map(str, row)))
-    print('Estado: conversión verificada. Consultar normalizacion/manifest_normalizacion.json para las matrices; imputación pendiente.')
+    print('Estado: conversión verificada. Consultar normalizacion/manifest_normalizacion.json para las matrices; evaluación e imputación separadas en resultados_estudio/; consultar docs/VALIDACION_Y_RESULTADOS.md.')
 
 if __name__ == '__main__':
     main()

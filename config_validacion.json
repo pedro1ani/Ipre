@@ -1,0 +1,14 @@
+{
+  "seed": 20261019,
+  "scenarios": ["ishii", "ishii_mmc2"],
+  "methods": ["SimpleImputer", "KNNImputer", "IterativeImputer"],
+  "experiments": ["perturbation", "real_patterns", "analytical_series"],
+  "mask_strategy": "exhaustive_deterministic",
+  "pattern_scope": "all seven features, score only originally observed targets",
+  "pattern_eligibility": "all target cells to score and all cells visible after masking must be originally observed",
+  "analytical_series": "source_column series; 1 and 1* collapsed to family 1; exclude union of family and perturbation group",
+  "preprocessing": "no logarithms; StandardScaler and models fitted exclusively on training",
+  "policies": ["available", "supported_plus_baseline"],
+  "cv_mean_epsilon_mM": 1e-12,
+  "scope": "evaluation truths and final cohorts exclusively Ishii; MMC2 auxiliary training in second scenario"
+}

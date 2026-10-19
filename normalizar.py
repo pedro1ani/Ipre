@@ -60,7 +60,7 @@ def main():
         require(condition in conditions and len(panel)==7 and len({r['metabolite_id'] for r in panel})==7, 'Panel MMC2 incompleto/duplicado')
         require(all(r['compartment']=='intracellular' and not r['composite'] and not r['is_imputed'] and r['mapping_status'] in ('exact_base_unique','confirmed_intracellular_source') for r in panel), 'Identidad MMC2 no admisible')
         selected_mmc2.extend(panel)
-        condition_rows.append(dict(conditions[condition], admitted=True, observed=sum(r['value_mM'] is not None for r in panel), missing=sum(r['value_mM'] is None for r in panel), reference_row=condition==cfg['reference_condition'], reason='Identidad resuelta, intracelular, estacionario; ausencias se conservan. No implica equivalencia biológica con Ishii.', evaluation_role='auxiliary_training_only_not_validation_target'))
+        condition_rows.append(dict(conditions[condition], admitted=True, observed=sum(r['value_mM'] is not None for r in panel), missing=sum(r['value_mM'] is None for r in panel), reference_row=condition==cfg['reference_condition'], reason='Identidad resuelta, intracelular, estacionario; ausencias se conservan. No implica equivalencia biológica con Ishii.', evaluation_role='independent_MMC2_analysis_pending'))
     selected=[r for r in ishii if r['sample_key'] in cohort]+selected_mmc2
     cells={}
     long=[]
@@ -79,11 +79,11 @@ def main():
         md=metadata.get(s,{})
         sample_rows.append(dict(sample_id=s,dataset_id='ISHII2007',included=s in cohort,perturbation_group='pfkA' if s in ('KO05','KO05x') else (md.get('knockout_gene') or 'WT'),dilution_h_inv=md.get('dilution_rate_h_inv'),carbon_source='glucose',protocol_family='mixed_analyte_protocols',metadata_status='source_only_culture_no_S2_row' if s=='KO05x' else 'documented',reason='retain_previous_cohort_pending_metadata' if s=='KO05x' else ('dilution_0.2' if s in cohort else 'other_dilution_excluded')))
     for r in condition_rows:
-        sample_rows.append(dict(sample_id=r['condition_id'],dataset_id='MMC2',included=True,perturbation_group=r['condition_id'],dilution_h_inv=None,carbon_source=r['carbon_source'],protocol_family='Gerosa',metadata_status='documented',reason='auxiliary_training_condition'))
+        sample_rows.append(dict(sample_id=r['condition_id'],dataset_id='MMC2',included=True,perturbation_group=r['condition_id'],dilution_h_inv=None,carbon_source=r['carbon_source'],protocol_family='Gerosa',metadata_status='documented',reason='independent_MMC2_condition'))
     summary={}
     out=args.output.resolve()
     out.mkdir(parents=True,exist_ok=False)
-    for scenario,samples in [('ishii',cohort),('ishii_mmc2',cohort+cfg['mmc2_conditions'])]:
+    for scenario,samples in [('ishii',cohort),('mmc2',cfg['mmc2_conditions'])]:
         for kind,idx in [('mM',0),('R',1),('observado',None)]:
             matrix=[dict(sample_id=s,**{m:(int(cells[(s,m)][0] is not None) if idx is None else cells[(s,m)][idx]) for m in metabolites}) for s in samples]
             write_csv(out/f'matriz_{scenario}_{kind}.csv',matrix,['sample_id']+metabolites)

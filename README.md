@@ -1,61 +1,42 @@
-# IPre — carpeta de trabajo para normalización e imputación
+# IPre — Validación e imputación de Ishii
 
-Estado: matrices en mM y normalizadas construidas; imputación pendiente.
+Se mantienen las 30 muestras Ishii, siete metabolitos y cuatro objetivos: fumarato, PEP, s7p y succinato. Se comparan dos escenarios separados: entrenamiento Ishii y entrenamiento Ishii + ocho condiciones admisibles de MMC2. Las verdades de evaluación y las estadísticas finales pertenecen exclusivamente a Ishii. Incorporar MMC2 no presupone equivalencia entre estudios.
 
-Los resultados actuales están en `normalizacion/`. Consulte `docs/NORMALIZACION.md` para decisiones, conteos y límites. Reproduzca con `python normalizar.py --output normalizacion_nueva` (carpeta nueva). `config_normalizacion.json` identifica las filas analíticas, los objetivos y las condiciones incluidas.
-Esta carpeta sustituye al conjunto mezclado de programas anteriores como punto de partida. No contiene sus métodos, configuraciones, matrices normalizadas ni resultados históricos.
+## Flujo principal reproducible
 
-## Qué utilizar
-
-- `data/concentraciones_mM.db`: entrada canónica del análisis. Tabla `metabolite_measurements_mM`; vistas `intracellular_mM` y `extracellular_mM`.
-- `data/ISHII2007_mM.csv`, `MMC2_mM.csv`, `MMC3_mM.csv`: exportaciones equivalentes para trabajar sin SQL. No se concatenan con la base: representan las mismas mediciones.
-- `data/samples_ishii.csv`: metadatos de muestras, genotipo, dilución y series analíticas, exportados de la fuente auditada. No define por sí solo la partición de validación. KO05x tiene mediciones pero no fila en esta tabla de metadatos; se conserva como pendiente explícito, sin inventar una identidad ni fusionarlo con KO05.
-- `data/conversion_factors.csv`, `factor_evidence.txt`, `summary.csv`: factor, evidencia y conteos.
-- `sources/`: Ishii, MMC2, MMC3 y MMC4 originales, métodos de Ishii/Gerosa y una única base auditada de origen.
-- `docs/CONVERSION_mM.md`: justificación y límites de la conversión.
-- `convertir_unidades.py`: reconstrucción de la capa en mM desde la fuente auditada. No ejecuta métodos antiguos.
-- `verificar_proyecto.py`: comprobación de integridad del paquete, conversiones y metadatos; solo lectura.
-- `requirements.txt` y `environment.json`: versiones del entorno original de conversión. No constituyen todavía el entorno de imputación.
-- `manifest.json`: manifiesto original de la conversión, conservado como evidencia de esa etapa.
-- `MANIFEST_PROYECTO.json`: inventario y hashes de esta carpeta reorganizada.
-
-La base `sources/ecoli_auditada_v3.db` se conserva íntegra porque es la entrada de `convertir_unidades.py` y la fuente de los metadatos. Incluye tablas fuera del alcance actual; no se usan como matrices de entrenamiento ni se importan resultados antiguos al nuevo análisis. Recortarla impediría mantener su identidad y hash de procedencia.
-
-## Comprobar la carpeta
-
-Extraer el ZIP completo. En una terminal situada dentro de la carpeta:
-
-```powershell
-python verificar_proyecto.py
+```bash
+python -m pip install -r requirements_imputacion.txt
+python ejecutar_estudio.py --output resultados_nuevos
+python verificar_estudio.py --results resultados_nuevos
+python -m pip install -r requirements_descriptivos.txt
+python graficar_estudio.py --results resultados_nuevos
 ```
 
-Esta comprobación usa únicamente la biblioteca estándar de Python y no requiere instalar dependencias.
+La carpeta de salida debe ser nueva. Se reutiliza `validacion_comun/` solo si la huella de las entradas y la colección reconstruida coinciden exactamente. Para una matriz modificada debe seleccionarse una carpeta nueva mediante `--masks mascaras_nuevas`. Se guardan primero todas las evaluaciones y después se estiman los huecos reales. No se ajustan hiperparámetros con los resultados de evaluación.
 
-Para reconstruir la conversión, trabajar en una copia separada de la carpeta, instalar `python -m pip install -r requirements.txt`, y dejar `data/` vacía antes de ejecutar `python convertir_unidades.py`. No usar Python con `-O`: el convertidor original usa aserciones. Esa reconstrucción regenera los archivos de conversión, pero no `samples_ishii.csv` ni el manifiesto de esta distribución; estos deben exportarse/actualizarse antes de entregar otra versión. No hace falta reconstruir para continuar: las entradas actuales ya están disponibles y verificadas.
+Los resultados entregados están en `resultados_estudio/`. Leer **docs/VALIDACION_Y_RESULTADOS.md** antes de interpretar las matrices. Contiene diseño, cifras, límites y guía de archivos. **docs/IMPUTACION.md** documenta parámetros, sustituciones y reglas de soporte. No hay KNN propio ni PCA.
 
-## Criterios del flujo (preparación y normalización ya ejecutadas)
+## Organización
 
-1. Seleccionar los metabolitos intracelulares y documentar identidad, señales compuestas y elegibilidad. Mantener los faltantes como ausencias; un knockout no implica concentración cero.
-2. Normalizar cada metabolito con su propia concentración Gerosa de referencia en mM:
-   `ratio = concentración_mM / referencia_del_mismo_metabolito_mM`.
-   La referencia inicial prevista es la condición de crecimiento con glucosa de MMC2; no es dividir todos los metabolitos por la concentración del metabolito glucosa. No usar referencias nulas, cero o ambiguas. Cualquier cambio de condición de referencia debe quedar explícito.
-3. Definir cohorte, grupos de exclusión y tratamiento de MMC3 antes de entrenar. La conversión no justifica mezclar automáticamente estudios o tiempos. KO05 y KO05x no se fusionan.
-4. Implementar el nuevo flujo con `KNNImputer` e `IterativeImputer`, registrar parámetros y versiones, y ajustar las transformaciones solo con entrenamiento. No se incluye aquí código antiguo de KNN/PCA ni se presupone su reutilización.
-5. Fijar semilla, guardar máscaras comunes y particiones; evaluar error y cobertura sobre valores observados ocultados, sin filtración hacia entrenamiento o referencias.
-6. Comparar media, mediana, desviación estándar, IQR y CV antes/después por metabolito. Identificar siempre observaciones e imputaciones y devolver estimaciones a mM para interpretación.
+- `validacion_comun/`: colección única de máscaras, verdades originales Ishii y series analíticas.
+- `resultados_estudio/validacion/`: predicciones, MAE en mM y R, cobertura, motivos y comparaciones sobre las mismas celdas.
+- `resultados_estudio/imputacion/`: candidatos y matrices por método, escenario y política de aceptación; observaciones originales intactas.
+- `resultados_estudio/estadisticas/`: antes/después sobre las 30 muestras, con subconjuntos propios y comunes.
+- `resultados_estudio/figuras/`: tres gráficos y PDF.
+- `normalizacion/`: matrices fuente separadas Ishii (30 × 7, 138 medidos, 72 ausencias) y MMC2 (8 × 7, 54 medidos, 2 ausencias), referencias positivas de glucosa Gerosa con SD y trazabilidad.
+- `data/` y `sources/`: concentraciones, conversiones, metadatos y fuentes conservadas; no se escriben imputaciones en ellas.
+- `descriptivos/`: análisis exploratorio de observados por estudio, previo a imputación.
 
-La preparación se ejecuta con `normalizar.py` y `config_normalizacion.json`. No hay todavía un ejecutor de imputación; se creará con el nuevo flujo. No es necesario recuperar los paquetes históricos para proceder.
+La referencia Gerosa es fija por metabolito para todas las muestras. KNN e Iterative estandarizan exclusivamente con entrenamiento, sin logaritmos. KO05x se conserva con metadatos incompletos; se excluye junto con KO05 al evaluar su perturbación.
 
-## Alcance y pendientes
+## Aplicación independiente posterior a MMC2
 
-Ishii intracelular: 19.686 posiciones, 4.813 valores y 14.873 faltantes. Ishii extracelular: 264 valores. MMC2: 344 posiciones, 342 valores y 2 faltantes. MMC3: 189 valores. Ninguno está imputado en la capa en mM.
+El comando auxiliar `python ejecutar_imputacion.py --dataset mmc2 --output resultados_mmc2_nuevos` aplica los mismos métodos exclusivamente a MMC2. No se ejecutó en esta entrega y no sustituye una validación específica de MMC2. Su configuración independiente es `config_imputacion_mmc2.json`; piruvato sigue siendo predictor, no objetivo. El comando auxiliar también admite `--dataset ishii`, pero para evaluar antes de imputar debe utilizarse el flujo principal anterior.
 
-Ishii se mantiene en mM. Gerosa se convierte mediante `valor_original / 2,3` (mL/gCDW). La SD se divide por el mismo factor nominal, sin añadir incertidumbre no reportada del volumen.
+## Comprobaciones y reconstrucción
 
-La homologación incompleta de Ishii, las señales compuestas, la identidad/documentación de KO05x y la falta de límites de detección individuales siguen abiertas. Los campos de trazabilidad y homologación se preservan dentro de la base en mM. MMC4 se conserva para contrastar identidades y la red de referencia; no obliga a usar predictores de red.
+`python verificar_proyecto.py` verifica hashes, integridad y conversiones. `python verificar_estudio.py` comprueba particiones, escalado, verdades, máscaras, errores, observaciones intactas y comparaciones comunes. `python -m unittest discover -s tests -v` ejecuta 15 pruebas.
 
-Se excluyeron los lanzadores antiguos, scripts de auditoría/benchmark anteriores, configuraciones incompatibles, exportadores redundantes, journal SQLite, CSV de proteínas y resultados históricos. Los archivos originales entregados por el usuario no se modificaron.
+`python normalizar.py --output normalizacion_nueva` reconstruye matrices separadas. `python analizar_descriptivos.py --output descriptivos_nuevos` reconstruye descriptivos observados. `convertir_unidades.py` reconstruye la capa mM en una copia separada con data/ vacía, usando requirements.txt; no regenera todos los manifiestos. No hace falta ejecutarlo sobre esta distribución ni usar Python -O.
 
-## Exploración estadística
-
-`descriptivos/` contiene estadísticos en mM y ratios, cuatro gráficos PNG, un PDF conjunto y su interpretación. Se usan solo valores observados. Ejecutar `python analizar_descriptivos.py --output descriptivos_nuevos`; dependencias en `requirements_descriptivos.txt`. No se han imputado datos.
+Semilla, orden, versiones y hashes quedan registrados en configuraciones y manifiestos. Dos ejecuciones completas produjeron 24 archivos CSV/JSON idénticos byte a byte en el mismo entorno. Los gráficos no están incluidos en esa comparación binaria.

@@ -1,0 +1,43 @@
+{
+  "seed": 20261019,
+  "methods": [
+    "SimpleImputer",
+    "KNNImputer",
+    "IterativeImputer"
+  ],
+  "simple": {
+    "strategy": "median"
+  },
+  "knn": {
+    "n_neighbors": 3,
+    "weights": "uniform",
+    "metric": "nan_euclidean"
+  },
+  "iterative": {
+    "estimator": "BayesianRidge",
+    "max_iter": 50,
+    "tol": 0.001,
+    "regressor_max_iter": 300,
+    "regressor_tol": 0.001,
+    "initial_strategy": "median",
+    "skip_complete": false,
+    "sample_posterior": false,
+    "imputation_order": "ascending"
+  },
+  "preprocessing": "SimpleImputer: raw R; KNN/Iterative: StandardScaler on training R only, no log",
+  "support": {
+    "minimum_donors": 3,
+    "minimum_observed_predictors": 2
+  },
+  "empty_target_policy": "abstain_without_filling_zero",
+  "nonconvergence_policy": "retain_candidate_flagged_limited_not_accepted_as_supported",
+  "training_exclusion": "entire perturbation group within Ishii only",
+  "export_scope": "real missing target cells within selected dataset only",
+  "dataset": "ishii",
+  "targets": [
+    "fum[c]",
+    "pep[c]",
+    "s7p[c]",
+    "succ[c]"
+  ]
+}

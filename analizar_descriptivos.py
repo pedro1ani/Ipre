@@ -12,9 +12,10 @@ LABELS=['Fumarato','PEP','s7p','Succinato','Piruvato','α-cetoglutarato','Citrat
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'descriptivos');a=p.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=False)
- paths=[ROOT/'normalizacion'/f'matriz_ishii_mmc2_{unit}.csv' for unit in ['mM','R']]
- frames={unit:pd.read_csv(path,index_col=0) for unit,path in zip(['mM','R'],paths)}
- groups={'Ishii':lambda idx:~idx.str.startswith('MMC2_'),'MMC2':lambda idx:idx.str.startswith('MMC2_'),'Combinado':lambda idx:np.ones(len(idx),dtype=bool)}
+ paths=[ROOT/'normalizacion'/f'matriz_{dataset}_{unit}.csv' for dataset in ['ishii','mmc2'] for unit in ['mM','R']]
+ # Unión solo para colocar estudios separados en una misma figura, nunca para entrenamiento.
+ frames={unit:pd.concat([pd.read_csv(ROOT/'normalizacion'/f'matriz_{dataset}_{unit}.csv',index_col=0) for dataset in ['ishii','mmc2']]) for unit in ['mM','R']}
+ groups={'Ishii':lambda idx:~idx.str.startswith('MMC2_'),'MMC2':lambda idx:idx.str.startswith('MMC2_')}
  stats=[]
  for unit,df in frames.items():
   for group,select in groups.items():
