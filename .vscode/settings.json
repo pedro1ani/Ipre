@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ECOLI",
+            "database": "${workspaceFolder:IPre_PedroSaa}/sources/ecoli_auditada_v3.db"
+        }
+    ]
+}
