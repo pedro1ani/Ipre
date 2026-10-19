@@ -90,7 +90,6 @@ class AuditedImputer:
                         info['mechanism']='automatic_training_mean_no_defined_distance';info['n_usable_neighbors']=0
                     else:
                         count=min(self.config['knn']['n_neighbors'],len(donor_index))
-                        # Reproduce únicamente la selección para auditar; sklearn calcula la estimación.
                         chosen=np.argpartition(d,count-1)[:count];chosen=chosen[np.isfinite(d[chosen])];positions=donor_index[chosen]
                         shared=np.sum(~np.isnan(self.fit_data[positions]) & ~np.isnan(z[i]),axis=1)
                         info.update(n_usable_neighbors=len(positions),neighbor_ids=';'.join(str(self.train.index[j]) for j in positions),min_shared_predictors=int(shared.min()),mechanism='neighbor_mean')
