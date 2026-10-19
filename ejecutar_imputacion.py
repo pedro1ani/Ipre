@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 """Un estudio por ejecución: 1) evaluar con máscaras; 2) imputar candidatos reales.
 
 Uso: python ejecutar_imputacion.py --dataset ishii --output resultados/ishii
 MMC2 se procesa por separado cambiando únicamente --dataset y --output.
 """
+=======
+"""Imputa un único estudio por ejecución"""
+>>>>>>> 95ef1e4dd97b7e57a5354f4487c6e4a147b94d28
 from pathlib import Path
 import argparse
 import hashlib
