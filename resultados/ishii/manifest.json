@@ -2,56 +2,29 @@
   "dataset": "ishii",
   "status": "SUCCESS",
   "config": {
-    "seed": 20261019,
-    "methods": [
-      "SimpleImputer",
-      "KNNImputer",
-      "IterativeImputer"
-    ],
-    "simple": {
-      "strategy": "median"
-    },
-    "knn": {
-      "n_neighbors": 3,
-      "weights": "uniform",
-      "metric": "nan_euclidean"
-    },
-    "iterative": {
-      "estimator": "BayesianRidge",
-      "max_iter": 50,
-      "tol": 0.001,
-      "regressor_max_iter": 300,
-      "regressor_tol": 0.001,
-      "initial_strategy": "median",
-      "skip_complete": false,
-      "sample_posterior": false,
-      "imputation_order": "ascending"
-    },
-    "preprocessing": "SimpleImputer: raw R; KNN/Iterative: StandardScaler on training R only, no log",
-    "support": {
-      "minimum_donors": 3,
-      "minimum_observed_predictors": 2
-    },
-    "empty_target_policy": "abstain_without_filling_zero",
-    "nonconvergence_policy": "retain_candidate_flagged_limited_not_accepted_as_supported",
-    "training_exclusion": "entire perturbation group within Ishii only",
-    "export_scope": "real missing target cells within selected dataset only",
-    "dataset": "ishii",
-    "targets": [
-      "fum[c]",
-      "pep[c]",
-      "s7p[c]",
-      "succ[c]"
-    ]
+    "semilla": 20261019,
+    "vecinos": 3,
+    "rondas_maximas": 50,
+    "tolerancia": 0.001,
+    "minimo_donantes": 3,
+    "minimo_predictores": 2
   },
+  "targets": [
+    "fum[c]",
+    "pep[c]",
+    "s7p[c]",
+    "succ[c]"
+  ],
   "input_sha256": {
-    "config_imputacion_ishii.json": "293a1aeffdb206c0ed6701d114b3bf25eae06b5d4c1b70b0b95be0bae228f534",
+    "config_imputacion.json": "a3aaa2a9d13635396a2012e1407bec0e4f9e94083c339b5211e7992a48e242d5",
+    "config_normalizacion.json": "b601ba3a3ff6c8a2fc7b23dce890e8f154501a4337ebcdcfa37996f9cdeba999",
+    "apoyo.py": "fd98cde54deecb5428b824210797aae7cac6bd498525737d7a0d2ffd6bd46783",
     "normalizacion/matriz_ishii_R.csv": "cf1a1d1c230bd3807c0cc376886850d33684efdd89a8dd13d584b15ad8ae08f8",
     "normalizacion/matriz_ishii_mM.csv": "6f95d36c65f043bd119ecc4f20337c262f6e6300d3f6bc3af639634378da2463",
     "normalizacion/muestras_y_exclusiones.csv": "23ea47bc14a8843c6b368fdf158096ec8468bd1a681b29fcdcecafad656de433",
     "normalizacion/referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
-    "imputadores.py": "5f00a0959594db5df31b4dbf854ab6a8da2ab8978e2a0015575279e6b2a6b891",
-    "ejecutar_imputacion.py": "698349960c8264516d38fe69ad086e2e72ef71f4d3d8166aed7b3ecb1f67a9d6",
+    "imputadores.py": "41fd0e3ad6867aab22d19ee2e03572a6edf3629aaf2c5395ac4a5605c534a835",
+    "ejecutar_imputacion.py": "1c82a8ee54484b2ecdc64de622d8301ce16e2d3d1d77b7d89240634cfdff1776",
     "sources/ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae"
   },
   "python": "3.12.14",
@@ -79,7 +52,7 @@
     "validacion/casos_comunes.csv": "98117f8bbd1d8027d48270a12aaab790cb27955cc7ec2776053db558dc3f165e",
     "validacion/cobertura_y_motivos.csv": "457d6fb2a8d8ac3ac5d80c69d27201726a593896f4cb184c1772eaf7a0511e9a",
     "validacion/estado.json": "f63f7ce127a96f75b19a798e2ac6b121a4c7697b89bcbb747e657f0dede08939",
-    "validacion/mascaras.json": "8f8b4699d7936a20f5e173e2f471aa54e7d6c1af15915c97e5e5613ede34877d",
+    "validacion/mascaras.json": "1302fb5237c5066482c6bd9f67b1cc962c1657300a94458e58144eeeab72c4f4",
     "validacion/metricas.csv": "3b8ca5b4c179b114b8a23603d2af9c0a1940450ea330cbb952c6fb1e12024db4",
     "validacion/predicciones.csv": "41bc04b26b0b3ce95600f63b624ab17890f83266750726bcd61fe436874e2e7c",
     "validacion/series_analiticas.csv": "6fc9220688882f4b1471bb01732b3563381104a3008cf224c237b50280dcb9f9",

@@ -1,0 +1,8 @@
+{
+  "semilla": 20261019,
+  "vecinos": 3,
+  "rondas_maximas": 50,
+  "tolerancia": 0.001,
+  "minimo_donantes": 3,
+  "minimo_predictores": 2
+}

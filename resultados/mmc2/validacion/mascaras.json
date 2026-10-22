@@ -1,13 +1,15 @@
 {
   "schema": 1,
   "fingerprint": {
-    "config_imputacion_mmc2.json": "b35b1572bf2ed331d50339efdbd2081221612bf4871af3cbeed42618795b93b1",
+    "config_imputacion.json": "a3aaa2a9d13635396a2012e1407bec0e4f9e94083c339b5211e7992a48e242d5",
+    "config_normalizacion.json": "b601ba3a3ff6c8a2fc7b23dce890e8f154501a4337ebcdcfa37996f9cdeba999",
+    "apoyo.py": "fd98cde54deecb5428b824210797aae7cac6bd498525737d7a0d2ffd6bd46783",
     "normalizacion/matriz_mmc2_R.csv": "81f0f8779f2523e77f44caf2f7e594498fccaeb37da3ab87ea73f7e2b81f5edf",
     "normalizacion/matriz_mmc2_mM.csv": "6e8ca09087763aa733e829e79faf7c422114afd7218fc91730143ad22f6b16bd",
     "normalizacion/muestras_y_exclusiones.csv": "23ea47bc14a8843c6b368fdf158096ec8468bd1a681b29fcdcecafad656de433",
     "normalizacion/referencias_glucosa.csv": "e60ef6cc27ec4a51962d687c193888606f00f65c1a27dd62efec9ae8400852cd",
-    "imputadores.py": "5f00a0959594db5df31b4dbf854ab6a8da2ab8978e2a0015575279e6b2a6b891",
-    "ejecutar_imputacion.py": "698349960c8264516d38fe69ad086e2e72ef71f4d3d8166aed7b3ecb1f67a9d6"
+    "imputadores.py": "41fd0e3ad6867aab22d19ee2e03572a6edf3629aaf2c5395ac4a5605c534a835",
+    "ejecutar_imputacion.py": "1c82a8ee54484b2ecdc64de622d8301ce16e2d3d1d77b7d89240634cfdff1776"
   },
   "feature_order": [
     "fum[c]",

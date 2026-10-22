@@ -1,57 +1,52 @@
-# IPre — Imputación de una base por ejecución
+# IPre: evaluar e imputar una base
 
-## Los dos códigos principales
+## Por dónde empezar
 
-**ejecutar_imputacion.py** prepara los datos y contiene las dos secciones del análisis. **imputadores.py** implementa la interfaz de los tres métodos de scikit-learn. El ejecutor usa una sola matriz de entrada, elegida con --dataset; no combina Ishii y MMC2.
+1. **Explorador_Imputacion_Simplificado.ipynb** muestra datos, errores y candidatos.
+2. **ejecutar_imputacion.py** ejecuta el análisis: prepara una base, evalúa mediciones ocultadas y completa huecos reales.
+3. **imputadores.py** ajusta mediana, KNN e Iterative y registra su soporte.
 
-### Sección 1: evaluar con mediciones conocidas
-
-Oculta valores originales, entrena sin la muestra ni su grupo y estima los valores ocultados. Usa exactamente las mismas máscaras para mediana, KNN e Iterative. Compara estimación con medición mediante MAE en mM y ratios, cobertura y celdas comunes. Guarda resultados en validacion/ antes de pasar a la segunda sección.
-
-### Sección 2: imputar candidatos reales
-
-Identifica como candidatos los faltantes de los cuatro objetivos (fumarato, PEP, s7p y succinato). Aplica cada método por separado, conservando todas las mediciones originales. Guarda candidatos, diagnósticos, matrices y estadísticas antes/después en imputacion/. Los otros tres metabolitos son predictores: sus ausencias no se rellenan en las matrices finales.
+Cada ejecución usa Ishii o MMC2 por separado. Los datos preparados y resultados de ambas bases ya están incluidos.
 
 ## Ejecutar
 
 ```bash
-python -m pip install -r requirements_imputacion.txt
+python -m pip install -r requirements.txt
 python ejecutar_imputacion.py --dataset ishii --output resultados_ishii_nuevos
 ```
 
-Para analizar MMC2 de forma independiente:
+Para MMC2, cambia `--dataset mmc2` y usa otra carpeta de salida. El ejecutor exige una carpeta nueva para proteger resultados anteriores. Las dos únicas opciones de ejecución son base y carpeta de salida.
+
+Para explorar lo entregado, abre el notebook, selecciona el Python instalado y pulsa **Ejecutar todo**. El notebook lee `resultados/ishii` o `resultados/mmc2`; puedes cambiar `RES` si quieres explorar una nueva ejecución. No exporta archivos.
+
+## Dos partes del análisis
+
+- **validacion/**: máscaras compartidas, valores medidos ocultados, estimaciones, MAE en mM/R, cobertura y casos comunes.
+- **imputacion/**: estimaciones de los faltantes reales, matrices completadas y estadísticas antes/después.
+
+`available` incluye todos los candidatos finitos. `supported_plus_baseline` exige soporte a KNN e Iterative y conserva la mediana como referencia general. Más cobertura no implica mejor precisión.
+
+## Preparación y comprobación
+
+| Archivo | Propósito |
+|---|---|
+| convertir_unidades.py | Verificar fuentes y convertir Gerosa a mM. |
+| normalizar.py | Seleccionar muestras y construir matrices con referencia Gerosa glucosa. |
+| analizar_descriptivos.py | Describir mediciones originales. |
+| graficar_estudio.py | Graficar valores ocultados frente a estimados. |
+| apoyo.py | Compartir escritura de archivos, huellas y estadísticos. |
+| verificar_estudio.py | Comprobar particiones, verdades y conservación de observados. |
+| verificar_proyecto.py | Comprobar integridad, unidades y fuentes. |
 
 ```bash
-python ejecutar_imputacion.py --dataset mmc2 --output resultados_mmc2_nuevos
-```
-
-La carpeta de salida debe ser nueva. Sin argumentos se selecciona Ishii y resultados/ishii. Se entregan ejecuciones independientes verificadas en resultados/ishii y resultados/mmc2. No es necesario ejecutar otro código para obtener evaluación e imputación; se retiró ejecutar_estudio.py.
-
-Cada salida tiene solo dos carpetas de análisis: validacion/ e imputacion/, más ajustes.json y manifest.json para trazabilidad. Los gráficos opcionales se guardan en figuras/.
-
-## Ver y comprobar
-
-```bash
+python verificar_proyecto.py
 python verificar_estudio.py --results resultados/ishii
-python -m pip install -r requirements_descriptivos.txt
-python graficar_estudio.py --results resultados/ishii
+python verificar_estudio.py --results resultados/mmc2
 python -m unittest discover -s tests -v
 ```
 
-Los gráficos comparan directamente valor medido ocultado (eje horizontal) con valor imputado (eje vertical). La diagonal representa acierto exacto. Son gráficos de validación, no de huecos reales cuya verdad es desconocida.
+## Configuración
 
-## Archivos de apoyo
+`config_imputacion.json` contiene seis parámetros comunes a ambas bases. `config_normalizacion.json` fija la selección científica y los objetivos; es la única definición de esos objetivos. Los parámetros se justifican en docs/IMPUTACION.md.
 
-| Archivo | Función |
-|---|---|
-| normalizar.py | Construye las matrices en mM y ratios a partir de los datos preparados. |
-| convertir_unidades.py | Reconstruye la conversión desde fuentes; no hace falta repetirla para imputar. |
-| analizar_descriptivos.py | Describe únicamente mediciones originales. |
-| graficar_estudio.py | Grafica resultados existentes; no entrena. |
-| verificar_estudio.py | Revisa cada ejecución independiente. |
-| verificar_proyecto.py | Revisa integridad y conversiones de la distribución. |
-| config_imputacion_ishii.json / config_imputacion_mmc2.json | Parámetros y objetivos del estudio seleccionado. |
-
-sources/ y data/ conservan las fuentes y conversiones. normalizacion/ contiene las matrices preparadas. docs/IMPUTACION.md describe el motor y docs/VALIDACION_Y_RESULTADOS.md el diseño y las limitaciones. Los registros técnicos permiten reproducir los resultados, pero no son entradas adicionales que el usuario deba seleccionar.
-
-Se mantienen las 30 muestras Ishii: 29 con dilución 0,2 h⁻¹ documentada y KO05x con metadatos incompletos. Todos los escaladores y modelos se ajustan exclusivamente con entrenamiento; no se usan logaritmos. La referencia Gerosa glucosa sigue fija, con incertidumbre documentada; no se propaga su incertidumbre a los ratios.
+Las fuentes y datos originales permanecen en sources/ y data/. Los manifiestos registran versiones y huellas. docs/REFACTORIZACION.md explica los cambios y su verificación; docs/VALIDACION_Y_RESULTADOS.md describe las pruebas y sus limitaciones.

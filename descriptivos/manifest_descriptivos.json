@@ -6,7 +6,7 @@
     "normalizacion/matriz_mmc2_mM.csv": "6e8ca09087763aa733e829e79faf7c422114afd7218fc91730143ad22f6b16bd",
     "normalizacion/matriz_mmc2_R.csv": "81f0f8779f2523e77f44caf2f7e594498fccaeb37da3ab87ea73f7e2b81f5edf"
   },
-  "script_sha256": "0e94084ea0cb0392b6c54eefdb8f166926dae6aa9301a720eb081c5dd7f99ca7",
+  "script_sha256": "6c79fd43b79c218c9391e4a05a4c4007886020e8669748fa48a37fc2a86ffd19",
   "versions": {
     "numpy": "2.3.5",
     "pandas": "2.2.3",
@@ -18,14 +18,14 @@
   "correlation": "Spearman pairwise complete, min 8",
   "jitter_seed": 20261015,
   "outputs_sha256": {
-    "graficos_exploratorios.pdf": "81d3e61465ac22435d3aebf1ece8c747a183b7176e58dac0a0d60021961e1326",
-    "04_correlaciones_ishii.png": "069e23b5a80c3f383c9c676d68f87b719400ee1ee6fa5f9be939d827cb8f7d91",
-    "02_mapa_muestras.png": "e9dc979cd9b219d12ffbbef89de0981333f350ca615b52df8000056fa16a3636",
     "cobertura_muestras_ishii.csv": "4225714938eac4fee1dd00e0b63ab240e4a16ab3dfca1bf29b4f702f724f02d2",
-    "03_cobertura.png": "f2b542e367e8264534248dcc1d503b52c7b21a4f3d66d290316205b5b726e13c",
-    "01_distribuciones.png": "aa723ad5648e62d03d48961cfcab3ee628c263d4fdf04890c678087a80e47a6e",
-    "correlacion_spearman_ishii.csv": "d1a0ce8b5b246d9fe3e17059ed7d9fea487b4390ab3b274f869c4464ee20540c",
     "n_pares_ishii.csv": "0bf40d7789d0addeebb14a9eaf72eb76153f55dc675c93a6ca5e62a32352993b",
-    "estadisticos.csv": "289dd75e137135d7cad188e14c33a2b771f6087fb484ff9e0749b739238eb427"
+    "02_mapa_muestras.png": "e9dc979cd9b219d12ffbbef89de0981333f350ca615b52df8000056fa16a3636",
+    "03_cobertura.png": "f2b542e367e8264534248dcc1d503b52c7b21a4f3d66d290316205b5b726e13c",
+    "graficos_exploratorios.pdf": "395d360fe5e1477173bcb8eebb2b831e7ba5a377b4ee10b2514c4ed42f40154f",
+    "estadisticos.csv": "289dd75e137135d7cad188e14c33a2b771f6087fb484ff9e0749b739238eb427",
+    "correlacion_spearman_ishii.csv": "d1a0ce8b5b246d9fe3e17059ed7d9fea487b4390ab3b274f869c4464ee20540c",
+    "01_distribuciones.png": "aa723ad5648e62d03d48961cfcab3ee628c263d4fdf04890c678087a80e47a6e",
+    "04_correlaciones_ishii.png": "069e23b5a80c3f383c9c676d68f87b719400ee1ee6fa5f9be939d827cb8f7d91"
   }
 }

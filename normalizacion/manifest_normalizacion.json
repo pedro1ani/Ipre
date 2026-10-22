@@ -23,7 +23,7 @@
     "data/concentraciones_mM.db": "cf859e4fac1eedcec031b4b9b3d0fc5c8a3a838a4e178135ce64e3cb9173268b",
     "sources/ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae",
     "config_normalizacion.json": "b601ba3a3ff6c8a2fc7b23dce890e8f154501a4337ebcdcfa37996f9cdeba999",
-    "normalizar.py": "bc33702f1bed995e6ad6fb928140bce4217be9813ba7fbf7e7292eecb51ef4d5"
+    "normalizar.py": "accd45e1d82c082d958e98cf008d449bb7c4efbf08ac8b2a1bdcf0456f65d98b"
   },
   "checks": {
     "positive_observed_references": true,

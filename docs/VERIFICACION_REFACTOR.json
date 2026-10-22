@@ -1,0 +1,104 @@
+{
+  "tolerance": {
+    "relative": 1e-12,
+    "absolute": 1e-14
+  },
+  "checks": [
+    {
+      "dataset": "ishii",
+      "csv_compared": 15,
+      "byte_identical": 15,
+      "fits_and_masks_identical": true
+    },
+    {
+      "dataset": "mmc2",
+      "csv_compared": 14,
+      "byte_identical": 14,
+      "fits_and_masks_identical": true
+    },
+    {
+      "stage": "normalizacion",
+      "csv_compared": 10,
+      "equal": true
+    },
+    {
+      "stage": "descriptivos",
+      "csv_compared": 4,
+      "equal": true
+    },
+    {
+      "table": "metabolite_measurements_mM",
+      "rows": 20483,
+      "exactly_equal": true
+    },
+    {
+      "table": "conversion_factors",
+      "rows": 1,
+      "exactly_equal": true
+    }
+  ],
+  "reference_version": 7,
+  "expected_csv_sha256": {
+    "resultados/ishii/imputacion/available_IterativeImputer_mM.csv": "248872eb9e494b0559fbadea2d4721b9dadfec2cd2f5bd513416ee4be076dbd2",
+    "resultados/ishii/imputacion/available_KNNImputer_mM.csv": "c403eb0da158ad8ddfc73d506e608435dbbff0c8a5a0332cb11042fd6e575f02",
+    "resultados/ishii/imputacion/available_SimpleImputer_mM.csv": "d3079229f55fc2634d6b00ae1743dd2e801df26ac846c359fb3624ebbb71e70a",
+    "resultados/ishii/imputacion/candidatos_y_soporte.csv": "e516ab1b8249f305686e79675d1fa20904192a2ed9f849fa114cf4144c08a841",
+    "resultados/ishii/imputacion/casillas_comunes.csv": "83c13bcda7b98e89584d7f5dda38f69e6803af6bc040f1bd413122491790dec1",
+    "resultados/ishii/imputacion/estadisticas_antes_despues.csv": "6018b3a5096a18e1e9e446745d1c7f8ac7000f44ce3543d2e9b969a573685fb9",
+    "resultados/ishii/imputacion/supported_plus_baseline_IterativeImputer_mM.csv": "03383b332d95231baac7c398ed5f30413e614a18d7a63f202b17a420872dcc27",
+    "resultados/ishii/imputacion/supported_plus_baseline_KNNImputer_mM.csv": "2f4c2f26d415d2a82fbe81282920c828a9184a1270a63e0a82dafb17e52f45a4",
+    "resultados/ishii/imputacion/supported_plus_baseline_SimpleImputer_mM.csv": "d3079229f55fc2634d6b00ae1743dd2e801df26ac846c359fb3624ebbb71e70a",
+    "resultados/ishii/validacion/casos_comunes.csv": "98117f8bbd1d8027d48270a12aaab790cb27955cc7ec2776053db558dc3f165e",
+    "resultados/ishii/validacion/cobertura_y_motivos.csv": "457d6fb2a8d8ac3ac5d80c69d27201726a593896f4cb184c1772eaf7a0511e9a",
+    "resultados/ishii/validacion/metricas.csv": "3b8ca5b4c179b114b8a23603d2af9c0a1940450ea330cbb952c6fb1e12024db4",
+    "resultados/ishii/validacion/predicciones.csv": "41bc04b26b0b3ce95600f63b624ab17890f83266750726bcd61fe436874e2e7c",
+    "resultados/ishii/validacion/series_analiticas.csv": "6fc9220688882f4b1471bb01732b3563381104a3008cf224c237b50280dcb9f9",
+    "resultados/ishii/validacion/verdades.csv": "e3a052f0b36810dee26c0f2644f8b68e86296f3e41bc010181379141c5127cab",
+    "resultados/mmc2/imputacion/available_IterativeImputer_mM.csv": "0a4f8b7908247fe00e2de9b2d9fbba0612ed2e682a5216fa5427795e3e29d6d5",
+    "resultados/mmc2/imputacion/available_KNNImputer_mM.csv": "5e97f70f4926a04f2b5c2f8cfac768043ea0d9e23411cabb6765b012897ab1b0",
+    "resultados/mmc2/imputacion/available_SimpleImputer_mM.csv": "b016bce430a5a454f5485e0370ea524b4f727c25ccc744fe8181c9b42260c77a",
+    "resultados/mmc2/imputacion/candidatos_y_soporte.csv": "806a8bb0150a327ee326264fd8689cec718d3195c7bd28240dd2ee62dba4d01b",
+    "resultados/mmc2/imputacion/casillas_comunes.csv": "98cd4dafc0a9a11ac46359c035eeb7fe963a1f86cabd8e53d81ee4563378f72f",
+    "resultados/mmc2/imputacion/estadisticas_antes_despues.csv": "896816a3a8b610d663e9a09193dac76195ce6a79f9eb61ebaeb6ddcd8052c96a",
+    "resultados/mmc2/imputacion/supported_plus_baseline_IterativeImputer_mM.csv": "0a4f8b7908247fe00e2de9b2d9fbba0612ed2e682a5216fa5427795e3e29d6d5",
+    "resultados/mmc2/imputacion/supported_plus_baseline_KNNImputer_mM.csv": "5e97f70f4926a04f2b5c2f8cfac768043ea0d9e23411cabb6765b012897ab1b0",
+    "resultados/mmc2/imputacion/supported_plus_baseline_SimpleImputer_mM.csv": "b016bce430a5a454f5485e0370ea524b4f727c25ccc744fe8181c9b42260c77a",
+    "resultados/mmc2/validacion/casos_comunes.csv": "5d5b7ba02e53aa08e9ab2e1763d0eff25dfb2827cc4327baa1b8f5977be1ee46",
+    "resultados/mmc2/validacion/cobertura_y_motivos.csv": "e5ca6f2ac6b682cc432f56bef93235afd9e338b6a0aa673a68a942e9c8587586",
+    "resultados/mmc2/validacion/metricas.csv": "0a695e3547bb6b7243cef5c87268d41a334402fd36e18668fcc5de1ef53de83b",
+    "resultados/mmc2/validacion/predicciones.csv": "9fb8fe4df94f31fec44b125829cc2f98d816a4d999ebd34a476070c9de9f16aa",
+    "resultados/mmc2/validacion/verdades.csv": "86c78ba439c4d1efe3cc647e0bed53505bf4c296ed856320970790973876bf4f"
+  },
+  "notebook": {
+    "format_valid": true,
+    "sequential_cells_passed": [
+      [
+        "ishii",
+        "available",
+        "perturbation",
+        "fum[c]"
+      ],
+      [
+        "mmc2",
+        "available",
+        "perturbation",
+        "succ[c]"
+      ],
+      [
+        "ishii",
+        "supported_plus_baseline",
+        "real_patterns",
+        "s7p[c]"
+      ]
+    ],
+    "kernel_test": "blocked_by_environment_socket_permission",
+    "exports_from_notebook": false
+  },
+  "tests_passed": 16,
+  "style": {
+    "rules": "Ruff E/F/I",
+    "line_length": 79,
+    "black_python_files": true
+  },
+  "final_delivery_rechecked": true
+}
