@@ -1,0 +1,393 @@
+[
+  {
+    "fold": 0,
+    "train": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE"
+    ],
+    "test": [
+      "MMC2_GALACTOSE",
+      "MMC2_SUCCINATE"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k5_uniform",
+        "k": 5,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 0,
+        "inner": 0,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCOSE",
+          "MMC2_GLYCEROL"
+        ],
+        "validation": [
+          "MMC2_GLUCONATE",
+          "MMC2_PYRUVATE"
+        ]
+      },
+      {
+        "outer": 0,
+        "inner": 1,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLUCOSE",
+          "MMC2_PYRUVATE"
+        ],
+        "validation": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLYCEROL"
+        ]
+      },
+      {
+        "outer": 0,
+        "inner": 2,
+        "train": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLYCEROL",
+          "MMC2_PYRUVATE"
+        ],
+        "validation": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCOSE"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 1,
+    "train": [
+      "MMC2_ACETATE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_SUCCINATE"
+    ],
+    "test": [
+      "MMC2_FRUCTOSE",
+      "MMC2_PYRUVATE"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k3_distance",
+        "k": 3,
+        "weights": "distance"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 1,
+        "inner": 0,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCOSE",
+          "MMC2_GLYCEROL"
+        ],
+        "validation": [
+          "MMC2_GLUCONATE",
+          "MMC2_SUCCINATE"
+        ]
+      },
+      {
+        "outer": 1,
+        "inner": 1,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLUCOSE",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_GALACTOSE",
+          "MMC2_GLYCEROL"
+        ]
+      },
+      {
+        "outer": 1,
+        "inner": 2,
+        "train": [
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLYCEROL",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCOSE"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 2,
+    "train": [
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLUCOSE",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "test": [
+      "MMC2_ACETATE",
+      "MMC2_GLYCEROL"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k3_uniform",
+        "k": 3,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 2,
+        "inner": 0,
+        "train": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCOSE",
+          "MMC2_PYRUVATE"
+        ],
+        "validation": [
+          "MMC2_GLUCONATE",
+          "MMC2_SUCCINATE"
+        ]
+      },
+      {
+        "outer": 2,
+        "inner": 1,
+        "train": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLUCOSE",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_GALACTOSE",
+          "MMC2_PYRUVATE"
+        ]
+      },
+      {
+        "outer": 2,
+        "inner": 2,
+        "train": [
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_PYRUVATE",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCOSE"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 3,
+    "train": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCONATE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "test": [
+      "MMC2_GLUCOSE"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k3_uniform",
+        "k": 3,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 3,
+        "inner": 0,
+        "train": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLYCEROL",
+          "MMC2_PYRUVATE"
+        ],
+        "validation": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCONATE",
+          "MMC2_SUCCINATE"
+        ]
+      },
+      {
+        "outer": 3,
+        "inner": 1,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_GLYCEROL",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_GALACTOSE",
+          "MMC2_PYRUVATE"
+        ]
+      },
+      {
+        "outer": 3,
+        "inner": 2,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCONATE",
+          "MMC2_PYRUVATE",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLYCEROL"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 4,
+    "train": [
+      "MMC2_ACETATE",
+      "MMC2_FRUCTOSE",
+      "MMC2_GALACTOSE",
+      "MMC2_GLUCOSE",
+      "MMC2_GLYCEROL",
+      "MMC2_PYRUVATE",
+      "MMC2_SUCCINATE"
+    ],
+    "test": [
+      "MMC2_GLUCONATE"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k3_distance",
+        "k": 3,
+        "weights": "distance"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 4,
+        "inner": 0,
+        "train": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLYCEROL",
+          "MMC2_PYRUVATE"
+        ],
+        "validation": [
+          "MMC2_ACETATE",
+          "MMC2_GLUCOSE",
+          "MMC2_SUCCINATE"
+        ]
+      },
+      {
+        "outer": 4,
+        "inner": 1,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_FRUCTOSE",
+          "MMC2_GLUCOSE",
+          "MMC2_GLYCEROL",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_GALACTOSE",
+          "MMC2_PYRUVATE"
+        ]
+      },
+      {
+        "outer": 4,
+        "inner": 2,
+        "train": [
+          "MMC2_ACETATE",
+          "MMC2_GALACTOSE",
+          "MMC2_GLUCOSE",
+          "MMC2_PYRUVATE",
+          "MMC2_SUCCINATE"
+        ],
+        "validation": [
+          "MMC2_FRUCTOSE",
+          "MMC2_GLYCEROL"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "ishii": {
+    "metabolites": 10,
+    "masked_cells": 228,
+    "predictions": 684,
+    "candidates": 216,
+    "posterior_draws": 9000,
+    "disjoint_groups": true,
+    "observed_unchanged": true,
+    "posterior_verified": true
+  },
+  "mmc2": {
+    "metabolites": 10,
+    "masked_cells": 68,
+    "predictions": 204,
+    "candidates": 6,
+    "posterior_draws": 2100,
+    "disjoint_groups": true,
+    "observed_unchanged": true,
+    "posterior_verified": true
+  }
+}

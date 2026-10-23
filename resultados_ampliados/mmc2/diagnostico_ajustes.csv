@@ -1,0 +1,4 @@
+method,predictions,converged_fraction,minimum_target_count
+Iterative,68,1.0,5
+KNN,68,1.0,5
+Mediana,68,1.0,5

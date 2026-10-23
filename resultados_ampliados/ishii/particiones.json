@@ -1,0 +1,767 @@
+[
+  {
+    "fold": 0,
+    "train": [
+      "KO01",
+      "KO02",
+      "KO03",
+      "KO04",
+      "KO05",
+      "KO05x",
+      "KO06",
+      "KO07",
+      "KO08",
+      "KO09",
+      "KO10",
+      "KO11",
+      "KO12",
+      "KO13",
+      "KO14",
+      "KO15",
+      "KO16",
+      "KO18",
+      "KO19",
+      "KO20",
+      "KO21",
+      "KO22",
+      "KO23",
+      "KO24"
+    ],
+    "test": [
+      "KO17",
+      "RF02",
+      "RF03",
+      "RF04",
+      "RF05",
+      "RF06"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k5_uniform",
+        "k": 5,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "base",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 1e-06
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 0,
+        "inner": 0,
+        "train": [
+          "KO02",
+          "KO04",
+          "KO06",
+          "KO07",
+          "KO08",
+          "KO09",
+          "KO11",
+          "KO12",
+          "KO13",
+          "KO15",
+          "KO16",
+          "KO19",
+          "KO21",
+          "KO22",
+          "KO23",
+          "KO24"
+        ],
+        "validation": [
+          "KO01",
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO10",
+          "KO14",
+          "KO18",
+          "KO20"
+        ]
+      },
+      {
+        "outer": 0,
+        "inner": 1,
+        "train": [
+          "KO01",
+          "KO03",
+          "KO04",
+          "KO05",
+          "KO05x",
+          "KO08",
+          "KO09",
+          "KO10",
+          "KO11",
+          "KO13",
+          "KO14",
+          "KO15",
+          "KO18",
+          "KO19",
+          "KO20",
+          "KO23"
+        ],
+        "validation": [
+          "KO02",
+          "KO06",
+          "KO07",
+          "KO12",
+          "KO16",
+          "KO21",
+          "KO22",
+          "KO24"
+        ]
+      },
+      {
+        "outer": 0,
+        "inner": 2,
+        "train": [
+          "KO01",
+          "KO02",
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO07",
+          "KO10",
+          "KO12",
+          "KO14",
+          "KO16",
+          "KO18",
+          "KO20",
+          "KO21",
+          "KO22",
+          "KO24"
+        ],
+        "validation": [
+          "KO04",
+          "KO08",
+          "KO09",
+          "KO11",
+          "KO13",
+          "KO15",
+          "KO19",
+          "KO23"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 1,
+    "train": [
+      "KO01",
+      "KO02",
+      "KO03",
+      "KO04",
+      "KO06",
+      "KO07",
+      "KO08",
+      "KO10",
+      "KO11",
+      "KO13",
+      "KO16",
+      "KO17",
+      "KO18",
+      "KO19",
+      "KO20",
+      "KO21",
+      "KO22",
+      "KO23",
+      "KO24",
+      "RF02",
+      "RF03",
+      "RF04",
+      "RF05",
+      "RF06"
+    ],
+    "test": [
+      "KO05",
+      "KO05x",
+      "KO09",
+      "KO12",
+      "KO14",
+      "KO15"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k5_uniform",
+        "k": 5,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "base",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 1e-06
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 1,
+        "inner": 0,
+        "train": [
+          "KO02",
+          "KO03",
+          "KO04",
+          "KO06",
+          "KO07",
+          "KO08",
+          "KO10",
+          "KO11",
+          "KO16",
+          "KO18",
+          "KO19",
+          "KO20",
+          "KO21",
+          "KO22",
+          "KO23",
+          "KO24"
+        ],
+        "validation": [
+          "KO01",
+          "KO13",
+          "KO17",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ]
+      },
+      {
+        "outer": 1,
+        "inner": 1,
+        "train": [
+          "KO01",
+          "KO02",
+          "KO03",
+          "KO04",
+          "KO08",
+          "KO11",
+          "KO13",
+          "KO17",
+          "KO18",
+          "KO23",
+          "KO24",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO06",
+          "KO07",
+          "KO10",
+          "KO16",
+          "KO19",
+          "KO20",
+          "KO21",
+          "KO22"
+        ]
+      },
+      {
+        "outer": 1,
+        "inner": 2,
+        "train": [
+          "KO01",
+          "KO06",
+          "KO07",
+          "KO10",
+          "KO13",
+          "KO16",
+          "KO17",
+          "KO19",
+          "KO20",
+          "KO21",
+          "KO22",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO02",
+          "KO03",
+          "KO04",
+          "KO08",
+          "KO11",
+          "KO18",
+          "KO23",
+          "KO24"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 2,
+    "train": [
+      "KO02",
+      "KO03",
+      "KO04",
+      "KO05",
+      "KO05x",
+      "KO06",
+      "KO07",
+      "KO08",
+      "KO09",
+      "KO10",
+      "KO12",
+      "KO14",
+      "KO15",
+      "KO17",
+      "KO18",
+      "KO19",
+      "KO22",
+      "KO23",
+      "KO24",
+      "RF02",
+      "RF03",
+      "RF04",
+      "RF05",
+      "RF06"
+    ],
+    "test": [
+      "KO01",
+      "KO11",
+      "KO13",
+      "KO16",
+      "KO20",
+      "KO21"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k3_distance",
+        "k": 3,
+        "weights": "distance"
+      },
+      "Iterative": {
+        "id": "prior_0.01",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 0.01
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 2,
+        "inner": 0,
+        "train": [
+          "KO02",
+          "KO03",
+          "KO04",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO07",
+          "KO08",
+          "KO10",
+          "KO14",
+          "KO15",
+          "KO18",
+          "KO19",
+          "KO22",
+          "KO23",
+          "KO24"
+        ],
+        "validation": [
+          "KO09",
+          "KO12",
+          "KO17",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ]
+      },
+      {
+        "outer": 2,
+        "inner": 1,
+        "train": [
+          "KO02",
+          "KO04",
+          "KO08",
+          "KO09",
+          "KO12",
+          "KO14",
+          "KO15",
+          "KO17",
+          "KO18",
+          "KO23",
+          "KO24",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO07",
+          "KO10",
+          "KO19",
+          "KO22"
+        ]
+      },
+      {
+        "outer": 2,
+        "inner": 2,
+        "train": [
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO07",
+          "KO09",
+          "KO10",
+          "KO12",
+          "KO17",
+          "KO19",
+          "KO22",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO02",
+          "KO04",
+          "KO08",
+          "KO14",
+          "KO15",
+          "KO18",
+          "KO23",
+          "KO24"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 3,
+    "train": [
+      "KO01",
+      "KO02",
+      "KO03",
+      "KO05",
+      "KO05x",
+      "KO06",
+      "KO08",
+      "KO09",
+      "KO11",
+      "KO12",
+      "KO13",
+      "KO14",
+      "KO15",
+      "KO16",
+      "KO17",
+      "KO20",
+      "KO21",
+      "KO23",
+      "KO24",
+      "RF02",
+      "RF03",
+      "RF04",
+      "RF05",
+      "RF06"
+    ],
+    "test": [
+      "KO04",
+      "KO07",
+      "KO10",
+      "KO18",
+      "KO19",
+      "KO22"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k5_uniform",
+        "k": 5,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "convergencia",
+        "rounds": 100,
+        "tol": 0.0001,
+        "reg_iter": 1000,
+        "reg_tol": 0.0001,
+        "prior": 1e-06
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 3,
+        "inner": 0,
+        "train": [
+          "KO01",
+          "KO02",
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO08",
+          "KO11",
+          "KO13",
+          "KO14",
+          "KO15",
+          "KO16",
+          "KO20",
+          "KO21",
+          "KO23",
+          "KO24"
+        ],
+        "validation": [
+          "KO09",
+          "KO12",
+          "KO17",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ]
+      },
+      {
+        "outer": 3,
+        "inner": 1,
+        "train": [
+          "KO02",
+          "KO08",
+          "KO09",
+          "KO12",
+          "KO13",
+          "KO14",
+          "KO15",
+          "KO16",
+          "KO17",
+          "KO23",
+          "KO24",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO01",
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO11",
+          "KO20",
+          "KO21"
+        ]
+      },
+      {
+        "outer": 3,
+        "inner": 2,
+        "train": [
+          "KO01",
+          "KO03",
+          "KO05",
+          "KO05x",
+          "KO06",
+          "KO09",
+          "KO11",
+          "KO12",
+          "KO17",
+          "KO20",
+          "KO21",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO02",
+          "KO08",
+          "KO13",
+          "KO14",
+          "KO15",
+          "KO16",
+          "KO23",
+          "KO24"
+        ]
+      }
+    ]
+  },
+  {
+    "fold": 4,
+    "train": [
+      "KO01",
+      "KO04",
+      "KO05",
+      "KO05x",
+      "KO07",
+      "KO09",
+      "KO10",
+      "KO11",
+      "KO12",
+      "KO13",
+      "KO14",
+      "KO15",
+      "KO16",
+      "KO17",
+      "KO18",
+      "KO19",
+      "KO20",
+      "KO21",
+      "KO22",
+      "RF02",
+      "RF03",
+      "RF04",
+      "RF05",
+      "RF06"
+    ],
+    "test": [
+      "KO02",
+      "KO03",
+      "KO06",
+      "KO08",
+      "KO23",
+      "KO24"
+    ],
+    "chosen": {
+      "Mediana": {
+        "id": "mediana"
+      },
+      "KNN": {
+        "id": "k5_uniform",
+        "k": 5,
+        "weights": "uniform"
+      },
+      "Iterative": {
+        "id": "base",
+        "rounds": 50,
+        "tol": 0.001,
+        "reg_iter": 300,
+        "reg_tol": 0.001,
+        "prior": 1e-06
+      }
+    },
+    "inner_splits": [
+      {
+        "outer": 4,
+        "inner": 0,
+        "train": [
+          "KO01",
+          "KO04",
+          "KO05",
+          "KO05x",
+          "KO07",
+          "KO11",
+          "KO12",
+          "KO14",
+          "KO15",
+          "KO16",
+          "KO17",
+          "KO18",
+          "KO19",
+          "KO20",
+          "KO21",
+          "KO22"
+        ],
+        "validation": [
+          "KO09",
+          "KO10",
+          "KO13",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ]
+      },
+      {
+        "outer": 4,
+        "inner": 1,
+        "train": [
+          "KO07",
+          "KO09",
+          "KO10",
+          "KO12",
+          "KO13",
+          "KO15",
+          "KO16",
+          "KO17",
+          "KO18",
+          "KO20",
+          "KO21",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO01",
+          "KO04",
+          "KO05",
+          "KO05x",
+          "KO11",
+          "KO14",
+          "KO19",
+          "KO22"
+        ]
+      },
+      {
+        "outer": 4,
+        "inner": 2,
+        "train": [
+          "KO01",
+          "KO04",
+          "KO05",
+          "KO05x",
+          "KO09",
+          "KO10",
+          "KO11",
+          "KO13",
+          "KO14",
+          "KO19",
+          "KO22",
+          "RF02",
+          "RF03",
+          "RF04",
+          "RF05",
+          "RF06"
+        ],
+        "validation": [
+          "KO07",
+          "KO12",
+          "KO15",
+          "KO16",
+          "KO17",
+          "KO18",
+          "KO20",
+          "KO21"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "ishii": {
+    "code_cells_executed": 8,
+    "status": "passed"
+  },
+  "mmc2": {
+    "code_cells_executed": 8,
+    "status": "passed"
+  },
+  "kernel": "blocked by local network restrictions; sequential Python execution only"
+}

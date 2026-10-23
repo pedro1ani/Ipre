@@ -233,7 +233,7 @@ class Imputador:
                 n_usable_neighbors=0,
             )
         else:
-            # Replica la selección de sklearn solo para registrar los donantes.
+            # Registrar los donantes
             cantidad = min(self.parametros["vecinos"], len(indices_donantes))
             elegidos = np.argpartition(distancias_donantes, cantidad - 1)[
                 :cantidad

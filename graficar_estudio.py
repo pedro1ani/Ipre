@@ -1,4 +1,4 @@
-"""Gráficos de resultados existentes; no vuelve a entrenar ni imputar."""
+"""Gráficos de resultados existentes"""
 
 import argparse
 from pathlib import Path
