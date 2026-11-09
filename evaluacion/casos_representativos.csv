@@ -1,0 +1,6 @@
+perfil,metabolito,razon
+buen caso,succ,Cobertura ≥80%; menor MAE_R entre esos casos
+cobertura intermedia,cit,Cobertura más cercana a 50% entre casos restantes con predicción
+incierto,ade,Mayor amplitud posterior media en R entre casos restantes
+error importante,nadp,Mayor MAE_R de los casos restantes
+excluido,dhap,Solo ocho mediciones Ishii; no supera elegibilidad

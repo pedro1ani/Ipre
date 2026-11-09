@@ -1,0 +1,124 @@
+{
+  "python": "3.13.14",
+  "versiones": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "openpyxl": "3.1.5",
+    "pypdf": "7.0.0",
+    "ipython": "9.17.1"
+  },
+  "semilla": 20261109,
+  "semillas_posterior": [
+    1100,
+    1101,
+    1102,
+    1103,
+    1104,
+    1105,
+    1106,
+    1107,
+    1108,
+    1109,
+    1110,
+    1111,
+    1112,
+    1113,
+    1114,
+    1115,
+    1116,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1123,
+    1124,
+    1125,
+    1126,
+    1127,
+    1128,
+    1129
+  ],
+  "entradas_sha256": {
+    "conversiones.csv": "ae0c3a385b511d8f36aa11535767abd38dccd1dcf6fa005800c8475a5c92e81d",
+    "disponibilidad_ishii.csv": "e9351a5b40e4c05af937757be4d833ffd86a2f75b230567926097922c5b3cc39",
+    "elegibilidad.csv": "73f83eb32f7dcb4309ec90a7e461398ed753d2df3f8233ac9bb111bb06a64c06",
+    "escenario_A_mM.csv": "864f03db4bde582624ead4662481f6b92a2f1591fa5b211ed2ad30eff6d517c6",
+    "escenario_A_R.csv": "aa8bbb9af3c4571b9d4cab8d295687dcd74ac19ac47f44a0d9442dc5ec4e68e3",
+    "escenario_B_mM.csv": "30398518da0bc39d10928cb4b1944e0f1251ab13b64d87eb8fc39f3bce727388",
+    "escenario_B_R.csv": "2d278c7f39bf1f50eaf2ea81405172678a794b53d168cfa6514616fb9d37534c",
+    "homologacion_maestra.csv": "ecd0635b6088f903235f9754624a3bdcf08967ee0a2b791c88bc7764dc6deede",
+    "mediciones_auditadas.csv": "d6268a2253a05d23cbd9f866aac3a64f512a01c9089125ed4228d4c25d93593a",
+    "metadatos.csv": "9b3efc0ba97d0a3fac40329dd970dfb29e655d6a4b844f299138ebba369eb75a",
+    "panel_documental_mM.csv": "13bcd725dc3b0bf20abb4e3fc4395ebdc1f4ac6d2dc83631072ad035a8d8155e",
+    "referencias_glucosa.csv": "d8ec814f0691f72ef6783e4c9b93c8134efabcf9440e2ac2f3c41a3f35f7ca10"
+  },
+  "mascaras_sha256": "302767f21d3f92c35fc701d15de7ad963900cad887540e354fb5424c27875350",
+  "protocolo": "GroupKFold 5 externos / 3 internos; consulta individual; sin log",
+  "umbrales": {
+    "observaciones": 10,
+    "grupos": 5,
+    "pares": 5,
+    "predictores": 2,
+    "donantes_knn": 3,
+    "evaluadas_aplicacion": 10,
+    "bloques_aplicacion": 3
+  },
+  "configuraciones": {
+    "Mediana": [
+      {}
+    ],
+    "KNN": [
+      {
+        "n_neighbors": 3,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 5,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 7,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 3,
+        "weights": "distance"
+      }
+    ],
+    "Iterative": [
+      {
+        "max_iter": 50,
+        "tol": 0.001
+      },
+      {
+        "max_iter": 100,
+        "tol": 0.0001
+      }
+    ]
+  },
+  "bayesian_ridge": {
+    "alpha_1": 1e-06,
+    "alpha_2": 1e-06,
+    "alpha_init": null,
+    "compute_score": false,
+    "copy_X": true,
+    "fit_intercept": true,
+    "lambda_1": 1e-06,
+    "lambda_2": 1e-06,
+    "lambda_init": null,
+    "max_iter": 300,
+    "tol": 0.001,
+    "verbose": false
+  },
+  "n_intentos": 457,
+  "n_comunes_seis": 416,
+  "n_ajustes_posteriores": 360,
+  "originales_intactos": true,
+  "fuentes_auditoria_intactas": true,
+  "mascaras_reproducidas": true
+}
