@@ -1,0 +1,91 @@
+{
+  "fecha": "2026-11-09",
+  "fuentes_sha256": {
+    "ishii.xlsx": "c9f0d2fbb18209cbb9c4bd4fd9098ac31a07c7f3450997bad15eb9ea8da07bf2",
+    "mmc2.xlsx": "7382ada7720efec90f9c32d6779f3fce386370ba9e57753f7dc10d92405aeac7",
+    "mmc3.xlsx": "d3c58968a984351332caa32fe9c98381b59c82ee2b4c1a60f794a82b7869d364",
+    "mmc4.xlsx": "42ca69c1eefe42b2d2b327e6682db67787056b6f94cde6f4bb3ed6df843e2f4b",
+    "Ishii_methods.pdf": "cb6183c58ceaf56e9dc06c99a09f5e4bd0fdb93dc9534c1aad2092f9649414fd",
+    "Gerosa_methods.pdf": "754715210c26d57a36ef8cc4bacb3ada11c557e7bded9f10e5e2905352b8d0a4",
+    "ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae"
+  },
+  "version_base": "IPre_Ampliado.zip, 2026-10-22",
+  "posiciones_verificadas_con_excel": 20483,
+  "conversion_anterior_equivalente": true,
+  "filas_analiticas_ishii_intracelulares": 579,
+  "panel_documental": [
+    "pyr",
+    "fum",
+    "succ",
+    "akg",
+    "pep",
+    "dhap",
+    "s7p",
+    "ade",
+    "cit",
+    "cAMP",
+    "amp",
+    "gmp",
+    "adp",
+    "gdp",
+    "atp",
+    "gtp",
+    "nad",
+    "nadh",
+    "nadp",
+    "nadph"
+  ],
+  "panel_principal": [
+    "pyr",
+    "fum",
+    "succ",
+    "akg",
+    "pep",
+    "s7p",
+    "ade",
+    "cit",
+    "cAMP",
+    "amp",
+    "gmp",
+    "adp",
+    "gdp",
+    "atp",
+    "gtp",
+    "nad",
+    "nadp"
+  ],
+  "dimensiones_A": [
+    30,
+    17
+  ],
+  "dimensiones_B": [
+    38,
+    17
+  ],
+  "medidos_A": 437,
+  "faltantes_A": 73,
+  "medidos_B": 571,
+  "faltantes_B": 75,
+  "umbrales": {
+    "candidata": 10,
+    "exploratoria_y_pares": 5,
+    "predictores": 2
+  },
+  "controles": [
+    "etiquetas y protocolos contra Excel",
+    "celdas y SD contra Excel",
+    "unicidad",
+    "referencias positivas con SD",
+    "mM-R reversible",
+    "mismos valores Ishii A/B",
+    "relectura CSV",
+    "fuentes intactas",
+    "elegibilidad solo entrenamiento"
+  ],
+  "python": "3.13.14",
+  "pandas": "3.0.6",
+  "numpy": "2.5.4",
+  "openpyxl": "3.1.5",
+  "imputaciones_ejecutadas": false,
+  "verificacion_notebook": "11 celdas ejecutadas en orden mediante IPython; no interfaz Jupyter"
+}

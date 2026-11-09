@@ -1,0 +1,148 @@
+{
+  "python": "3.12.14",
+  "versiones": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "openpyxl": "3.1.5",
+    "pypdf": "6.21.4",
+    "ipython": "9.16.1"
+  },
+  "semilla": 20261109,
+  "semillas_posterior": [
+    1100,
+    1101,
+    1102,
+    1103,
+    1104,
+    1105,
+    1106,
+    1107,
+    1108,
+    1109,
+    1110,
+    1111,
+    1112,
+    1113,
+    1114,
+    1115,
+    1116,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1123,
+    1124,
+    1125,
+    1126,
+    1127,
+    1128,
+    1129
+  ],
+  "entradas_sha256": {
+    "escenario_B_R.csv": "630c9826b20faf19bf6887e27e8a2b4656123145d114280c5a316bf6f5cf7299",
+    "escenario_A_mM.csv": "a25c9786244b07b0c6d4f52a2b310c1af391362e171940dfd9289986925acb87",
+    "disponibilidad_ishii.csv": "a8ac037b3ee72165f475c3c880d144043a4175db8cf572676c9e0396f941e4ee",
+    "referencias_glucosa.csv": "fcdc9db23d66a37734c106d41ac2b606e3850602465c487994de380626968fb3",
+    "elegibilidad.csv": "0ed6e1cc6d977b5d516d9cd59e30f01b43f81da68397c7819ad566fa86e883b8",
+    "homologacion_maestra.csv": "69ee08c67ce9ed01a9ac4bb2de002f467675fc98c2d890ee99672c75bec42a94",
+    "escenario_A_R.csv": "c742384fcbb037a18536c0d6280490d7629021348e0629214786d96a86ed4947",
+    "metadatos.csv": "5b1c03fb3ce102e24d253d2019072e690b2370d69d75b605b61911a860fd2a35",
+    "panel_documental_mM.csv": "6867b3b7761cb8b4519f1bc3765fa81b15b4df9631564b391256d905f9a4dabf",
+    "escenario_B_mM.csv": "ef84cad56c871031a8e5e11272116aaf9d01702eec7f25883c1481a0dec93954",
+    "conversiones.csv": "51059104c2d6fac9128c472c8945d7adc3a9c904687cdc4b14b605be7c19677a",
+    "mediciones_auditadas.csv": "8a696530c7b50c3500ed179b3927e1cea60a73e200785d74510aea279342f8e3"
+  },
+  "mascaras_sha256": "e45967002c66f716b103902aeaa606b3129655b061f90d2861e11aabae6b63ae",
+  "protocolo": "GroupKFold 5 externos / 3 internos; consulta individual; sin log",
+  "umbrales": {
+    "observaciones": 10,
+    "grupos": 5,
+    "pares": 5,
+    "predictores": 2,
+    "donantes_knn": 3,
+    "evaluadas_aplicacion": 10,
+    "bloques_aplicacion": 3
+  },
+  "configuraciones": {
+    "Mediana": [
+      {}
+    ],
+    "KNN": [
+      {
+        "n_neighbors": 3,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 5,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 7,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 3,
+        "weights": "distance"
+      }
+    ],
+    "Iterative": [
+      {
+        "max_iter": 50,
+        "tol": 0.001
+      },
+      {
+        "max_iter": 100,
+        "tol": 0.0001
+      }
+    ]
+  },
+  "bayesian_ridge": {
+    "alpha_1": 1e-06,
+    "alpha_2": 1e-06,
+    "alpha_init": null,
+    "compute_score": false,
+    "copy_X": true,
+    "fit_intercept": true,
+    "lambda_1": 1e-06,
+    "lambda_2": 1e-06,
+    "lambda_init": null,
+    "max_iter": 300,
+    "tol": 0.001,
+    "verbose": false
+  },
+  "n_intentos": 457,
+  "n_comunes_seis": 413,
+  "n_ajustes_posteriores": 360,
+  "originales_intactos": true,
+  "fuentes_auditoria_intactas": true,
+  "mascaras_reproducidas": true,
+  "verificacion_independiente": [
+    "A/Mediana: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "A/KNN: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "A/Iterative: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "B/Mediana: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "B/KNN: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "B/Iterative: reproducci\u00f3n y verdad externa sin efecto en ajuste",
+    "Posterior final: misma semilla reproduce las celdas de la imputaci\u00f3n conjunta"
+  ],
+  "fuentes_iguales_a_entrega_anterior": [
+    "sources/mmc3.xlsx",
+    "sources/mmc4.xlsx",
+    "sources/Gerosa_methods.pdf",
+    "sources/ecoli_auditada_v3.db",
+    "sources/mmc2.xlsx",
+    "sources/Ishii_methods.pdf",
+    "sources/ishii.xlsx",
+    "data/concentraciones_mM.db"
+  ],
+  "notebooks_ejecutados": {
+    "01_auditoria_preparacion.ipynb": 11,
+    "02_imputacion_evaluacion.ipynb": 13
+  },
+  "figuras_revisadas": 5
+}

@@ -1,0 +1,4 @@
+base,unidad_original,divisor,unidad_final,fuente,limitacion
+ISHII2007,mM,1.0,mM,ishii.xlsx generals!A10:B10,No se reconvierte; usa volumen celular asumido por Ishii
+MMC2,umol/gCDW,2.3,mM,mmc2.xlsx Conversion Factors!A5:B6; Gerosa_methods.pdf p.9,Sin incertidumbre publicada del factor en estas fuentes
+MMC3,umol/gCDW,2.3,mM,MMC2 Conversion Factors!A5:B6; Gerosa_methods.pdf p.9,Mismo factor nominal; transición no incorporada al entrenamiento

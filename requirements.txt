@@ -4,5 +4,5 @@ scipy==1.17.0
 scikit-learn==1.8.0
 matplotlib==3.10.8
 openpyxl==3.1.5
-pypdf==6.10.0
-ipykernel==7.4.0
+pypdf==6.21.4
+ipython==9.16.1
