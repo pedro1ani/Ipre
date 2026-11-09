@@ -1,0 +1,42 @@
+MMC2 Conversion Factors A5:B6: [['Conversion factor from gCDW to intracellular cytosolic volume', 'All conditions'], [' Conversion factor (ml/gCDW)', 2.3]]
+
+Gerosa methods, PDF page 9:
+ 
+ 
+growth and extracellular fluxes ( Dataset S1 ) was determined by non -linear optimization and 
+selected as the final flux distribution. Standard deviations for metabolic fluxes were estimated 
+through Monte Carlo simulations by re -estimating fluxes after adding Gaussian noise to the 
+measured 13C-labeling data (Schmidt et al., 1999) (Dataset S1).  
+Dynamic flux changes during the diauxic shift were estimated by flux balance analysis using the 
+COBRA Toolbox (Schellenberger et al., 2011)  and a stoichiometric model of central metabolism 
+(Dataset S3). Fluxes were estimated constraining the model by the estimated carbon uptake 
+rates, carbon secretion rates and growth rate ( Dataset S2) under minimization of sum of fluxes 
+and assuming pseudo -steady state for each time point. Lower and upper bound for exchange 
+fluxes and biomass were set to one standard deviation of replicates. Upper and lower bounds 
+for flux estimates were calculated by flux variability analysis. 
+ 
+Intracellular metabolite concentrations by LC-MS/MS 
+For steady state analysis, 1 ml aliquots were taken in a 37°C room from exponential phase 
+cultures. After vacuum-filtration on a 0.45 μm pore size nitrocellulose filter (Millipore), samples 
+were immediately washed with two volumes of fresh 37°C M9 medium containing the 
+respective carbon source at a pH adjusted to the value of the culture broth at the time of 
+sampling. Subsequently filters were directly transferred for extraction into 4 ml of 60% (v/v) 
+ethanol/H2O to which 100 μl of internal standard (fully  13C-labelled Saccharomyces cerevisiae 
+extract) was added and incubated at 78°C for 2 min. For the diauxic shift, 2 ml aliquots were 
+withdrawn at 9 different points and vacuum-filtered on a 0.45 μm pore size nitrocellulose filter 
+(Millipore). Filters were directly subjected to cold extraction ( -20°C) with 40:40:20 
+acetonitrile/methanol/water containing 200 μl of internal standard (fully 13C-labelled 
+S. cerevisiae extract). In both cases, extracts were separated from the filters and residual cell 
+debris and nitrocellulose was removed by centrifugation. Cell extracts were thawed, dried at 
+120 μbar, and resuspended in 100 μl deionized H 2O of which 15 μl were transferred into 
+rubber-sealed HPLC tubes. Metabolite abundances were determined by ion -pairing ultra -high 
+performance liquid chromatography (UPLC) -tandem MS (Buescher et al., 2010)  and quantified 
+through a dilution series of a mix containing all metabolites and internal standard. Intracellular 
+metabolite concentrations in µmol/mL were calculated from metabolite abundances in 
+µmol/gCDW using a previously determined conversion factor to intracellular cytosolic volume 
+(Dataset S1). 
+ 
+Estimation of thermodynamic potentials 
+To estimate thermodynamic driving forces for each re action in our network, we used a variant 
+of the constraint -based method max -min driving force (Noor et al., 2014) . Briefly, we set 
+concentrations of measured metabolites allowing other metabolites to vary within physiological 
