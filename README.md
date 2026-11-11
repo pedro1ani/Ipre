@@ -12,10 +12,9 @@ Para esto, trabajamos con tres métodos de `scikit-learn`:
 - **KNNImputer:** estima concentraciones a partir de muestras que presentan perfiles metabólicos similares.
 - **IterativeImputer:** utiliza las relaciones entre los metabolitos para estimar sus concentraciones mediante modelos de regresión. En este caso, utilizamos `BayesianRidge`.
 
-También buscamos estudiar si incorporar información experimental de Gerosa permite mejorar las estimaciones obtenidas con los datos de Ishii.
+No se busca completar todos los valores faltantes, peero evaluar e identificar cuáles podemos estimar, qué error presentan los métodos y qué tan confiables son estas predicciones.
 
-El objetivo no es necesariamente completar todos los valores faltantes, sino identificar cuáles podemos estimar, qué error presentan los métodos y qué tan confiables son estas predicciones.
-
+Y si incorporar información experimental de Gerosa permite mejorar las estimaciones obtenidas con los datos de Ishii.
 ## 2. Organización del proyecto
 
 El análisis está organizado en dos notebooks principales, que deben ejecutarse en el siguiente orden.
@@ -66,11 +65,14 @@ Las concentraciones de Ishii ya se encuentran en estas unidades, mientras que la
 
 La conversión corresponde a:
 
-\[
-C_{\mathrm{Gerosa}}[\mathrm{mM}]
-=
-\frac{C_{\mathrm{Gerosa}}[\mu\mathrm{mol/gCDW}]}{2.3\ [\mathrm{mL/gCDW}]}
-\]
+
+La conversión corresponde a:
+
+$$
+C_{\mathrm{Gerosa}}\;[\mathrm{mM}] =
+\frac{C_{\mathrm{Gerosa}}\;[\mu\mathrm{mol/gCDW}]}
+{2.3\;[\mathrm{mL/gCDW}]}
+$$
 
 También trabajamos con concentraciones normalizadas respecto a la concentración de referencia de cada metabolito en Gerosa bajo la condición de glucosa:
 
