@@ -1,83 +1,351 @@
-# IPre · Imputación de concentraciones de E. coli
+# IPre | Imputación de concentraciones de metabolitos en *E. coli*
 
-Comparar Mediana, KNN e Iterative de scikit-learn para reconstruir concentraciones de Ishii, con y sin información de Gerosa MMC2, sin forzar la imputación de todos los faltantes.
+## 1. Descripción del proyecto
 
-## Dos notebooks, en este orden
+Este proyecto busca estudiar distintos métodos de imputación para estimar concentraciones faltantes de metabolitos en *Escherichia coli*, utilizando datos experimentales de Ishii y Gerosa.
 
-1. **01_auditoria_preparacion.ipynb**: fuentes, identidad de metabolitos, disponibilidad, conversión a mM, referencia de glucosa, elegibilidad preliminar y matrices.
-2. **02_imputacion_evaluacion.ipynb**: máscaras, validación anidada, selección de parámetros, error/cobertura, incertidumbre, aplicación final y cinco figuras.
+La idea es evaluar qué tan bien podemos reconstruir concentraciones que no conocemos a partir de la información disponible de otros metabolitos, y determinar en qué condiciones estas estimaciones son suficientemente respaldadas por los datos.
 
-No hay ejecutores externos, clases personalizadas, KNN propio ni PCA. Las pocas funciones del segundo notebook representan operaciones repetidas: elegibilidad, máscaras, ajuste/predicción y selección interna. La regla de elegibilidad se conserva literalmente en ambos notebooks para que puedan leerse sin cargar módulos auxiliares.
+Para esto, trabajamos con tres métodos de `scikit-learn`:
 
-## Ejecutar
+- **Mediana:** reemplaza los valores faltantes utilizando la mediana de las concentraciones disponibles de cada metabolito.
+- **KNNImputer:** estima concentraciones a partir de muestras que presentan perfiles metabólicos similares.
+- **IterativeImputer:** utiliza las relaciones entre los metabolitos para estimar sus concentraciones mediante modelos de regresión. En este caso, utilizamos `BayesianRidge`.
 
-Para reproducir la ejecución del 9 de noviembre de 2026, utilizar **Python 3.13.14** e instalar `pip install -r requirements.txt` en un entorno nuevo. Abrir Jupyter desde esta carpeta y ejecutar cada notebook de arriba abajo. Si no se dispone de Jupyter, instalar `jupyterlab ipykernel` en ese entorno y abrir `jupyter lab`. Las versiones de dependencias ahora coinciden con `evaluacion/verificacion.json` y `auditoria/verificacion.json`; esto documenta el entorno utilizado, pero una nueva ejecución sigue siendo necesaria para comprobar la reproducibilidad en otro equipo. Las salidas publicadas se generaron mediante IPython. No es necesario ejecutar los scripts antiguos.
+También buscamos estudiar si incorporar información experimental de Gerosa permite mejorar las estimaciones obtenidas con los datos de Ishii.
 
-Las máscaras existentes solo se reutilizan si coinciden exactamente con los datos y el protocolo. Para un estudio deliberadamente distinto, guardar primero sus resultados y retirar `evaluacion/`; no mezclar ejecuciones con matrices diferentes. La ejecución completa incluye 360 ajustes posteriores y puede tardar varios minutos.
+El objetivo no es necesariamente completar todos los valores faltantes, sino identificar cuáles podemos estimar, qué error presentan los métodos y qué tan confiables son estas predicciones.
 
-## Datos y reglas científicas
+## 2. Organización del proyecto
 
-- `sources/`: Excel Ishii, MMC2–MMC4, métodos de Ishii/Gerosa y base auditada. `data/concentraciones_mM.db` se conserva únicamente como comparación de la conversión previa, requerida por el notebook 01.
-- 30 muestras Ishii a D = 0.2 h⁻¹. KO05 y KO05x son cultivos separados dentro del mismo grupo; los cinco WT se mantienen juntos al validar. Se excluyen cuatro muestras de otras diluciones.
-- Ishii ya está en mM. Gerosa se convierte desde µmol/gCDW dividiendo por **2.3 mL/gCDW**, documentado en MMC2 y métodos. No se utiliza 12.3.
-- R = concentración mM / concentración Gerosa bajo glucosa mM, con la misma referencia por compuesto para todas las muestras. Se comprueban positividad, medición y SD documentada. No se propaga la incertidumbre de referencia ni del volumen celular.
-- Panel documental de 20: pyr, fum, succ, akg, pep, dhap, s7p, ade, cit, cAMP, amp, gmp, adp, gdp, atp, gtp, nad, nadh, nadp, nadph. DHAP, NADH y NADPH tienen solo 8, 6 y 6 observaciones Ishii: se conservan sin completar. Los otros 17 tienen soporte preliminar, sujeto a entrenamiento y evaluación.
-- A entrena con Ishii; B agrega las ocho condiciones admisibles de MMC2. MMC3 temporal y nodos de MMC4 no se tratan como muestras de entrenamiento. MMC2 es otro estudio/cultivo/carbono: se evalúa transferencia, no equivalencia experimental.
+El análisis está organizado en dos notebooks principales, que deben ejecutarse en el siguiente orden.
 
-## Validación y aplicación
+### `01_auditoria_preparacion.ipynb`
 
-Se mantienen cinco bloques externos por grupos de perturbación, con tres internos para seleccionar parámetros. Cada consulta oculta una observación y conserva los demás valores visibles de esa muestra; todo su grupo se excluye del entrenamiento. Las 457 mediciones documentales Ishii definen los mismos intentos para los tres métodos y ambos escenarios. Los faltantes originales nunca son verdades de evaluación.
+Este notebook se encarga de revisar y preparar los datos experimentales.
 
-Dentro de cada entrenamiento: ≥10 mediciones, ≥5 grupos, ≥2 valores distintos y ≥2 predictores con ≥5 pares medidos. A/B usan la intersección de elegibles. Escalamiento ajustado solo al entrenamiento, sin logaritmos. Mediana no se ajusta por búsqueda; KNN compara cuatro configuraciones (3/5/7 uniforme y 3 por distancia); Iterative compara 50 rondas/tol 0.001 y 100/tol 0.0001. BayesianRidge mantiene sus parámetros predeterminados, registrados. El criterio interno es MAE_R macro sobre celdas comunes entre configuraciones.
+Sus principales funciones son:
 
-Mediana es una sustitución general del entrenamiento. KNN/Iterative requieren dos predictores medidos en la consulta; KNN además tres donantes con distancia definida. Sin soporte se registra abstención, sin rescate silencioso. Las advertencias de convergencia se conservan.
+- Revisar las fuentes de Ishii y Gerosa.
+- Identificar los metabolitos presentes en las distintas bases de datos.
+- Analizar la disponibilidad de mediciones para cada metabolito.
+- Homologar las concentraciones a mM.
+- Establecer las referencias utilizadas para normalizar las concentraciones.
+- Evaluar qué metabolitos cuentan con información suficiente para participar en la imputación.
+- Construir las matrices de datos que utilizaremos en el análisis.
 
-La aplicación final exige además ≥10 predicciones externas en ≥3 bloques. Es una regla operativa de evaluabilidad, no un certificado de exactitud. No hay un umbral biológico de error aceptable establecido. Las matrices son estimaciones para análisis exploratorio: conservan las 30×20 posiciones y todas las mediciones originales.
+### `02_imputacion_evaluacion.ipynb`
 
-## Incertidumbre y estadísticas
+Este notebook desarrolla la evaluación y aplicación de los métodos de imputación.
 
-Después de la comparación determinista, se ejecutan 30 ajustes Iterative con posterior y semillas 1100–1129 por escenario/bloque externo, y por escenario en la aplicación final. No se repite la búsqueda interna. Se ejecutan explícitamente todas las rondas seleccionadas: no hay parada temprana posterior. En la aplicación, los huecos de cada muestra se generan conjuntamente en cada repetición.
+Incluye:
 
-Se guardan los 30 valores, media, SD muestral, cuantiles 2.5/97.5%, amplitud e inclusión de las verdades externas. Los intervalos dependen del modelo; no cuantifican toda la incertidumbre biológica. Baja SD no garantiza precisión. Los candidatos sin evaluación suficiente pueden tener sorteos exploratorios, sin incorporarse a la matriz final.
+- Generación de máscaras para ocultar concentraciones conocidas.
+- Validación de los tres métodos.
+- Selección de parámetros para KNN e Iterative.
+- Cálculo de errores y cobertura.
+- Estimación de incertidumbre de IterativeImputer.
+- Imputación de las concentraciones faltantes.
+- Análisis estadístico y generación de figuras.
 
-Los descriptivos en mM incluyen observados/imputados/pendientes, media, mediana, SD, IQR y CV. Se calculan tanto con todos los resultados disponibles como sobre los mismos huecos completados por los seis análisis. El CV queda indefinido si n<2 o la media no es positiva/se aproxima a cero.
+## 3. Datos experimentales
 
-## Dónde leer los resultados
+Trabajamos principalmente con concentraciones de metabolitos medidas en *E. coli* a partir de los estudios de Ishii y Gerosa.
 
-- `auditoria/`: trazabilidad, referencias, disponibilidad, elegibilidad y matrices de entrada.
-- `evaluacion/resumen_global.csv`, `metricas.csv`, `validacion_celdas.csv`: MAE macro/micro, conteos, cobertura, errores por compuesto/bloque y abstenciones. `comunes_seis` es la comparación principal.
-- `busqueda_interna.csv`, `parametros_seleccionados.csv`, `ajustes.csv`, `elegibilidad_entrenamientos.csv`: selección, rondas, advertencias y soporte.
-- `sorteos_posteriores.csv.gz`, `incertidumbre.csv`, `cobertura_intervalos.csv`: incertidumbre separada del análisis determinista.
-- `matriz_A_*_mM.csv`, `matriz_B_*_mM.csv`, `imputaciones.csv`, `soporte_aplicacion.csv`: seis matrices, candidatos, estimaciones aceptadas y motivos para abstenerse.
-- `estadisticos.csv`, `casos_representativos.csv`, `figuras/`: cambios descriptivos y cinco gráficos.
-- `mascaras.json`, `verificacion.json`: máscaras, semillas, versiones, huellas y controles.
+La base de Ishii contiene 30 muestras seleccionadas correspondientes a una tasa de dilución de 0.2 h⁻¹, incluyendo diferentes perturbaciones metabólicas.
 
-## Límites de la comparación
+Para complementar esta información utilizamos las condiciones experimentales admisibles de Gerosa MMC2.
 
-Los grupos externos comparten datos de entrenamiento, por lo que la SD entre bloques no es un intervalo de confianza. Algunos metabolitos tienen pocas predicciones: interpretar siempre MAE junto con n y cobertura. Ocultar mediciones detectadas no reproduce necesariamente faltantes por límite de detección. El protocolo actual evalúa ocultamiento individual por perturbación; no presenta como recalculadas las antiguas pruebas de patrones simultáneos o series analíticas.
+Como ambos estudios utilizan condiciones experimentales diferentes, los datos de Gerosa se incorporan como información complementaria. Su utilidad se determina a partir de los resultados de validación.
 
-Los MAE históricos del panel de siete no son directamente comparables: cambian máscaras, panel y reglas de soporte. Para atribuir una diferencia solo a ampliar el panel sería necesario un experimento controlado adicional. No se reutilizan esos MAE como resultados actuales.
+### Homologación de unidades
 
-## Resultado principal de la ejecución vigente (9 de noviembre de 2026)
+Para poder trabajar con ambas fuentes, expresamos las concentraciones en mM.
 
-**Fuente de los números:** `evaluacion/resumen_global.csv`, `validacion_celdas.csv`, `imputaciones.csv` y `cobertura_intervalos.csv`. Las salidas del notebook 02 coinciden con estos CSV. Los resultados de `evaluacion_anterior/` se conservan solo como antecedente; no se mezclan en esta tabla.
+Las concentraciones de Ishii ya se encuentran en estas unidades, mientras que las de Gerosa se convierten desde µmol/gCDW utilizando un volumen intracelular de 2.3 mL/gCDW, respaldado por la documentación experimental.
 
-| Método | MAE_R macro A (Ishii) | MAE_R macro B (Ishii + MMC2) |
+La conversión corresponde a:
+
+\[
+C_{\mathrm{Gerosa}}[\mathrm{mM}]
+=
+\frac{C_{\mathrm{Gerosa}}[\mu\mathrm{mol/gCDW}]}{2.3\ [\mathrm{mL/gCDW}]}
+\]
+
+También trabajamos con concentraciones normalizadas respecto a la concentración de referencia de cada metabolito en Gerosa bajo la condición de glucosa:
+
+\[
+R_{ij}=\frac{C_{ij}[\mathrm{mM}]}{C_{\mathrm{ref},j}[\mathrm{mM}]}
+\]
+
+Esto nos permite analizar los errores tanto en concentraciones absolutas como en valores relativos a una referencia común.
+
+### Metabolitos considerados
+
+El panel de estudio contiene 20 metabolitos:
+
+`pyr`, `fum`, `succ`, `akg`, `pep`, `dhap`, `s7p`, `ade`, `cit`, `cAMP`, `amp`, `gmp`, `adp`, `gdp`, `atp`, `gtp`, `nad`, `nadh`, `nadp` y `nadph`.
+
+No todos presentan la misma cantidad de mediciones. Por esta razón, evaluamos su disponibilidad antes de decidir cuáles pueden participar en los modelos.
+
+En particular, DHAP, NADH y NADPH presentan una cantidad limitada de observaciones en Ishii, por lo que conservamos sus valores experimentales sin completar sus faltantes.
+
+## 4. Métodos de imputación
+
+Evaluamos tres métodos con el objetivo de estudiar diferentes formas de utilizar la información disponible.
+
+**Mediana**
+
+Utiliza la mediana de las concentraciones observadas de cada metabolito dentro del conjunto de entrenamiento. Funciona como un método de referencia, ya que no considera directamente las relaciones entre los metabolitos.
+
+**KNNImputer**
+
+Busca muestras similares a partir de sus metabolitos observados y utiliza sus concentraciones para estimar los valores faltantes.
+
+Evaluamos cuatro configuraciones, con 3, 5 y 7 vecinos con ponderación uniforme, además de 3 vecinos ponderados por distancia.
+
+**IterativeImputer**
+
+Estima las concentraciones de cada metabolito mediante un modelo que utiliza los demás metabolitos como predictores.
+
+Utilizamos `BayesianRidge` como estimador, ya que permite incorporar regularización a los modelos de regresión y también generar estimaciones estocásticas para estudiar su incertidumbre.
+
+Evaluamos dos configuraciones de IterativeImputer:
+
+- 50 iteraciones, con tolerancia de 0.001.
+- 100 iteraciones, con tolerancia de 0.0001.
+
+Los parámetros de `BayesianRidge` corresponden a los valores predeterminados de `scikit-learn`.
+
+## 5. Escenarios de análisis
+
+Realizamos la evaluación considerando dos escenarios.
+
+**Escenario A: Ishii**
+
+Los métodos se entrenan utilizando únicamente las concentraciones experimentales de Ishii.
+
+**Escenario B: Ishii + MMC2**
+
+Incorporamos ocho condiciones experimentales admisibles de Gerosa MMC2 al conjunto de entrenamiento.
+
+En ambos escenarios, la evaluación se realiza sobre las mismas concentraciones observadas de Ishii. Esto permite estudiar cómo influye incorporar los datos de Gerosa en el desempeño de los métodos.
+
+## 6. Validación de los métodos
+
+Para evaluar la imputación, ocultamos concentraciones que conocemos experimentalmente y pedimos a cada método que las estime.
+
+Después comparamos las concentraciones estimadas con las originales para calcular el error.
+
+La validación utiliza cinco bloques externos organizados por grupos de perturbación y tres bloques internos para seleccionar parámetros.
+
+En cada evaluación se oculta una concentración, manteniendo visibles los demás metabolitos medidos de esa muestra. El grupo experimental al que pertenece se excluye del entrenamiento.
+
+Esto permite evaluar las predicciones sin utilizar las mediciones del mismo grupo experimental como información de entrenamiento.
+
+### Criterios de elegibilidad
+
+Antes de entrenar los modelos, verificamos que cada metabolito cuente con suficiente información.
+
+Los criterios principales son:
+
+- Al menos 10 mediciones disponibles.
+- Observaciones distribuidas en al menos 5 grupos.
+- Al menos 2 valores de concentración distintos.
+- Al menos 2 metabolitos predictores con 5 pares de mediciones disponibles.
+
+Estos criterios se aplican dentro de cada entrenamiento para evitar utilizar información de las observaciones reservadas para evaluación.
+
+Además, KNN e Iterative requieren al menos dos predictores medidos en la muestra que se desea imputar. KNN también necesita al menos tres muestras donantes con distancias calculables.
+
+Cuando no existe suficiente información, no realizamos la estimación y registramos el motivo.
+
+### Métricas de evaluación
+
+Utilizamos principalmente:
+
+- **MAE en mM:** error absoluto medio entre las concentraciones experimentales y estimadas.
+- **MAE_R:** error absoluto medio calculado sobre las concentraciones normalizadas.
+- **Cobertura:** proporción de concentraciones evaluables para las cuales se obtiene una predicción.
+- **Cantidad de predicciones:** número de observaciones efectivamente evaluadas para cada metabolito y método.
+
+La comparación principal considera las mismas celdas para los tres métodos y ambos escenarios.
+
+Esto es importante porque un método podría presentar un error menor simplemente por haber realizado predicciones sobre un conjunto de observaciones diferente.
+
+## 7. Estimación de incertidumbre
+
+Además del error de las predicciones, nos interesa estudiar cuánto pueden variar las estimaciones de IterativeImputer.
+
+Para esto realizamos 30 imputaciones estocásticas utilizando `BayesianRidge` con `sample_posterior=True` y diferentes semillas.
+
+A partir de estas repeticiones calculamos:
+
+- Media de las concentraciones estimadas.
+- Desviación estándar de las imputaciones.
+- Cuantiles de 2.5 % y 97.5 %.
+- Amplitud de los intervalos.
+- Proporción de concentraciones experimentales que quedan dentro de los intervalos estimados.
+
+La desviación estándar permite describir cuánto cambia la estimación de una misma concentración entre las diferentes ejecuciones.
+
+Es importante considerar que esta incertidumbre depende del modelo utilizado. Una desviación estándar pequeña no significa necesariamente que la predicción sea correcta, por lo que también evaluamos el error y la cobertura de los intervalos.
+
+## 8. Aplicación de la imputación
+
+Una vez evaluados los métodos, los aplicamos a las matrices de concentraciones originales.
+
+Para incorporar una estimación a la matriz final exigimos que el metabolito cumpla los criterios de elegibilidad y cuente con al menos 10 predicciones externas distribuidas en 3 bloques de validación.
+
+Las concentraciones experimentales se conservan y los valores que no cumplen estas condiciones permanecen faltantes.
+
+Generamos una matriz para cada combinación de método y escenario, obteniendo seis matrices finales de 30 muestras y 20 metabolitos.
+
+Estas matrices están destinadas al análisis exploratorio y deben interpretarse considerando la disponibilidad experimental, el error y la incertidumbre de las imputaciones.
+
+## 9. Resultados del análisis
+
+Los resultados de la ejecución del 9 de noviembre de 2026 se encuentran guardados en la carpeta `evaluacion/`.
+
+La comparación principal considera 416 concentraciones evaluadas en común, de un total de 457 intentos, correspondientes a una cobertura del 91.0 %.
+
+El MAE_R macro obtenido fue:
+
+| Método | Ishii (A) | Ishii + MMC2 (B) |
 |---|---:|---:|
 | Mediana | 0.6587 | 0.7009 |
 | KNN | 0.4801 | 0.4835 |
 | Iterative | **0.4713** | 0.4956 |
 
-La comparación principal utiliza las **mismas 416 celdas de Ishii** en los seis análisis, sobre **457 intentos (91.0% de cobertura)**. Se obtienen predicciones en **16 metabolitos** del panel documental de 20; 17 cumplen elegibilidad preliminar para las matrices, pero no todos tienen predicciones externas. MAE_R macro promedia primero por metabolito y después entre metabolitos; MAE_R no es un porcentaje de error por medición.
+Iterative entrenado únicamente con Ishii presenta el menor MAE_R macro, seguido de KNN en el mismo escenario.
 
-**Interpretación:** Iterative/A presenta el menor MAE_R macro (0.4713), seguido de KNN/A (0.4801), sin que esta diferencia establezca superioridad estadística. Con la métrica macro en ratios, añadir MMC2 empeora ligeramente los tres métodos: KNN 0.4801 → 0.4835, Iterative 0.4713 → 0.4956 y Mediana 0.6587 → 0.7009. La clasificación puede cambiar con MAE en mM; ver los cuatro agregados y los conteos en `resumen_global.csv`. MMC2 no debe considerarse beneficioso de manera indiscriminada.
+Las diferencias entre estos dos métodos son relativamente pequeñas y no permiten establecer por sí solas una superioridad estadística.
 
-**Aplicación final:** cada una de las seis matrices de 30×20 conserva las **457 mediciones originales**, completa **36 de 143 huecos** y deja **107 pendientes**: 70 por falta de elegibilidad durante el entrenamiento y 37 por evaluación externa insuficiente. Los 36 huecos completados son piruvato (16), fumarato (7), succinato (3), PEP (8), S7P (1) y cAMP (1). El soporte de evaluación es un filtro operativo, no un umbral biológico de error aceptable.
+Al incorporar MMC2, el MAE_R macro aumenta ligeramente para los tres métodos. Esto muestra que agregar información de otro estudio no necesariamente mejora la calidad de las estimaciones.
 
-**Incertidumbre:** se ejecutaron **360 ajustes posteriores** con 30 semillas por escenario y bloque/aplicación final. Se emitieron 416 intervalos externos por escenario; los intervalos nominales 95% contienen 371/416 (89.2%) de las verdades en A y 361/416 (86.8%) en B. Existe infracobertura descriptiva; las SD y los cuantiles dependen de los supuestos del modelo y no capturan toda la incertidumbre biológica.
+### Concentraciones imputadas
 
-**Convergencia:** `evaluacion/ajustes.csv` conserva **3 advertencias de Iterative** en ajustes internos deterministas; no se reemplazaron sus resultados silenciosamente. Conviene revisar su efecto en la selección de parámetros antes de extraer conclusiones definitivas.
+Las matrices iniciales contienen 457 concentraciones experimentales y 143 posiciones faltantes.
 
-**Casos representativos guardados:** succ (buen caso), cit (cobertura limitada), ade (incertidumbre), nadp (error importante) y dhap (excluido). Para cit solo hay dos predicciones externas; su bajo error no demuestra confiabilidad general.
+En cada una de las seis matrices finales se completan 36 concentraciones, mientras que 107 permanecen sin imputar.
 
-**Limitaciones:** las verdades externas son concentraciones observadas ocultadas individualmente, no los faltantes naturales censurados. Las diferencias entre estudios y la referencia externa fija siguen siendo fuentes de incertidumbre. Los MAE históricos del panel de siete y los de `evaluacion_anterior/` no deben usarse como resultados vigentes. El notebook 02 desarrolla la discusión por metabolito.
+Los metabolitos con concentraciones completadas son:
+
+| Metabolito | Concentraciones imputadas |
+|---|---:|
+| Piruvato | 16 |
+| Fumarato | 7 |
+| Succinato | 3 |
+| PEP | 8 |
+| S7P | 1 |
+| cAMP | 1 |
+| **Total** | **36** |
+
+En cuanto a la incertidumbre, los intervalos nominales de 95 % obtenidos mediante las imputaciones estocásticas contienen el 89.2 % de los valores experimentales evaluados en el escenario A y el 86.8 % en el escenario B.
+
+Esto indica que los intervalos presentan una cobertura inferior a la nominal, por lo que es necesario considerar esta limitación al interpretar la incertidumbre del modelo.
+
+## 10. Estadísticas y visualización
+
+Para analizar cómo cambia la distribución de las concentraciones al incorporar las estimaciones, calculamos distintos estadísticos descriptivos:
+
+- Media y mediana.
+- Desviación estándar.
+- Rango intercuartílico (IQR).
+- Coeficiente de variación (CV).
+- Cantidad de valores observados, imputados y pendientes.
+
+También seleccionamos cinco metabolitos representativos para visualizar diferentes situaciones:
+
+- **Succinato:** caso con buen desempeño.
+- **Citrato:** caso con cobertura limitada.
+- **Adenina:** caso para estudiar incertidumbre.
+- **NADP:** caso con error importante.
+- **DHAP:** ejemplo de metabolito que no cumple los criterios para imputación.
+
+Estas figuras permiten estudiar el comportamiento de los métodos a nivel de metabolito, complementando las métricas generales.
+
+## 11. Archivos y resultados
+
+Las principales carpetas de trabajo son:
+
+### `sources/`
+
+Contiene las fuentes experimentales y la documentación utilizada para preparar las bases de datos.
+
+### `auditoria/`
+
+Contiene los resultados de la revisión de fuentes, la disponibilidad de los metabolitos, las referencias de normalización, los criterios de elegibilidad y las matrices preparadas.
+
+### `evaluacion/`
+
+Contiene los resultados de imputación y validación.
+
+Entre los archivos principales se encuentran:
+
+| Archivo | Contenido |
+|---|---|
+| `resumen_global.csv` | Resumen de errores y cobertura de los métodos. |
+| `metricas.csv` | Métricas por metabolito y bloque. |
+| `validacion_celdas.csv` | Valores observados y predicciones de validación. |
+| `busqueda_interna.csv` | Evaluación de configuraciones de parámetros. |
+| `parametros_seleccionados.csv` | Parámetros seleccionados para cada análisis. |
+| `elegibilidad_entrenamientos.csv` | Disponibilidad y elegibilidad de los metabolitos. |
+| `incertidumbre.csv` | Estadísticos de incertidumbre de Iterative. |
+| `cobertura_intervalos.csv` | Cobertura de los intervalos estimados. |
+| `imputaciones.csv` | Concentraciones imputadas y sus condiciones de aceptación. |
+| `estadisticos.csv` | Estadísticos descriptivos de las concentraciones. |
+| `casos_representativos.csv` | Metabolitos seleccionados para el análisis gráfico. |
+| `mascaras.json` | Máscaras utilizadas durante la validación. |
+| `verificacion.json` | Información de versiones, semillas y controles de ejecución. |
+
+Las seis matrices finales se guardan con nombres que comienzan por `matriz_A_` o `matriz_B_`, según el escenario.
+
+La carpeta `figuras/` contiene los gráficos utilizados para interpretar los resultados.
+
+## 12. Cómo ejecutar el proyecto
+
+Para reproducir el análisis se recomienda utilizar Python 3.13.14 y trabajar dentro de un entorno virtual.
+
+Primero, instalar las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+En caso de no contar con Jupyter, instalar:
+
+```bash
+pip install jupyterlab ipykernel
+```
+
+Luego abrir Jupyter desde la carpeta principal:
+
+```bash
+jupyter lab
+```
+
+Ejecutar los notebooks en este orden:
+
+1. `01_auditoria_preparacion.ipynb`
+2. `02_imputacion_evaluacion.ipynb`
+
+El primer notebook prepara las matrices de entrada y el segundo realiza la validación, imputación, análisis estadístico y generación de resultados.
+
+Las ejecuciones utilizan semillas y máscaras documentadas para facilitar la reproducibilidad. Los archivos de verificación registran el entorno y las condiciones utilizadas.
+
+## 13. Consideraciones del análisis
+
+Los resultados deben interpretarse teniendo presentes algunas limitaciones.
+
+Primero, la validación evalúa nuestra capacidad de reconstruir concentraciones experimentales que ocultamos deliberadamente. Esto no garantiza que obtengamos el mismo desempeño al estimar concentraciones que originalmente no fueron medidas.
+
+Segundo, los datos de Ishii y Gerosa provienen de condiciones experimentales diferentes. Por lo tanto, incorporar MMC2 puede aportar información útil, pero también introducir diferencias que afecten las predicciones.
+
+Tercero, el desempeño no debe interpretarse únicamente a partir del MAE. También es necesario considerar cuántas concentraciones se evaluaron, qué cobertura se obtuvo y cómo cambia el error entre metabolitos.
+
+Finalmente, los intervalos de IterativeImputer representan incertidumbre bajo los supuestos del modelo, pero no incluyen todas las fuentes de variabilidad experimental y biológica.
+
+Por estas razones, las concentraciones imputadas se consideran **estimaciones para el análisis exploratorio**, y no sustitutos equivalentes de nuevas mediciones experimentales.
+
+El proyecto busca establecer una metodología reproducible para evaluar qué metabolitos pueden imputarse, qué métodos entregan mejores estimaciones y cuáles son las limitaciones de utilizar estas concentraciones en análisis posteriores.
