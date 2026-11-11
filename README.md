@@ -11,7 +11,7 @@ No hay ejecutores externos, clases personalizadas, KNN propio ni PCA. Las pocas 
 
 ## Ejecutar
 
-Con Python 3.12, crear un entorno e instalar `pip install -r requirements.txt`. Abrir Jupyter desde esta carpeta y ejecutar cada notebook de arriba abajo. Si no se dispone de Jupyter, instalar `jupyterlab ipykernel` en ese entorno y abrir `jupyter lab`. Las versiones numéricas efectivamente utilizadas están fijadas en `requirements.txt`; la interfaz Jupyter no interviene en los cálculos. Se incluyen las salidas ejecutadas mediante IPython. No es necesario ejecutar los scripts antiguos.
+Para reproducir la ejecución del 9 de noviembre de 2026, utilizar **Python 3.13.14** e instalar `pip install -r requirements.txt` en un entorno nuevo. Abrir Jupyter desde esta carpeta y ejecutar cada notebook de arriba abajo. Si no se dispone de Jupyter, instalar `jupyterlab ipykernel` en ese entorno y abrir `jupyter lab`. Las versiones de dependencias ahora coinciden con `evaluacion/verificacion.json` y `auditoria/verificacion.json`; esto documenta el entorno utilizado, pero una nueva ejecución sigue siendo necesaria para comprobar la reproducibilidad en otro equipo. Las salidas publicadas se generaron mediante IPython. No es necesario ejecutar los scripts antiguos.
 
 Las máscaras existentes solo se reutilizan si coinciden exactamente con los datos y el protocolo. Para un estudio deliberadamente distinto, guardar primero sus resultados y retirar `evaluacion/`; no mezclar ejecuciones con matrices diferentes. La ejecución completa incluye 360 ajustes posteriores y puede tardar varios minutos.
 
@@ -58,12 +58,26 @@ Los grupos externos comparten datos de entrenamiento, por lo que la SD entre blo
 
 Los MAE históricos del panel de siete no son directamente comparables: cambian máscaras, panel y reglas de soporte. Para atribuir una diferencia solo a ampliar el panel sería necesario un experimento controlado adicional. No se reutilizan esos MAE como resultados actuales.
 
-## Resultado principal de esta ejecución
+## Resultado principal de la ejecución vigente (9 de noviembre de 2026)
 
-| Método | Ishii A | Ishii + MMC2 B |
+**Fuente de los números:** `evaluacion/resumen_global.csv`, `validacion_celdas.csv`, `imputaciones.csv` y `cobertura_intervalos.csv`. Las salidas del notebook 02 coinciden con estos CSV. Los resultados de `evaluacion_anterior/` se conservan solo como antecedente; no se mezclan en esta tabla.
+
+| Método | MAE_R macro A (Ishii) | MAE_R macro B (Ishii + MMC2) |
 |---|---:|---:|
-| Mediana | 0.6682 | 0.6981 |
-| KNN | 0.4964 | 0.4551 |
-| Iterative | 0.4272 | 0.4715 |
+| Mediana | 0.6587 | 0.7009 |
+| KNN | 0.4801 | 0.4835 |
+| Iterative | **0.4713** | 0.4956 |
 
-MAE_R macro sobre 413 celdas comunes (90.4% de 457 intentos). Iterative/Ishii tiene el menor error global; añadir MMC2 favorece KNN pero no Iterative. Se completan 20 huecos y quedan 123 pendientes en cada matriz documental. La cobertura de intervalos es 85.2% en A y 88.4% en B entre intervalos emitidos. La interpretación por metabolito y sus limitaciones se encuentran al final del notebook 02.
+La comparación principal utiliza las **mismas 416 celdas de Ishii** en los seis análisis, sobre **457 intentos (91.0% de cobertura)**. Se obtienen predicciones en **16 metabolitos** del panel documental de 20; 17 cumplen elegibilidad preliminar para las matrices, pero no todos tienen predicciones externas. MAE_R macro promedia primero por metabolito y después entre metabolitos; MAE_R no es un porcentaje de error por medición.
+
+**Interpretación:** Iterative/A presenta el menor MAE_R macro (0.4713), seguido de KNN/A (0.4801), sin que esta diferencia establezca superioridad estadística. Con la métrica macro en ratios, añadir MMC2 empeora ligeramente los tres métodos: KNN 0.4801 → 0.4835, Iterative 0.4713 → 0.4956 y Mediana 0.6587 → 0.7009. La clasificación puede cambiar con MAE en mM; ver los cuatro agregados y los conteos en `resumen_global.csv`. MMC2 no debe considerarse beneficioso de manera indiscriminada.
+
+**Aplicación final:** cada una de las seis matrices de 30×20 conserva las **457 mediciones originales**, completa **36 de 143 huecos** y deja **107 pendientes**: 70 por falta de elegibilidad durante el entrenamiento y 37 por evaluación externa insuficiente. Los 36 huecos completados son piruvato (16), fumarato (7), succinato (3), PEP (8), S7P (1) y cAMP (1). El soporte de evaluación es un filtro operativo, no un umbral biológico de error aceptable.
+
+**Incertidumbre:** se ejecutaron **360 ajustes posteriores** con 30 semillas por escenario y bloque/aplicación final. Se emitieron 416 intervalos externos por escenario; los intervalos nominales 95% contienen 371/416 (89.2%) de las verdades en A y 361/416 (86.8%) en B. Existe infracobertura descriptiva; las SD y los cuantiles dependen de los supuestos del modelo y no capturan toda la incertidumbre biológica.
+
+**Convergencia:** `evaluacion/ajustes.csv` conserva **3 advertencias de Iterative** en ajustes internos deterministas; no se reemplazaron sus resultados silenciosamente. Conviene revisar su efecto en la selección de parámetros antes de extraer conclusiones definitivas.
+
+**Casos representativos guardados:** succ (buen caso), cit (cobertura limitada), ade (incertidumbre), nadp (error importante) y dhap (excluido). Para cit solo hay dos predicciones externas; su bajo error no demuestra confiabilidad general.
+
+**Limitaciones:** las verdades externas son concentraciones observadas ocultadas individualmente, no los faltantes naturales censurados. Las diferencias entre estudios y la referencia externa fija siguen siendo fuentes de incertidumbre. Los MAE históricos del panel de siete y los de `evaluacion_anterior/` no deben usarse como resultados vigentes. El notebook 02 desarrolla la discusión por metabolito.
