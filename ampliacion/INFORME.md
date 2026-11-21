@@ -4,6 +4,8 @@
 
 El 20 de noviembre de 2026, la comparación entre el commit auditado [3c6ab55](https://github.com/pedro1ani/Ipre/commit/3c6ab55a2bfcfc819b475916d530384e9cb78fb2) y `main` dio 0 commits de diferencia. El estudio reutiliza los valores y bloques externos e internos de ese commit. Se reprodujeron sus predicciones con las opciones archivadas (diferencia máxima inferior a 10⁻¹³ mM), aunque la versión de Python y las bibliotecas del presente análisis son distintas. Se registran ambas ejecuciones por separado.
 
+La [revisión de métricas, normalización y fisiología](REVISION_METRICAS_FISIOLOGIA.md) cuantifica cómo cambia la comparación al dividir el error por Gerosa y prueba captación, dilución y un flujo identificable con controles sobre las mismas celdas.
+
 ## 1. Qué se incorpora a la matriz
 
 El inventario contiene **579 filas analíticas intracelulares** de Ishii, no 579 identidades independientes: 149 filas tienen al menos diez observaciones entre los 30 cultivos y 383 tienen menos de cinco. Revisamos los 20 emparejamientos nominales aceptados y conservamos sus filas y protocolos. Por ejemplo, las dos filas de citrato no se suman: la señal de aniones (133) no tiene mediciones y la de nucleótidos (523) sí. Entre estudios, una misma identidad nominal no garantiza que dos técnicas midan sin sesgo.

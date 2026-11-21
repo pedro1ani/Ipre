@@ -45,7 +45,8 @@ def diagnostico_extremos(train):
     return pd.DataFrame(registros, columns=["metabolito", "n", "fuera_cercas_IQR", "caida_SD"])
 
 
-def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None, robusto=False):
+def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None, robusto=False,
+             covariable=None):
     """Solo train interviene en la mediana, las escalas, los vecinos y las regresiones."""
     salida = consultas.reset_index(drop=True).copy()
     salida["pred_mM"] = np.nan
@@ -61,6 +62,18 @@ def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None,
     q[i, j[i]] = np.nan  # Mantiene los demás faltantes reales de ese mismo cultivo.
     divisor = np.ones(len(columnas)) if referencia is None else referencia.loc[columnas].to_numpy()
     x, q = x / divisor, q / divisor
+    observados_x, observados_q = np.isfinite(x), np.isfinite(q)
+    contexto_activo = False
+    if covariable is not None and metodo != "Mediana":
+        cx = covariable.loc[train.index].to_numpy(dtype=float)
+        cq = covariable.loc[salida.muestra].to_numpy(dtype=float)
+        if not (np.isfinite(cx).all() and np.isfinite(cq).all()):
+            raise ValueError("La covariable debe estar disponible en cada fila de esta comparación.")
+        # Una columna constante tampoco debe contar en la distancia de KNN.
+        contexto_activo = np.ptp(cx) > 0
+        if contexto_activo:
+            x, q = np.column_stack([x, cx]), np.column_stack([q, cq])
+
 
     params = CONFIG[metodo][numero]
     if metodo == "Mediana":
@@ -72,7 +85,7 @@ def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None,
         if metodo == "KNN":
             modelo = KNNImputer(**params)
         else:
-            cero = escalador.transform(np.zeros((1, len(columnas))))[0]
+            cero = escalador.transform(np.zeros((1, x.shape[1])))[0]
             modelo = IterativeImputer(estimator=BayesianRidge(), initial_strategy="median",
                                       imputation_order="ascending", skip_complete=False,
                                       random_state=SEMILLA, min_value=cero, **params)
@@ -82,17 +95,23 @@ def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None,
         estimados = modelo.transform(q)
     if escalador is not None:
         estimados = escalador.inverse_transform(estimados)
-    estimados *= divisor
+    estimados = estimados[:, :len(columnas)] * divisor
     dist = nan_euclidean_distances(q, x) if metodo == "KNN" else None
     for fila in i:
         col = j[fila]
-        n = np.isfinite(q[fila]).sum()
+        n = observados_q[fila].sum()
         salida.at[fila, "n_predictores"] = n
         if metodo != "Mediana" and n < 2:
             salida.at[fila, "motivo"] = "menos_de_dos_predictores"
             continue
         if dist is not None:
-            donantes = (np.isfinite(dist[fila]) & np.isfinite(x[:, col])).sum()
+            candidatos = np.isfinite(dist[fila]) & observados_x[:, col]
+            if contexto_activo:
+                solapan = (observados_x & observados_q[fila]).any(axis=1)
+                if (candidatos & ~solapan).any():
+                    salida.at[fila, "motivo"] = "posible_vecino_solo_por_covariable"
+                    continue
+            donantes = candidatos.sum()
             salida.at[fila, "n_donantes"] = donantes
             if donantes < 3:
                 salida.at[fila, "motivo"] = "menos_de_tres_donantes"

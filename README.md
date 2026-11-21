@@ -1,6 +1,6 @@
 # IPre · Imputación de concentraciones intracelulares en E. coli
 
-**[Resultados y decisiones](ampliacion/INFORME.md)** · [Diccionario de metabolitos](ampliacion/resultados/diccionario.csv) · [Error por metabolito](ampliacion/resultados/por_metabolito.csv)
+**[Resultados y decisiones](ampliacion/INFORME.md)** · [Métricas, captación y flujos](ampliacion/REVISION_METRICAS_FISIOLOGIA.md) · [Diccionario de metabolitos](ampliacion/resultados/diccionario.csv) · [Error por metabolito](ampliacion/resultados/por_metabolito.csv)
 
 | Notebook principal | Qué permite revisar |
 | --- | --- |
@@ -14,6 +14,7 @@ Desde la raíz del repositorio, con Python 3.12 y un entorno virtual:
 ```bash
 python -m pip install -r ampliacion/requirements.txt
 python -m ampliacion.validar
+python -m ampliacion.revisar_escalas
 python -m unittest discover -s tests
 ```
 

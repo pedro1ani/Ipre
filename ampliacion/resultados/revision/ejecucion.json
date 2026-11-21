@@ -1,0 +1,45 @@
+{
+  "semilla": 20261109,
+  "hilos": 1,
+  "paquetes": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "openpyxl": "3.1.5",
+    "threadpoolctl": "3.6.0"
+  },
+  "objetivos": [
+    "pyr",
+    "fum",
+    "succ",
+    "akg",
+    "pep",
+    "dhap",
+    "s7p",
+    "ade",
+    "cit",
+    "cAMP",
+    "amp",
+    "gmp",
+    "adp",
+    "gdp",
+    "atp",
+    "gtp",
+    "nad",
+    "nadh",
+    "nadp",
+    "nadph"
+  ],
+  "hiperparametros": "seleccion_mM, panel común, 3 bloques internos",
+  "sha256": {
+    "evaluacion/mascaras.json": "47f0788978afbf5d0ba4350cec855c8b6a99f2d7121139babb9d2516f093465b",
+    "sources/ishii.xlsx": "c9f0d2fbb18209cbb9c4bd4fd9098ac31a07c7f3450997bad15eb9ea8da07bf2",
+    "sources/mmc2.xlsx": "7382ada7720efec90f9c32d6779f3fce386370ba9e57753f7dc10d92405aeac7",
+    "sources/ecoli_auditada_v3.db": "d262b53ab0e03cd81a982d045b61df92e71fdf63ff366ba503c1bcb554f4eaae",
+    "ampliacion/resultados/ejecucion.json": "8d9f1b1926a020157f275ccb74636ec53aaadd15019c6511d23504ad48262f5b",
+    "ampliacion/resultados/ajustes.csv": "438e1dde9e3b793bcbb95f1b69c645192d39f7fe7ad4de1cb296ad5de95f980c",
+    "ampliacion/resultados/busqueda.csv": "0138ce10f84a92153d34382818d7e34756be4fb5aa95e1538ba47833c98be44f",
+    "ampliacion/resultados/predicciones.csv.gz": "163245153334dc1c23821cd4afdf13ad274ef4234b4c341f210c6ecc805d3098"
+  }
+}
