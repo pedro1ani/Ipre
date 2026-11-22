@@ -9,6 +9,8 @@
 
 El análisis principal compara los mismos 30 cultivos de Ishii en dos escenarios: A entrena con Ishii; B añade ocho condiciones de Gerosa MMC2. Las unidades son mM, no se usan logaritmos y los modelos multivariados estandarizan solo el entrenamiento. **El panel ampliado se evalúa como candidato:** los resultados no justifican sustituir por defecto el panel común ni usar MMC2 para todo metabolito.
 
+**[Bloques de trabajo 1 a 4: datos, referencia, número de cultivos y faltantes conjuntos](ampliacion/BLOQUES_1_4.md).** Incluyen un control de ocho filas adicionales de cada fuente, patrones aprendidos solo en Ishii de entrenamiento y una prueba por serie analítica. Desde la raíz, `python -m ampliacion.bloques_1_4` reproduce estos bloques por separado y no completa ningún hueco real.
+
 Desde la raíz del repositorio, con Python 3.12 y un entorno virtual:
 
 ```bash

@@ -59,7 +59,16 @@ def predecir(train, ishii, consultas, columnas, metodo, numero, referencia=None,
     q = ishii.loc[salida.muestra, columnas].to_numpy(dtype=float, copy=True)
     j = pd.Index(columnas).get_indexer(salida.metabolito)
     i = np.flatnonzero(j >= 0)
-    q[i, j[i]] = np.nan  # Mantiene los demás faltantes reales de ese mismo cultivo.
+    q[i, j[i]] = np.nan
+    # Cada fila de consulta tiene su propia copia: un patrón oculta también los
+    # demás componentes antes de calcular distancias, soporte o predicciones.
+    if "ocultar" in salida:
+        for patron, filas in salida.groupby("ocultar", sort=False).indices.items():
+            componentes = patron.split("+")
+            if not salida.loc[filas, "metabolito"].isin(componentes).all():
+                raise ValueError("El patrón no contiene el objetivo de la consulta.")
+            indices = pd.Index(columnas).get_indexer(componentes)
+            q[np.ix_(filas, indices[indices >= 0])] = np.nan
     divisor = np.ones(len(columnas)) if referencia is None else referencia.loc[columnas].to_numpy()
     x, q = x / divisor, q / divisor
     observados_x, observados_q = np.isfinite(x), np.isfinite(q)

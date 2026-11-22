@@ -21,9 +21,9 @@ EXTRAS = {
 }
 
 
-def preparar():
+def preparar(salida=SALIDA):
     """Devuelve matrices separadas para los 30 cultivos, ocho auxiliares y cuatro WT."""
-    SALIDA.mkdir(parents=True, exist_ok=True)
+    salida.mkdir(parents=True, exist_ok=True)
     historica = pd.read_csv(AUDITORIA / "panel_documental_mM.csv", index_col=0)
     meta = pd.read_csv(AUDITORIA / "metadatos.csv", index_col=0)
     inventario = pd.read_csv(AUDITORIA / "homologacion_maestra.csv")
@@ -113,11 +113,11 @@ def preparar():
         ))
     for libro in libros.values():
         libro.close()
-    pd.DataFrame(fichas).to_csv(SALIDA / "diccionario.csv", index=False)
+    pd.DataFrame(fichas).to_csv(salida / "diccionario.csv", index=False)
     filas[["sample_key", "variable", "analyte_id", "source_id", "source_sheet", "source_cell",
            "measurement_uid", "absence_code", "unit_original", "divisor_conversion",
-           "valor_mM", "source_uncertainty_cell", "SD_mM"]].to_csv(SALIDA / "trazabilidad.csv", index=False)
-    matriz.to_csv(SALIDA / "matriz_mM.csv")
+           "valor_mM", "source_uncertainty_cell", "SD_mM"]].to_csv(salida / "trazabilidad.csv", index=False)
+    matriz.to_csv(salida / "matriz_mM.csv")
     return matriz.loc[ish], matriz.loc[mmc], matriz.loc[wt], meta, ref.loc[comp, "valor_mM"]
 
 

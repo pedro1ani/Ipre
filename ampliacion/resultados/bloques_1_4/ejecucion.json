@@ -1,0 +1,77 @@
+{
+  "base_auditada": "f3d3b669b2d6b121649c9b23f97fec79decc89f5",
+  "python": "3.12.14",
+  "paquetes": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "openpyxl": "3.1.5",
+    "threadpoolctl": "3.6.0"
+  },
+  "semilla": 20261109,
+  "hilos_BLAS": 1,
+  "repeticiones_curva": 8,
+  "opciones": {
+    "Mediana": [
+      {}
+    ],
+    "KNN": [
+      {
+        "n_neighbors": 3,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 5,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 7,
+        "weights": "uniform"
+      },
+      {
+        "n_neighbors": 3,
+        "weights": "distance"
+      }
+    ],
+    "Iterative": [
+      {
+        "max_iter": 50,
+        "tol": 0.001
+      },
+      {
+        "max_iter": 100,
+        "tol": 0.0001
+      }
+    ]
+  },
+  "opciones_fijas_curva_y_serie": {
+    "Mediana": 0,
+    "KNN": 1,
+    "Iterative": 0
+  },
+  "n_Ishii": 30,
+  "grupos": 25,
+  "WT_sensibilidad": 4,
+  "auxiliares": 8,
+  "matriz_documental": [
+    42,
+    27
+  ],
+  "objetivos": 20,
+  "sha256_entradas": {
+    "sources/ishii.xlsx": "c9f0d2fbb18209cbb9c4bd4fd9098ac31a07c7f3450997bad15eb9ea8da07bf2",
+    "sources/mmc2.xlsx": "7382ada7720efec90f9c32d6779f3fce386370ba9e57753f7dc10d92405aeac7",
+    "evaluacion/mascaras.json": "47f0788978afbf5d0ba4350cec855c8b6a99f2d7121139babb9d2516f093465b",
+    "auditoria/panel_documental_mM.csv": "6867b3b7761cb8b4519f1bc3765fa81b15b4df9631564b391256d905f9a4dabf",
+    "auditoria/metadatos.csv": "5b1c03fb3ce102e24d253d2019072e690b2370d69d75b605b61911a860fd2a35",
+    "auditoria/referencias_glucosa.csv": "fcdc9db23d66a37734c106d41ac2b606e3850602465c487994de380626968fb3",
+    "auditoria/homologacion_maestra.csv": "69ee08c67ce9ed01a9ac4bb2de002f467675fc98c2d890ee99672c75bec42a94",
+    "auditoria/mediciones_auditadas.csv": "8a696530c7b50c3500ed179b3927e1cea60a73e200785d74510aea279342f8e3",
+    "evaluacion/parametros_seleccionados.csv": "a12620eda6c2ea3b07e404f8783165c1794047a06effbf42974705553fa7fd6d",
+    "evaluacion/validacion_celdas.csv": "2bfd2d9a7c9ba1a38a9b6c4b1b8225b23b34881d058666a4556d0b61f896bf39",
+    "ampliacion/resultados/predicciones.csv.gz": "163245153334dc1c23821cd4afdf13ad274ef4234b4c341f210c6ecc805d3098"
+  },
+  "sha256_mascaras_nuevas": "9a91ae0af2cf776a36557aea86e94fb17f9080b9f58ef197589cce3ea6b7acbc",
+  "sha256_matriz_mM": "a4459a57b7fac3ef6f3cddc61f9d8c3395e3bd98fe8b257a7532d78876671b74"
+}
