@@ -44,8 +44,8 @@ def leer_fila(hoja, fila, columnas, ids, tipo):
     return pd.DataFrame(datos).set_index("muestra")
 
 
-def auditar(ish, wt, mmc, meta):
-    REVISION.mkdir(parents=True, exist_ok=True)
+def auditar(ish, wt, mmc, meta, salida=REVISION):
+    salida.mkdir(parents=True, exist_ok=True)
     ids = ish.append(wt)
     muestras = ids.append(mmc)
     fisiologia = pd.DataFrame(index=muestras).rename_axis("muestra")
@@ -145,12 +145,12 @@ def auditar(ish, wt, mmc, meta):
     np.testing.assert_allclose(fisiologia.loc[pub, "v_abs"],
                                (fisiologia.q_sustrato * fisiologia.v_rel / 100)[pub], atol=1e-10)
     bruto = pd.concat(trazas).reset_index()
-    bruto.to_csv(REVISION / "fuentes_fisiologicas.csv.gz", index=False,
+    bruto.to_csv(salida / "fuentes_fisiologicas.csv.gz", index=False,
                  compression={"method": "gzip", "mtime": 0})
     inventario = bruto.groupby(["archivo", "hoja", "fila", "etiqueta", "tipo", "unidad", "cohorte"]).valor
     inventario.agg(posiciones="size", disponibles="count", minimo="min", maximo="max").to_csv(
-        REVISION / "inventario.csv")
-    fisiologia.to_csv(REVISION / "condiciones.csv")
+        salida / "inventario.csv")
+    fisiologia.to_csv(salida / "condiciones.csv")
     for libro in libros.values():
         libro.close()
     return fisiologia

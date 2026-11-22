@@ -1,0 +1,14 @@
+{
+  "pruebas_aprobadas": 23,
+  "celdas_nuevas_notebook_ejecutadas": 4,
+  "comparaciones_fisiologicas_con_archivo": 9,
+  "max_diferencia_con_archivo_mM": 2.220446049250313e-15,
+  "mascaras_comunes_inalteradas": true,
+  "archivos_aplicacion_inalterados": 9,
+  "fuentes_originales_inalteradas": true,
+  "grupos_externos": 25,
+  "cultivos_proteomica": 26,
+  "experimentos_proteina_objetivo": 6,
+  "reajustes_posteriores": 6400,
+  "intervalos_95_reconstruidos_desde_sorteos": true
+}
