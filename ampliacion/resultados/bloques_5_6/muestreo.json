@@ -1,0 +1,24 @@
+{
+  "semilla_primera": 1100,
+  "semilla_ultima": 1299,
+  "sorteos": [
+    30,
+    100,
+    200
+  ],
+  "niveles": [
+    50,
+    80,
+    95
+  ],
+  "reajustes_independientes": 4000,
+  "rondas": "max_iter de cada opción interna; sin parada temprana posterior",
+  "paquetes": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "huella_corrida": "e33a56eadf6c7e7f114d6f68da8a77d8abcda14e010a2078f472d379b81b8b17"
+}

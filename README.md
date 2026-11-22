@@ -11,6 +11,14 @@ El análisis principal compara los mismos 30 cultivos de Ishii en dos escenarios
 
 **[Bloques de trabajo 1 a 4: datos, referencia, número de cultivos y faltantes conjuntos](ampliacion/BLOQUES_1_4.md).** Incluyen un control de ocho filas adicionales de cada fuente, patrones aprendidos solo en Ishii de entrenamiento y una prueba por serie analítica. Desde la raíz, `python -m ampliacion.bloques_1_4` reproduce estos bloques por separado y no completa ningún hueco real.
 
+**[Bloques 5 y 6: elección del método por metabolito e intervalos de predicción](ampliacion/BLOQUES_5_6.md).** El segundo notebook permite revisar ambos resultados sin recalcularlos ni rellenar ausencias. La comparación enfrenta el selector y los tres métodos fijos sobre las mismas mediciones, y comprueba cuántas observaciones caen en los intervalos de 30, 100 y 200 sorteos. Para ejecutar solo estos análisis, desde la raíz:
+
+```bash
+python -m ampliacion.selector
+python -m ampliacion.incertidumbre --procesos 4
+python -m ampliacion.lectura_5_6
+```
+
 Desde la raíz del repositorio, con Python 3.12 y un entorno virtual:
 
 ```bash
