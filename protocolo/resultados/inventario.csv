@@ -1,0 +1,580 @@
+source_row,variable,original_label,protocol,compartment,unidad_original,identidad,n_30,n_grupos,distintos,decision
+5,ish_5,Glyoxylate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+6,ish_6,Propionate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+7,ish_7,Glycolate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+8,ish_8,Crotonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+9,pyr,Pyruvate,Anion,intracellular,mM,compartida,14,14,13,candidato_preliminar
+10,ish_10,Butanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+11,ish_11,Oxamate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+12,ish_12,b-Hydroxypropionate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+13,ish_13,Lactate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+14,ish_14,Methanesulfonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+15,ish_15,Tiglate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+16,ish_16,3-Methylbutanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+17,ish_17,Pentanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+18,ish_18,Malonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+19,ish_19,a-Hydroxybutanoate + b-Hydroxybutanoate,Anion,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+20,ish_20,a-Hydroxybutanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+21,ish_21,b-Hydroxybutanoate,Anion,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+22,ish_22,a-Hydroxyisobutanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+23,ish_23,(Methylthio)acetate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+24,ish_24,Glycerate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+25,ish_25,Pyrrole-2-carboxylate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+26,ish_26,Methyl sulfate,Anion,intracellular,mM,nominal_Ishii,29,25,27,candidato_preliminar
+27,ish_27,2-Furoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+28,ish_28,3-Acetylacrylate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+29,fum,Fumarate,Anion,intracellular,mM,compartida,23,21,23,candidato_preliminar
+30,ish_30,4-Oxopentanoate,Anion,intracellular,mM,nominal_Ishii,27,23,27,candidato_preliminar
+31,ish_31,2-Oxopentanoate,Anion,intracellular,mM,nominal_Ishii,13,13,13,candidato_preliminar
+32,ish_32,Hexanoate,Anion,intracellular,mM,nominal_Ishii,8,8,8,menos_de_10
+33,succ,Succinate,Anion,intracellular,mM,compartida,27,24,26,candidato_preliminar
+34,ish_34,2-Hydroxypentanoate,Anion,intracellular,mM,nominal_Ishii,21,19,20,candidato_preliminar
+35,ish_35,Benzoate,Anion,intracellular,mM,nominal_Ishii,10,9,10,candidato_preliminar
+36,ish_36,Nicotinate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+37,ish_37,1-Aminoethylphosphonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+38,ish_38,2-Aminoethylphosphonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+39,ish_39,Isethionate,Anion,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+40,ish_40,Cyclohexanecarboxylate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+41,ish_41,Itaconate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+42,ish_42,Citraconate,Anion,intracellular,mM,nominal_Ishii,30,25,27,candidato_preliminar
+43,ish_43,4-Oxohexanoate,Anion,intracellular,mM,nominal_Ishii,28,23,27,candidato_preliminar
+44,ish_44,4-Methyl-2-oxopentanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+45,ish_45,4-Acetylbutanoate,Anion,intracellular,mM,nominal_Ishii,13,13,13,candidato_preliminar
+46,ish_46,Heptanoate,Anion,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+47,ish_47,N-Acetyl-b-alanine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+48,ish_48,Glutarate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+49,ish_49,3-Ureido propionate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+50,ish_50,2-Hydroxy-4-methylpentanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+51,ish_51,6-Hydroxyhexanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+52,ish_52,Aspartate,Anion,intracellular,mM,identidad_duplicada_o_alternativa,0,0,0,identidad_duplicada_o_alternativa
+53,ish_mal,Malate,Anion,intracellular,mM,nominal_Ishii,24,21,24,candidato_preliminar
+54,ish_54,Threonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+55,ish_55,p-Hydroxybenzoate + m-Hydroxybenzoate,Anion,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+56,ish_56,p-hydroxybenzoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+57,ish_57,m-hydroxybenzoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+58,ish_58,o-Hydroxybenzoate,Anion,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+59,ish_59,Phosphonoacetate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+60,ish_60,Ethanolamine phosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+61,ish_61,2-Thiopheneacetate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+62,ish_62,"cis,cis-Muconate",Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+63,ish_63,Octanoate,Anion,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+64,akg,2-Oxoglutarate,Anion,intracellular,mM,compartida,11,11,11,candidato_preliminar
+65,ish_65,Adipate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+66,ish_66,Glutamate,Anion,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+67,ish_67,4-Methylthio-2-oxobutanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+68,ish_68,Citramalate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+69,ish_69,trans-Cinnamate,Anion,intracellular,mM,nominal_Ishii,26,22,26,candidato_preliminar
+70,ish_70,Tartarate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+71,ish_71,2-Carboxybenzaldehyde,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+72,ish_72,Benzoylformate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+73,ish_73,3-Phenylpropionate,Anion,intracellular,mM,nominal_Ishii,24,22,24,candidato_preliminar
+74,ish_74,N-Methylanthranilate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+75,ish_75,p-Hydroxyphenylacetate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+76,ish_76,Mandelate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+77,ish_77,Cysteine sulfinate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+78,ish_78,"2,5-Dihydroxybenzoate",Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+79,ish_79,"2,4-Dihydroxypyrimidine-5-carboxylate",Anion,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+80,ish_80,Dihydroorotate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+81,ish_81,2-Oxooctanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+82,ish_82,Nonanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+83,ish_83,2-Oxoadipate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+84,ish_84,Pimelate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+85,ish_85,8-Hydroxyoctanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+86,ish_86,2-Hydroxyoctanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+87,ish_87,N-Formylaspartate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+88,ish_88,3-Hydroxy-3-methylglutarate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+89,ish_89,p-Coumarate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+90,ish_90,Cumate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+91,ish_91,Phthalate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+92,ish_92,Terephthalate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+93,ish_93,3-Phenyllactate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+94,ish_94,3-(2-Hydroxyphenyl)propionate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+95,ish_95,Phloretate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+96,pep,Phosphoenolpyruvate,Anion,intracellular,mM,compartida,22,20,21,candidato_preliminar
+97,ish_97,4-Hydroxymandelate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+98,ish_98,4-Hydroxy-3-methoxybenzoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+99,ish_99,Cysteate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+100,ish_100,2-Amino-3-phosphonopropionate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+101,dhap,Dihydroxyacetone phosphate,Anion,intracellular,mM,compartida,8,8,8,menos_de_10
+102,ish_102,Glycerophosphorate,Anion,intracellular,mM,identidad_incierta,28,24,27,identidad_incierta
+103,ish_103,Decanoate,Anion,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+104,ish_104,Sulfanilate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+105,ish_105,2-Quinolinecarboxylate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+106,ish_106,N-Acetylleucine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+107,ish_107,Phenyl phosphate,Anion,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+108,ish_108,cis-Aconitate,Anion,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+109,ish_109,trans-Aconitate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+110,ish_110,Shikimate,Anion,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+111,ish_111,N-Acetylaspartate,Anion,intracellular,mM,nominal_Ishii,29,24,27,candidato_preliminar
+112,ish_112,Carbamoylaspartate,Anion,intracellular,mM,nominal_Ishii,28,25,28,candidato_preliminar
+113,ish_113,Allantoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+114,ish_114,2-Isopropylmalate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+115,ish_115,N-Formylmethionine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+116,ish_116,S-Carboxymethylcysteine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+117,ish_117,Hippurate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+118,ish_118,p-Hydroxyphenylpyruvate,Anion,intracellular,mM,nominal_Ishii,15,14,15,candidato_preliminar
+119,ish_119,Homovanillate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+120,ish_120,4-Pyridoxate,Anion,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+121,ish_121,Chelidonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+122,ish_122,Serine O-sulfate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+123,ish_123,O-Phosphoserine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+124,ish_3pg,3-Phosphoglycerate,Anion,intracellular,mM,nominal_Ishii,25,22,23,candidato_preliminar
+125,ish_125,Undecanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+126,ish_126,Azelaate,Anion,intracellular,mM,nominal_Ishii,29,24,28,candidato_preliminar
+127,ish_127,10-Hydroxydecanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+128,ish_128,N-Acetylglutamate,Anion,intracellular,mM,nominal_Ishii,23,21,21,candidato_preliminar
+129,ish_129,N-Carbamylglutamate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+130,ish_130,N-Acetylmethionine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+131,ish_131,Isocitrate + Citrate,Anion,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+132,ish_132,Isocitrate,Anion,intracellular,mM,identidad_duplicada_o_alternativa,0,0,0,identidad_duplicada_o_alternativa
+133,ish_133,Citrate,Anion,intracellular,mM,identidad_duplicada_o_alternativa,0,0,0,identidad_duplicada_o_alternativa
+134,ish_134,Quinate,Anion,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+135,ish_135,Phenaceturate,Anion,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+136,ish_136,Galacturonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+137,ish_137,Glucuronate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+138,ish_138,trans-4-Hydroxy-3-methoxycinnamate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+139,ish_139,o-Hydroxyhippurate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+140,ish_140,Gluconate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+141,ish_141,Syringate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+142,ish_142,4-Hydroxy-3-methoxymandelate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+143,ish_143,Erythrose 4-phosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+144,ish_144,Dodecanoate,Anion,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+145,ish_145,Cysteine S-sulfate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+146,ish_146,4-Sulfobenzoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+147,ish_147,Sebacate,Anion,intracellular,mM,nominal_Ishii,18,16,17,candidato_preliminar
+148,ish_148,3-Indolebutanoate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+149,ish_149,Xanthurenate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+150,ish_150,Etidronate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+151,ish_151,"6,8-Thioctate",Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+152,ish_152,N-Acetylphenylalanine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+153,ish_153,Benzylsuccinate,Anion,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+154,ish_154,N-Benzyloxycarbonylglycine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+155,ish_155,Saccharate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+156,ish_156,Mucate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+157,ish_157,3-Indoxyl sulfate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+158,ish_158,2-Deoxyribose 1-phosphate,Anion,intracellular,mM,nominal_Ishii,25,22,25,candidato_preliminar
+159,ish_159,4-Nitrophenyl phosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+160,ish_160,Pantothenate,Anion,intracellular,mM,nominal_Ishii,28,23,26,candidato_preliminar
+161,ish_161,Sinapate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+162,ish_162,Porphobilinogen,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+163,ish_163,"3,5-Dinitrosalicylate",Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+164,ish_ru5p,Ribulose 5-phosphate,Anion,intracellular,mM,nominal_Ishii,29,24,29,candidato_preliminar
+165,ish_r5p,Ribose 5-phosphate,Anion,intracellular,mM,nominal_Ishii,18,16,18,candidato_preliminar
+166,ish_166,Dodecanedioate,Anion,intracellular,mM,nominal_Ishii,17,17,17,candidato_preliminar
+167,ish_167,N-a-t-boc-asparagine,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+168,ish_168,2-Deoxyglucose 6-phosphate,Anion,intracellular,mM,nominal_Ishii,21,20,20,candidato_preliminar
+169,ish_169,Biotin,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+170,ish_170,Pyridoxal 5-phosphate,Anion,intracellular,mM,nominal_Ishii,19,19,19,candidato_preliminar
+171,ish_171,Glucosamine 6-phosphate,Anion,intracellular,mM,nominal_Ishii,28,23,26,candidato_preliminar
+172,ish_g1p,Glucose 1-phosphate,Anion,intracellular,mM,nominal_Ishii,28,23,28,candidato_preliminar
+173,ish_f6p,Fructose 6-phosphate,Anion,intracellular,mM,nominal_Ishii,28,23,27,candidato_preliminar
+174,ish_g6p,Glucose 6-phosphate,Anion,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+175,ish_175,Sorbitol 6-phosphate,Anion,intracellular,mM,nominal_Ishii,28,23,27,candidato_preliminar
+176,ish_176,"2,3-Diphosphoglycerate",Anion,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+177,ish_177,Galacturonate 1-phosphate,Anion,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+178,ish_178,6-Phosphogluconate,Anion,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+179,s7p,Sedoheptulose-7-phosphate,Anion,intracellular,mM,compartida,29,24,26,candidato_preliminar
+180,ish_180,Argininosuccinate,Anion,intracellular,mM,nominal_Ishii,16,16,16,candidato_preliminar
+181,ish_181,N-Acetyl muramate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+182,ish_182,8-Anilino-1-naphthalene sulfonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+183,ish_183,N-Acetylgalactosamine 6-sulfate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+184,ish_184,N-Acetylglucosamine 6-phosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+185,ish_185,N-Acetylglucosamine 1-phosphate,Anion,intracellular,mM,nominal_Ishii,19,19,19,candidato_preliminar
+186,ish_186,N-Acetylneuraminate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+187,ish_187,"Ribulose 1,5-diphosphate",Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+188,ish_188,N-Glycolylneuraminate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+189,ish_189,"Fructose 1,6-diphosphate",Anion,intracellular,mM,nominal_Ishii,19,18,18,candidato_preliminar
+190,ish_190,Bis(p-nitrophenyl)phosphate,Anion,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+191,ish_191,Gibberellate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+192,ish_192,ProstaglandinE2,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+193,ish_193,ProstaglandinF2a,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+194,ish_194,Orotidine 5'-monophosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+195,ish_195,Digalacturonate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+196,ish_196,5-Phosphorylribose 1-pyrophosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+197,ish_197,Cholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+198,ish_198,Trehalose 6-phosphate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+199,ish_199,Folate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+200,ish_200,Adenylosuccinate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+201,ish_201,Glycocholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+202,ish_202,Glycyrrhetinate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+203,ish_203,Taurolithocholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+204,ish_204,Taurodeoxycholate + Taurochenodeoxycholate,Anion,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+205,ish_205,Taurodeoxycholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+206,ish_206,Taurochenodeoxycholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+207,ish_207,Taurocholate,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+208,ish_208,Phosphoramidon,Anion,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+209,ish_209,3-Aminopropionitrile,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+210,ish_210,Methylguanidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+211,ish_211,Isobutylamine,Cation,intracellular,mM,nominal_Ishii,20,16,20,candidato_preliminar
+212,ish_212,"1,3-Diaminopropane",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+213,ish_213,Gly,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+214,ish_214,Acetohydroxamate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+215,ish_215,Isopropanolamine,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+216,ish_216,Trimethylamine N-oxide,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+217,ish_217,Hydroxyurea,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+218,ish_218,Trimethylsulfonium,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+219,ish_219,Cysteamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+220,ish_220,Pyridine,Cation,intracellular,mM,nominal_Ishii,14,11,14,candidato_preliminar
+221,ish_221,Pyrimidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+222,ish_222,4-Methylpyrazole,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+223,ish_223,"3-Amino-1,2,4-triazole",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+224,ish_224,Piperidine,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+225,ish_225,Piperazine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+226,ish_226,Isoamylamine,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+227,ish_227,"1,4-Butanediamine",Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+228,ish_228,Ala,Cation,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+229,ish_229,Sarcosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+230,ish_230,beta-Ala,Cation,intracellular,mM,nominal_Ishii,11,10,11,candidato_preliminar
+231,ish_231,"3-Amino-1,2-propanediol",Cation,intracellular,mM,nominal_Ishii,4,3,4,menos_de_10
+232,ish_232,Aniline,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+233,ish_233,2-Hydroxypyridine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+234,ish_234,4-Hydroxymethylimidazole,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+235,ish_235,Succinimide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+236,ish_236,1-Methyl-2-pyrrolidone,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+237,ish_237,Azetidine-2-carboxylate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+238,ish_238,1-Aminocyclopropane-1-carboxylate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+239,ish_239,Acetoacetamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+240,ish_240,Betaine aldehyde,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+241,ish_241,Hexylamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+242,ish_242,"1,5-Diaminopentane",Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+243,ish_243,GABA,Cation,intracellular,mM,nominal_Ishii,29,24,29,candidato_preliminar
+244,ish_244,alpha-Aminoisobutyrate,Cation,intracellular,mM,nominal_Ishii,24,22,23,candidato_preliminar
+245,ish_245,N-Methylalanine,Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+246,ish_246,"N,N-Dimethylglycine",Cation,intracellular,mM,nominal_Ishii,6,5,6,menos_de_10
+247,ish_247,2-Cyanopyridine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+248,ish_248,"2,3-Diaminopropionate",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+249,ish_249,Ser,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+250,ish_250,Diethanolamine,Cation,intracellular,mM,nominal_Ishii,26,22,25,candidato_preliminar
+251,ish_251,"2-Amino-2-methyl-1,3-propanediol",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+252,ish_252,N-Methylaniline,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+253,ish_253,Phenylhydrazine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+254,ish_254,Hypotaurine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+255,ish_255,2-Aminophenol,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+256,ish_256,Cytosine,Cation,intracellular,mM,nominal_Ishii,24,21,23,candidato_preliminar
+257,ish_257,Histamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+258,ish_258,Uracil,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+259,ish_259,Creatinine,Cation,intracellular,mM,nominal_Ishii,13,13,13,candidato_preliminar
+260,ish_260,2-Mercapto-1-methylimidazole,Cation,intracellular,mM,nominal_Ishii,27,24,26,candidato_preliminar
+261,ish_261,beta-Cyanoalanine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+262,ish_262,Muscimol,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+263,ish_263,Dihydrouracil,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+264,ish_264,Pro,Cation,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+265,ish_265,Guanidoacetate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+266,ish_266,5-Aminopentanoate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+267,ish_267,Betaine,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+268,ish_268,Val,Cation,intracellular,mM,nominal_Ishii,29,25,27,candidato_preliminar
+269,ish_269,Benzimidazole,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+270,ish_270,"2,4-Diaminobutyrate",Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+271,ish_271,4-Amino-3-hydroxybutyrate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+272,ish_272,Homoserine,Cation,intracellular,mM,nominal_Ishii,24,21,23,candidato_preliminar
+273,ish_273,alpha-Methylserine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+274,ish_274,Thr,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+275,ish_275,Purine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+276,ish_276,Benzamidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+277,ish_277,Cys,Cation,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+278,ish_278,Benzamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+279,ish_279,"2-Amino-2-(hydroxymethyl)-1,3-propanediol",Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+280,ish_280,"N,N-Dimethylaniline+Phenethylamine",Cation,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+281,ish_281,Phenethylamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+282,ish_282,"N,N-Dimethylaniline",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+283,ish_283,alpha-Methylbenzylamine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+284,ish_284,"2,6-Dimethylaniline",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+285,ish_285,"2,4-Dimethylaniline",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+286,ish_286,Picolinamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+287,ish_287,Isonicotinamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+288,ish_288,Nicotinamide,Cation,intracellular,mM,nominal_Ishii,28,24,28,candidato_preliminar
+289,ish_289,3-Chloroalanine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+290,ish_290,Taurine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+291,ish_291,5-Methylcytosine,Cation,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+292,ish_292,1-Metylhistamine,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+293,ish_293,Imidazole-4-acetate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+294,ish_294,Melamine,Cation,intracellular,mM,nominal_Ishii,13,9,13,candidato_preliminar
+295,ish_295,Barbiturate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+296,ish_296,5-Oxoproline,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+297,ish_297,Isoquinoline,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+298,ish_298,Quinoline,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+299,ish_299,1-Amino-1-cyclopentanecarboxylate,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+300,ish_300,Pipecolate,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+301,ish_301,Metformin,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+302,ish_302,Octylamine,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+303,ish_303,N-Acetylputrescine,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+304,ish_304,Agmatine,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+305,ish_305,Hydroxyproline,Cation,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+306,ish_306,5-Aminolevulinate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+307,ish_307,beta-Guanidinopropionate,Cation,intracellular,mM,nominal_Ishii,5,5,4,menos_de_10
+308,ish_308,Creatine,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+309,ish_309,Ile+Leu,Cation,intracellular,mM,mezcla_no_resuelta,8,6,7,mezcla_no_resuelta
+310,ish_310,Ile,Cation,intracellular,mM,nominal_Ishii,15,15,15,candidato_preliminar
+311,ish_311,Leu,Cation,intracellular,mM,nominal_Ishii,20,19,19,candidato_preliminar
+312,ish_312,6-Aminohexanoate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+313,ish_313,Bis(3-aminopropyl)amine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+314,ish_314,Asn,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+315,ish_315,Gly-Gly,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+316,ish_316,4-Aminoindole+5-Aminoindole,Cation,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+317,ish_317,5-Aminoindole,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+318,ish_318,4-Aminoindole,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+319,ish_319,Ornithine,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+320,ish_320,Asp,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+321,ish_321,4-Hydroxyindole,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+322,ish_322,2-Aminobenzimidazole,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+323,ish_323,Homocysteine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+324,ade,Adenine,Cation,intracellular,mM,compartida,30,25,30,candidato_preliminar
+325,ish_325,Acetanilide,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+326,ish_326,Hypoxanthine,Cation,intracellular,mM,nominal_Ishii,30,25,27,candidato_preliminar
+327,ish_327,1-Methylnicotinamide,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+328,ish_328,Anthranilate,Cation,intracellular,mM,nominal_Ishii,8,8,8,menos_de_10
+329,ish_329,p-Aminobenzoate,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+330,ish_330,Isonicotinate hydrazide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+331,ish_331,Tyramine,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+332,ish_332,beta-Hydroxyphenethylamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+333,ish_333,Urocanate,Cation,intracellular,mM,nominal_Ishii,21,18,21,candidato_preliminar
+334,ish_334,6-Hydroxynicotinate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+335,ish_335,Hexamethylene tetramine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+336,ish_336,Histidinol,Cation,intracellular,mM,nominal_Ishii,21,19,21,candidato_preliminar
+337,ish_337,Ectoine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+338,ish_338,4-Methyl-5-thiazoleethanol,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+339,ish_339,gamma-Guanidinobutyrate,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+340,ish_340,Acetylcholine,Cation,intracellular,mM,nominal_Ishii,10,9,10,candidato_preliminar
+341,ish_341,Spermidine,Cation,intracellular,mM,nominal_Ishii,7,6,7,menos_de_10
+342,ish_342,Gln,Cation,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+343,ish_343,"5,6-Dimethylbenzimidazol",Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+344,ish_344,Lys,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+345,ish_345,Carbachol,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+346,ish_346,Trientine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+347,ish_347,Isatin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+348,ish_348,Glu+Albizziine,Cation,intracellular,mM,mezcla_no_resuelta,29,25,29,mezcla_no_resuelta
+349,ish_349,Albizziine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+350,ish_350,O-Acetylserine,Cation,intracellular,mM,nominal_Ishii,15,13,15,candidato_preliminar
+351,ish_351,Nornicotine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+352,ish_352,threo-beta-Hydroxyaspartate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+353,ish_353,Met,Cation,intracellular,mM,nominal_Ishii,29,24,28,candidato_preliminar
+354,ish_354,3-Methyladenine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+355,ish_355,1-Methyladenine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+356,ish_356,6-Methylaminopurine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+357,ish_357,Triethanolamine,Cation,intracellular,mM,nominal_Ishii,28,24,28,candidato_preliminar
+358,ish_358,"2,6-Diethylaniline",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+359,ish_359,Guanine,Cation,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+360,ish_360,1-Adamantanamine,Cation,intracellular,mM,nominal_Ishii,3,3,3,menos_de_10
+361,ish_361,Mesalamine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+362,ish_362,3-Hydroxyanthranilate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+363,ish_363,Dopamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+364,ish_364,Nomega-Acetylhistamine,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+365,ish_365,Pseudopelletierine,Cation,intracellular,mM,nominal_Ishii,8,7,8,menos_de_10
+366,ish_366,His,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+367,ish_367,beta-Imidazolelactate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+368,ish_368,3-Indoleacetonitrile,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+369,ish_369,Ibotenate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+370,ish_370,Allantoin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+371,ish_371,Indole-3-acetaldehyde,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+372,ish_372,N-Methyl-N-propagylbenzylamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+373,ish_373,Ala-Ala,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+374,ish_374,Tolazoline,Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+375,ish_375,Tryptamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+376,ish_376,alpha-Aminoadipate,Cation,intracellular,mM,nominal_Ishii,25,22,23,candidato_preliminar
+377,ish_377,N-Methylglutamate,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+378,ish_378,Indole-3-ethanol,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+379,ish_379,Carnitine,Cation,intracellular,mM,nominal_Ishii,12,11,12,candidato_preliminar
+380,ish_380,2-Deoxystreptamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+381,ish_381,5-Hydroxylysine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+382,ish_382,Nicotine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+383,ish_383,Pterin,Cation,intracellular,mM,nominal_Ishii,28,23,27,candidato_preliminar
+384,ish_384,Lumazine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+385,ish_385,7-Methylguanine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+386,ish_386,3-Methylguanine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+387,ish_387,Phe,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+388,ish_388,Pyridoxal,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+389,ish_389,Synephrine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+390,ish_390,Pyridoxamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+391,ish_391,Pyridoxine,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+392,ish_392,Noradrenaline,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+393,ish_393,3-Methylhistidine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+394,ish_394,Diphenylamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+395,ish_395,Deisopropylatrazine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+396,ish_396,"1-Methyl-4-phenyl-1,2,3,6-tetrahydropyridine",Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+397,ish_397,Indole-3-acetamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+398,ish_398,N-Acetylornithine,Cation,intracellular,mM,nominal_Ishii,24,21,24,candidato_preliminar
+399,ish_399,N-Ethylglutamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+400,ish_400,Arg,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+401,ish_401,Nomega-Methyltryptamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+402,ish_402,Gramine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+403,ish_403,Indole-3-acetate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+404,ish_404,Guanidinosuccinate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+405,ish_405,2-Guanidinobenzimidazole,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+406,ish_406,Citrulline,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+407,ish_407,Canavanine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+408,ish_408,Serotonin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+409,ish_409,Alliin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+410,ish_410,Cys-Gly,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+411,ish_411,Xanthopterin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+412,ish_412,Mannosamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+413,ish_413,Glucosamine,Cation,intracellular,mM,nominal_Ishii,20,17,18,candidato_preliminar
+414,ish_414,Fsarate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+415,ish_415,Methionine sulfoximine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+416,ish_416,o-Phenanthroline,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+417,ish_417,3-Amino-3-(4-hydroxyphenyl)propionate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+418,ish_418,Tyr,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+419,ish_419,Harman,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+420,ish_420,Eflornithine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+421,ish_421,Epinephrine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+422,ish_422,"Nalpha,Nalpha-Dimethylhistidine",Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+423,ish_423,Phosphorylcholine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+424,ish_424,Desethylatrazine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+425,ish_425,N8-Acetylspermidine,Cation,intracellular,mM,nominal_Ishii,8,8,8,menos_de_10
+426,ish_426,Gly-Leu,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+427,ish_427,Nepsilon-Acetyllysine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+428,ish_428,Homoarginine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+429,ish_429,Quisqualate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+430,ish_430,Castanospermine,Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+431,ish_431,"5-Methoxytryptamine+2,6-Diaminoheptanedioate",Cation,intracellular,mM,mezcla_no_resuelta,8,6,8,mezcla_no_resuelta
+432,ish_432,"2,6-Diaminoheptanedioate",Cation,intracellular,mM,nominal_Ishii,21,20,21,candidato_preliminar
+433,ish_433,5-Methoxytryptamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+434,ish_434,5-Hydroxy-3-indoleaceacetate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+435,ish_435,Diethyl-2-phenylacetamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+436,ish_436,Glucosaminate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+437,ish_437,Tyrosine methyl ester,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+438,ish_438,DOPA,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+439,ish_439,N-Acetylhistidine,Cation,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+440,ish_440,Hydroxyatrazine,Cation,intracellular,mM,nominal_Ishii,8,8,8,menos_de_10
+441,ish_441,"9-Amino-1,2,3,4-tetrahydroacridine",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+442,ish_442,Arginine ethyl ester,Cation,intracellular,mM,nominal_Ishii,7,7,7,menos_de_10
+443,ish_443,Spermine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+444,ish_444,Tryptophanamide+O-Acetylcarnitine,Cation,intracellular,mM,mezcla_no_resuelta,4,4,4,mezcla_no_resuelta
+445,ish_445,O-Acetylcarnitine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+446,ish_446,Tryptophanamide,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+447,ish_447,Trp,Cation,intracellular,mM,nominal_Ishii,22,20,22,candidato_preliminar
+448,ish_448,5-Methoxy-3-indoleacetate,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+449,ish_449,Kynurenine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+450,ish_450,Phosphocreatine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+451,ish_451,Desthiobiotin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+452,ish_452,6-Aminopenicillanate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+453,ish_453,beta-Ala-Lys,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+454,ish_454,"5-Methoxy-N,N-dimethyltryptamine",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+455,ish_455,O-Succinylhomoserine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+456,ish_456,trans-Zeatin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+457,ish_457,5-Hydroxytryptophan,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+458,ish_458,"2-Acetamido-1-amino-1,2-dideoxyglucopyranose",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+459,ish_459,N-Acetylglucosamine,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+460,ish_460,Dihydrozeatine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+461,ish_461,Cystathionine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+462,ish_462,3-Hydroxykynurenine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+463,ish_463,Carnosine,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+464,ish_464,2'-Deoxycytidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+465,ish_465,2'-Deoxyuridine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+466,ish_466,Melatonin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+467,ish_467,Keramine,Cation,intracellular,mM,identidad_incierta,20,17,20,identidad_incierta
+468,ish_468,Sepiapterin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+469,ish_469,"7,8-Dihydrobiopterin",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+470,ish_470,Anserine+Homocarnosine,Cation,intracellular,mM,mezcla_no_resuelta,0,0,0,mezcla_no_resuelta
+471,ish_471,Homocarnosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+472,ish_472,Anserine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+473,ish_473,5-Methyl-2'-deoxycytidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+474,ish_474,"Thymidine+1,5-Diphenylcarbohydrazide",Cation,intracellular,mM,mezcla_no_resuelta,22,18,22,mezcla_no_resuelta
+475,ish_475,"1,5-Diphenylcarbohydrazide",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+476,ish_476,Thymidine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+477,ish_477,Cytidine,Cation,intracellular,mM,nominal_Ishii,15,14,15,candidato_preliminar
+478,ish_478,Uridine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+479,ish_479,N1-Acetylspermine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+480,ish_480,Octopine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+481,ish_481,Pyridoxamine 5'-phosphate,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+482,ish_482,4-Aminophenylsulfone,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+483,ish_483,Muramate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+484,ish_484,2'-Deoxyadenosine+5'-Deoxyadenosine,Cation,intracellular,mM,mezcla_no_resuelta,6,6,6,mezcla_no_resuelta
+485,ish_485,5'-Deoxyadenosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+486,ish_486,2'-Deoxyadenosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+487,ish_487,Purine riboside,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+488,ish_488,Phosphoarginine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+489,ish_489,"7,8-Dihydroneopterin",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+490,ish_490,Glycerophosphorylcholine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+491,ish_491,Thiamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+492,ish_492,N6-Methyl-2'-deoxyadenosine,Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+493,ish_493,"4,4'-Methylene bis(o-chloroaniline)",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+494,ish_494,2'-Deoxyguanosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+495,ish_495,Adenosine,Cation,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+496,ish_496,Homocystine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+497,ish_497,Inosine,Cation,intracellular,mM,nominal_Ishii,28,23,27,candidato_preliminar
+498,ish_498,Glu-Glu,Cation,intracellular,mM,nominal_Ishii,5,5,5,menos_de_10
+499,ish_499,1-Methyladenosine,Cation,intracellular,mM,nominal_Ishii,4,4,4,menos_de_10
+500,ish_500,Guanosine,Cation,intracellular,mM,nominal_Ishii,30,25,26,candidato_preliminar
+501,ish_501,Xanthosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+502,ish_502,5'-Deoxy-5'-Methylthioadenosine,Cation,intracellular,mM,nominal_Ishii,13,12,13,candidato_preliminar
+503,ish_503,Scopolamine,Cation,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+504,ish_504,Z-Gly-Pro,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+505,ish_505,Nalpha-Benzenolarginine ethylester,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+506,ish_506,3-Iodotyrosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+507,ish_507,Glutathione,Cation,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+508,ish_508,Neamine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+509,ish_509,Benzyl viologen,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+510,ish_510,5-Aminoimidazole-4-carboxamide-1-ribofuranosyl 5'-monophosphate,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+511,ish_511,Thiamine monophosphate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+512,ish_512,Riboflavin,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+513,ish_513,S-Lactoylglutathione,Cation,intracellular,mM,nominal_Ishii,19,16,19,candidato_preliminar
+514,ish_514,S-Adenosylhomocysteine,Cation,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+515,ish_515,S-Adenosylmethionine,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+516,ish_516,Leu-Leu-Tyr,Cation,intracellular,mM,nominal_Ishii,6,6,6,menos_de_10
+517,ish_517,Leupeptin hemisulfate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+518,ish_518,"3,5-Diiodo-tyrosine",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+519,ish_519,5-Methyltetrahydrofolate,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+520,ish_520,Psychosine,Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+521,ish_521,Oxidized glutathione,Cation,intracellular,mM,nominal_Ishii,29,25,29,candidato_preliminar
+522,ish_522,"3,3',5-Triiodothyronine",Cation,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+523,cit,Citrate,Nucleotide,intracellular,mM,compartida,12,11,12,candidato_preliminar
+524,ish_524,iso-Citrate,Nucleotide,intracellular,mM,identidad_duplicada_o_alternativa,0,0,0,identidad_duplicada_o_alternativa
+525,ish_525,Divalent ion from UDP-glucuronate,Nucleotide,intracellular,mM,identidad_incierta,21,18,21,identidad_incierta
+526,ish_526,Divalent ion from ppGpp,Nucleotide,intracellular,mM,identidad_incierta,0,0,0,identidad_incierta
+527,ish_527,Divalent ion from UDP-N-acetylglucosamine,Nucleotide,intracellular,mM,identidad_incierta,29,24,29,identidad_incierta
+528,ish_528,cTMP,Nucleotide,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+529,ish_529,cCMP,Nucleotide,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+530,ish_530,dCMP,Nucleotide,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+531,ish_531,TMP,Nucleotide,intracellular,mM,nominal_Ishii,29,24,29,candidato_preliminar
+532,ish_532,CMP+CMP-N-acetylneuramate,Nucleotide,intracellular,mM,mezcla_no_resuelta,28,25,28,mezcla_no_resuelta
+533,ish_533,CMP,Nucleotide,intracellular,mM,nominal_Ishii,1,1,1,menos_de_10
+534,ish_534,UMP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,27,candidato_preliminar
+535,cAMP,cAMP,Nucleotide,intracellular,mM,compartida,29,24,28,candidato_preliminar
+536,ish_536,dAMP,Nucleotide,intracellular,mM,nominal_Ishii,19,16,18,candidato_preliminar
+537,ish_537,cGMP,Nucleotide,intracellular,mM,nominal_Ishii,8,6,7,menos_de_10
+538,amp,AMP,Nucleotide,intracellular,mM,compartida,30,25,29,candidato_preliminar
+539,ish_539,IMP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+540,gmp,GMP,Nucleotide,intracellular,mM,compartida,30,25,30,candidato_preliminar
+541,ish_541,XMP,Nucleotide,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+542,ish_542,Divalent ion from NADPH,Nucleotide,intracellular,mM,identidad_incierta,9,9,9,identidad_incierta
+543,ish_543,Divalent ion from CoA,Nucleotide,intracellular,mM,identidad_incierta,29,24,28,identidad_incierta
+544,ish_544,dCDP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+545,ish_545,TDP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+546,ish_546,CDP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,27,candidato_preliminar
+547,ish_547,UDP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+548,ish_548,Divalent ion from Acetyl CoA,Nucleotide,intracellular,mM,identidad_incierta,30,25,30,identidad_incierta
+549,ish_549,?Malonyl CoA,Nucleotide,intracellular,mM,identidad_incierta,4,4,4,identidad_incierta
+550,ish_550,dADP,Nucleotide,intracellular,mM,nominal_Ishii,20,17,20,candidato_preliminar
+551,ish_551,Divalent ion from n-Propionyl CoA,Nucleotide,intracellular,mM,identidad_incierta,29,25,28,identidad_incierta
+552,ish_552,Divalent ion from D111*,Nucleotide,intracellular,mM,identidad_incierta,28,24,26,identidad_incierta
+553,ish_553,Divalent ion from Isobutyryl CoA,Nucleotide,intracellular,mM,identidad_incierta,29,24,29,identidad_incierta
+554,adp,ADP,Nucleotide,intracellular,mM,compartida,30,25,30,candidato_preliminar
+555,ish_555,Divalent ion from Malonyl CoA,Nucleotide,intracellular,mM,identidad_incierta,29,25,26,identidad_incierta
+556,ish_556,IDP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+557,ish_557,Divalent ion from succinyl CoA,Nucleotide,intracellular,mM,identidad_incierta,12,10,12,identidad_incierta
+558,gdp,GDP,Nucleotide,intracellular,mM,compartida,30,25,28,candidato_preliminar
+559,ish_559,FMN,Nucleotide,intracellular,mM,nominal_Ishii,28,24,28,candidato_preliminar
+560,ish_560,dCTP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+561,ish_561,Divalent ion from Lauroyl CoA,Nucleotide,intracellular,mM,identidad_incierta,2,2,2,identidad_incierta
+562,ish_562,TTP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+563,ish_563,CTP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+564,ish_564,UTP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+565,ish_565,dATP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+566,atp,ATP,Nucleotide,intracellular,mM,compartida,30,25,29,candidato_preliminar
+567,ish_567,ITP,Nucleotide,intracellular,mM,nominal_Ishii,30,25,28,candidato_preliminar
+568,gtp,GTP,Nucleotide,intracellular,mM,compartida,30,25,30,candidato_preliminar
+569,ish_569,ADP-ribose,Nucleotide,intracellular,mM,nominal_Ishii,29,24,28,candidato_preliminar
+570,ish_570,UDP-glucose,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+571,ish_571,UDP-glucuronate,Nucleotide,intracellular,mM,nominal_Ishii,30,25,30,candidato_preliminar
+572,ish_572,ADP-glucose,Nucleotide,intracellular,mM,nominal_Ishii,19,17,18,candidato_preliminar
+573,ish_573,ppGpp,Nucleotide,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
+574,ish_574,UDP-N-acetylglucosamine,Nucleotide,intracellular,mM,nominal_Ishii,30,25,29,candidato_preliminar
+575,ish_575,CMP-N-acetylneuramate,Nucleotide,intracellular,mM,nominal_Ishii,22,19,22,candidato_preliminar
+576,nad,NAD,Nucleotide,intracellular,mM,compartida,30,25,30,candidato_preliminar
+577,ish_577,Nicotinamide hypoxanthine dinucleotide,Nucleotide,intracellular,mM,nominal_Ishii,30,25,25,candidato_preliminar
+578,nadh,NADH,Nucleotide,intracellular,mM,compartida,6,6,6,menos_de_10
+579,nadp,NADP,Nucleotide,intracellular,mM,compartida,30,25,29,candidato_preliminar
+580,nadph,NADPH,Nucleotide,intracellular,mM,compartida,6,6,5,menos_de_10
+581,ish_581,FAD,Nucleotide,intracellular,mM,nominal_Ishii,25,20,25,candidato_preliminar
+582,ish_582,n-Propionyl CoA,Nucleotide,intracellular,mM,nominal_Ishii,2,2,2,menos_de_10
+583,ish_583,Malonyl CoA,Nucleotide,intracellular,mM,nominal_Ishii,0,0,0,menos_de_10
