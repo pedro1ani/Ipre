@@ -1,43 +1,88 @@
-# Cómo se toma una decisión
+# Cómo se estima una concentración que falta
 
-**1. Qué significa una columna.** Un registro de Ishii se identifica por hoja, fila analítica, nombre original, protocolo (aniones, cationes o nucleótidos), compartimento y unidad. Se conserva el nombre de la fila dentro de Ishii: «nominal» no certifica la identidad estructural ni que una señal sea de origen endógeno. No se suman protocolos, mezclas ni iones secundarios. Las etiquetas dudosas y los posibles duplicados quedan en el [inventario](resultados/inventario.csv) con el motivo. De las 149 filas con al menos diez medidas, 11 tienen identidad incierta y tres son mezclas. Eliminar esas 14 deja 135 candidatas. Las otras 430 filas también permanecen inventariadas.
+En un cultivo de *Escherichia coli* pueden estar medidas las concentraciones de varias sustancias y faltar la de otra, por ejemplo la de fumarato. La sustancia cuya concentración se quiere estimar se llama **objetivo**. Las otras sustancias que se usan en el cálculo se llaman **predictores**. El protocolo responde dos preguntas por separado: ¿qué tan bien se recupera una medición cuando se la oculta al método?, y ¿qué evidencia hay para aplicar ese método cuando no se conoce el valor?
 
-Una **fila de la matriz es un cultivo**, porque los metabolitos observados juntos describen ese cultivo. Los 30 cultivos abarcan 25 grupos por perturbación a la misma tasa de dilución. Las réplicas técnicas de proteínas se resumen por cultivo. Los cuatro WT a otras diluciones se ensayan solo en sensibilidad y se retiran si pertenecen al grupo de prueba. El exceso de datos de un cultivo no lo convierte en más observaciones independientes.
+## Qué representa cada dato
 
-**2. Qué entra en la prueba.** El filtro preliminar sirve para descartar lo matemáticamente imposible. Por ejemplo, DHAP (8), NADH (6) y NADPH (6) no alcanzan diez observaciones aun antes de retirar el grupo de prueba. No aparecen como fallos de los métodos. En cada entrenamiento se requieren nuevamente diez medidas, cinco grupos y dos valores distintos; un modelo multivariado necesita dos acompañantes con cinco pares compartidos. Se registra el efecto de los mínimos 8 y 12 sobre la elegibilidad, sin usarlo para elegir la mejor cifra. Con mínimo 10 hubo **127–132 objetivos** elegibles en los entrenamientos externos por perturbación.
+La matriz es una tabla con una fila por cultivo y una columna por señal analítica. Esta disposición mantiene juntas las concentraciones medidas en el mismo cultivo. El [inventario](resultados/inventario.csv) identifica cada señal por su nombre en Ishii, fila del archivo original, protocolo de medición, compartimento y unidad. La etiqueta del laboratorio permite seguir una señal dentro del estudio; no siempre basta para asignarle un único compuesto o para identificarla con una señal de otro estudio.
 
-**3. Cómo se oculta una medición.** Cinco particiones externas y tres internas se forman por grupo con semilla 20261109. La sensibilidad por serie aparta su serie completa y todos los grupos coincidentes de las otras series. Los mismos identificadores, máscaras y valores de Ishii se usan en todas las opciones. La captación, una proteína o MMC2 jamás aportan la verdad de una consulta. No se estiman grupos, asociaciones, tasas ni hiperparámetros usando el bloque apartado.
+Los 30 cultivos principales crecen con glucosa a la misma tasa de dilución (0,2 por hora). Se distribuyen en 25 grupos según la perturbación experimental: por ejemplo, dos cultivos en los que se inactiva el mismo gen se mantienen en el mismo grupo. Los cuatro cultivos de la cepa sin modificar que crecen a otras tasas de dilución se usan solo para comprobar el efecto de incluirlos; también se respeta su grupo. Medir varias veces una proteína en el mismo cultivo cuenta como una observación biológica: se usa la mediana de esas mediciones técnicas.
 
-La prueba individual oculta un objetivo. La prueba conjunta busca combinaciones que efectivamente faltan en Ishii de entrenamiento. Se intentó reproducir el patrón exacto de las 135 columnas: **ninguna fila de prueba tenía todas las mediciones necesarias**. Por eso se informa aparte la proyección sobre cuatro anclas fijadas antes del ajuste (fumarato, PEP, S7P y succinato), además del objetivo. En la prueba por perturbación se pudieron construir 2.201 consultas conjuntas proyectadas. Otras ausencias reales del cultivo siguen ocultas. El *perfil* de una regla indica exactamente cuáles de esas anclas faltan; no se identifica una combinación en 135 dimensiones a partir de cuatro. Una misma medición puede participar en varias consultas conjuntas; se distinguen eventos y celdas únicas.
+Las concentraciones de Ishii se leen en **mM** (milimoles por litro de volumen intracelular). Gerosa publica micromoles por gramo de peso seco. Para obtener concentraciones comparables se divide la cantidad por gramo por el volumen intracelular documentado de **2,3 mL por gramo de peso seco**. La unidad resultante, µmol/mL, equivale a mM. Se conserva la cantidad original y su procedencia.
 
-**4. Qué información puede usar el método.** Todo se ajusta en mM. En Gerosa se divide la unidad publicada (µmol/g de peso seco) por 2,3 mL/g para obtener mM. No se divide por glucosa, por una tasa ni por la dilución. Para los métodos multivariados se usa `StandardScaler` de entrenamiento, mantenido al predecir. Cada modelo local admite hasta tres metabolitos acompañantes: se ordenan únicamente en Ishii de entrenamiento por correlación absoluta de Spearman multiplicada por la fracción de mediciones del objetivo que tienen pareja. Esto limita el número de predictores en ajustes con pocos cultivos; no demuestra causalidad bioquímica. El panel amplio prueba todas las identidades nominales elegibles de Ishii. Los controles A-común y B-común usan los mismos acompañantes homologados; solo B añade las ocho condiciones de MMC2.
+## Qué señales tienen datos suficientes
 
-| Opción | Regla de predicción |
+De las 579 señales registradas, 149 tienen al menos diez mediciones. Entre esas 149 hay 11 con identidad incierta y tres que reúnen distintas sustancias en una misma señal. Las 135 restantes se consideran posibles objetivos. Ishii y Gerosa comparten una identidad documentada para 17 de ellas. Las otras 118 se pueden estimar dentro de Ishii sin suponer una equivalencia entre estudios.
+
+En cada prueba se apartan algunos cultivos. En los que quedan para el **entrenamiento** (los que puede usar el método), el objetivo necesita al menos diez mediciones en cinco grupos y dos valores distintos. Para relacionarlo con otras sustancias se exigen además dos predictores con al menos cinco cultivos en los que ambos estén medidos: el predictor y el objetivo. Con estos requisitos hay entre 127 y 132 objetivos aptos en los cinco entrenamientos principales. La [tabla de umbrales](resultados/umbrales.csv) también muestra cuántos quedarían con mínimos de ocho o doce.
+
+Por ejemplo, DHAP, NADH y NADPH solo tienen 8, 6 y 6 mediciones en los 30 cultivos: quedan fuera de la prueba principal. Otras señales tienen diez en total pero pueden quedar por debajo del mínimo cuando se aparta un grupo.
+
+## Cómo se comprueba una predicción sin mostrarle la respuesta al método
+
+Una **máscara** indica qué casillas medidas se ocultan durante la prueba. La concentración original se conserva para calcular el error al final. Todas las alternativas reciben las mismas casillas ocultas. Las únicas respuestas conocidas con las que se las evalúa son mediciones originales de Ishii.
+
+| Prueba | Qué permite comprobar |
 | --- | --- |
-| Mediana | `SimpleImputer(strategy="median")`. Usa solo medidas del objetivo en entrenamiento. Se distingue «elegida en validación» de «respaldo general». |
-| KNN | `KNNImputer`, distancia nan-euclídea, pesos uniformes, 3 o 5 vecinos como alternativas internas. Cada donante tiene el objetivo medido y comparte al menos dos metabolitos observados con la consulta. Se requieren al menos tres donantes; si solo hay 3 o 4 para KNN5 se informa el número efectivo. No se acepta el reemplazo automático por una media. |
-| Iterativo | `IterativeImputer` con BayesianRidge, inicio con mediana, máximo 5 rondas y tolerancia 0,001. Usa al menos dos acompañantes visibles. El límite inferior es cero mM, expresado en la escala del entrenamiento. Se registran rondas y avisos en cada ajuste: alcanzar el máximo no demuestra convergencia. |
+| Una medición oculta por vez, con grupos apartados | Se distribuyen los 25 grupos de perturbación en cinco bloques. Cada bloque sirve una vez como prueba y el método se ajusta con los grupos restantes. Así se evalúa un cultivo cuya perturbación no aportó datos al ajuste. |
+| Varias mediciones ocultas a la vez | Se buscan combinaciones que realmente faltan juntas en los cultivos de entrenamiento y se ocultan donde las concentraciones sí son conocidas. Permite ver qué ocurre cuando también falta información que podría ayudar a la estimación. |
+| Una serie analítica apartada | Se retiran todos los cultivos de una misma serie de medición y, del entrenamiento, cualquier otro cultivo que comparta su grupo de perturbación. Así se comprueba cuánto depende el resultado de la serie. |
 
-El tope de cinco rondas es una configuración nueva y fija, no una conclusión sobre la configuración óptima. [Convergencia por opción](resultados/convergencia.csv) permite ver dónde se alcanzó el límite. La captación de carbono (mmol de átomos de C por g de peso seco y hora) o una proteína se ensayan como **una covariable adicional**, medida al predecir. Las proteínas de reacción y los controles elegidos por disponibilidad se prueban en las mismas filas. Las comparaciones con y sin cada covariable reajustan el modelo en esas mismas filas. Ninguna de estas variables se interpreta como concentración. Los flujos y la dilución no se usan para reescalar.
+El **perfil de ausencia** describe cuáles de cuatro sustancias están sin medir en el cultivo: fumarato, fosfoenolpiruvato (PEP), sedoheptulosa-7-fosfato (S7P) y succinato. Si una de las cuatro es el objetivo, se consideran las otras tres. Estas referencias sirven para describir qué falta; los predictores del modelo pueden ser otras sustancias. Ningún patrón conjunto de las 135 columnas se puede reproducir por completo con mediciones conocidas en los cultivos de prueba. Al considerar el objetivo y las cuatro referencias sí hay [2.201 casos de prueba conjunta por perturbación](resultados/mascaras_resumen.csv). Una medición puede participar en más de un caso, con diferentes acompañantes ocultos.
 
-**5. Cómo se elige y verifica la regla.** Por objetivo y perfil, el error de selección es el MAE en mM sobre mediciones comunes. Se pide evidencia en diez cultivos distintos, cinco grupos y al menos dos bloques internos; la ventaja debe repetirse en dos bloques. La mediana también puede ganar. Si no hay ganador fundado se identifica la mediana como respaldo general. Una adición debe superar el método base, su control y, para MMC2, el control del panel común. Si falta el auxiliar o el soporte de la opción elegida, se usa una alternativa sin él validada para ese perfil; sin tal alternativa el caso queda pendiente. No se escoge retrospectivamente un ganador según la prueba externa.
+## Cómo calcula cada método
 
-La comparación principal es por metabolito. El MAE global micro pondera cada consulta; el macro primero calcula el MAE de cada metabolito y luego les da igual peso. RMSE señala errores grandes; sesgo positivo significa sobreestimación. El error absoluto/IQR usa únicamente el IQR del entrenamiento Ishii, cuando es positivo. También se informan grupos evaluados, dispersión entre grupos, disponibilidad y resultados restringidos a las mismas celdas. Mayor disponibilidad por sí sola no demuestra menor error.
-
-**6. Incertidumbre y entrega.** Para la opción iterativa seleccionada se repite la imputación posterior con semillas consecutivas desde 20262109: 200 sorteos, 100 con proteína. Se utilizan los percentiles 2,5 y 97,5 en mM; son intervalos predictivos del modelo. En la prueba individual por perturbación hubo **809 intervalos en 3.402 candidatas** y **704 aciertos en 809 intervalos (87,0 %)** para un nivel nominal del 95 %. Por serie fueron **488 de 640 (76,3 %)**. No debe atribuirse una confianza empírica del 95 % a un hueco real. La mediana y KNN no heredan estos intervalos.
-
-`reglas.json` guarda las decisiones; `congelado.json` identifica entradas, máscaras y validación por SHA-256. El programa comprueba esas huellas antes de aplicar. Solo se estiman los blancos originales autorizados de Ishii, manteniendo el código de ausencia del Excel. Nunca se usa una imputación anterior como observación. `auditoria_huecos.csv` contiene método/fuente, celda original, soporte, vecinos efectivos cuando aplica, error externo en casos comparables, número de grupos y límites si proceden. **Ese error es de otros casos**, no del hueco. Cuando no existen comparables se deja sin valor. Una elección interna puede tener poca o ninguna comprobación externa en el mismo perfil.
-
-Las estadísticas antes/después son descriptivas sobre los mismos 30 cultivos: observados, imputados, pendientes, media, mediana, SD muestral, IQR y CV en porcentaje (sin valor si la media no es positiva o hay menos de dos datos). Hay dos vistas: todo lo disponible de cada método y las mismas casillas imputables por todos. Los resultados por cultivo se generan fuera del directorio versionado.
-
-## Dónde está cada paso
-
-| Archivo | Responsabilidad |
+| Método | De dónde sale el valor |
 | --- | --- |
-| [datos.py](datos.py) | Inventario, identidades nominales, cohortes, unidades y contraste con Excel. Reutiliza las auditorías de captación y proteínas ya contrastadas. |
-| [diseno.py](diseno.py) | Particiones agrupadas, máscaras y selección de acompañantes. |
-| [modelos.py](modelos.py) | Los tres imputadores y sus condiciones de soporte. |
-| [ensayos.py](ensayos.py) | Construcción de controles, fuentes y ajustes dentro de una partición. |
-| [regla.py](regla.py), [validar.py](validar.py) | Selección interna, evaluación externa y congelación de la decisión. |
-| [aplicar.py](aplicar.py) | Imputación de los huecos reales, trazabilidad y comparación antes/después. |
-| [intervalos.py](intervalos.py), [informe.py](informe.py) | Sorteos posteriores y métricas agregadas. |
+| Mediana | Se ordenan las concentraciones conocidas del objetivo en el entrenamiento y se toma su valor central. No necesita conocer los otros metabolitos del cultivo. Se implementa con `SimpleImputer`. |
+| Vecinos (KNN) | Se buscan cultivos con el objetivo medido y al menos dos predictores medidos en común con el cultivo que se quiere estimar. Se comparan las concentraciones disponibles y se promedian las del objetivo en los cultivos más parecidos. Se ensayan tres o cinco vecinos con el mismo peso y se requieren al menos tres. Si hay menos de cinco se registra cuántos se usan. Se implementa con `KNNImputer` y distancia euclídea adaptada a datos faltantes. |
+| Iterativo | Se comienza con medianas y se estima cada variable a partir de las demás. El cálculo se repite para refinar las estimaciones. Se usa `IterativeImputer` con un modelo de regresión lineal (`BayesianRidge`), al menos dos predictores medidos en el cultivo y un límite inferior de cero mM. El ajuste determinista permite hasta cinco rondas, con tolerancia de 0,001; el [registro de convergencia](resultados/convergencia.csv) indica si se alcanza el máximo sin satisfacer el criterio de parada. |
+
+KNN y el método iterativo usan hasta tres metabolitos predictores por objetivo. Se favorecen las sustancias que tienden a variar junto con el objetivo y están medidas con él en suficientes cultivos. Para ordenar las candidatas se multiplica la correlación absoluta de rangos de Spearman por la fracción de mediciones del objetivo que tienen pareja. Esta relación ayuda a predecir, aunque por sí sola no demuestra una conexión bioquímica.
+
+Para que una sustancia no pese más solo por sus valores numéricos, cada variable se centra y se divide por su desviación estándar con `StandardScaler`. Tanto el escalado como la selección de predictores utilizan solo el entrenamiento. Tras el cálculo se recupera la escala en mM, que también se usa para expresar el error.
+
+## Cuándo se elige un método y cuándo se usa información adicional
+
+Dentro de cada entrenamiento se forman **tres bloques internos** para probar las opciones. Se compara el *error absoluto medio* (MAE): cuánto se aleja la predicción de la medición, en promedio y sin considerar el signo. Por ejemplo, estimar 0,25 mM cuando la medición es 0,30 mM da un error absoluto de 0,05 mM. Para elegir por objetivo y perfil se requieren al menos diez cultivos comparables, cinco grupos y dos bloques internos. La ventaja en MAE debe repetirse en al menos dos bloques. La elección se fija antes de evaluar el bloque externo, que no participa en esa decisión.
+
+El estudio de Gerosa aporta ocho condiciones de cultivo en el archivo **MMC2**. Para medir su aporte se comparan dos entrenamientos que usan los mismos metabolitos compartidos: **A** usa solo Ishii y **B** usa Ishii y MMC2. Los cultivos de prueba son los mismos. Por ejemplo, con el método iterativo, el [MAE para el fumarato](resultados/MMC2_pareado.csv) es 0,019 mM con Ishii y 0,098 mM al añadir MMC2; para PEP los valores son 0,067 y 0,058 mM, respectivamente. El aporte depende de la sustancia y del método.
+
+También se ensaya, una por vez, la captación de carbono (cantidad de carbono consumido por gramo de peso seco y hora) o la abundancia de una proteína. Para proteínas se estudian candidatas relacionadas con la reacción y candidatas elegidas por su disponibilidad en el entrenamiento. El control se ajusta sobre los mismos cultivos sin esa variable. Usar una variable adicional requiere que mejore frente a los controles correspondientes y que esté medida en el cultivo donde se quiere aplicar la regla.
+
+| Estado en los archivos | Interpretación para una casilla sin medición |
+| --- | --- |
+| `validada` | La comparación interna respalda la **elección del método** para ese objetivo y perfil. La concentración real de esa casilla sigue siendo desconocida. La propia mediana puede ser el método elegido. |
+| `respaldo_general` | Los datos del objetivo permiten calcular una mediana de entrenamiento, pero las pruebas no respaldan elegir un método específico para ese caso. |
+| `pendiente` | La regla no puede producir una estimación con los datos disponibles. Si la opción elegida necesita una tasa o proteína ausente, solo se usa una alternativa sin ella si ya tenía respaldo para ese perfil. |
+
+## Cómo interpretar el error y el intervalo
+
+El [informe de errores](resultados/metricas.csv) distingue cuántas veces responde un método de cuán cerca está de la medición. Una comparación usa todos los valores que estima cada método; la otra usa **solo las mismas mediciones** que todos pueden estimar.
+
+| Indicador | Qué pregunta responde |
+| --- | --- |
+| MAE en mM | ¿A qué distancia de la medición queda la estimación, en promedio? El promedio *micro* da el mismo peso a cada medición. El *macro* calcula primero el error de cada metabolito y luego da el mismo peso a cada metabolito. |
+| RMSE en mM | ¿Hay errores grandes que el promedio absoluto disimula? Se elevan las diferencias al cuadrado antes de promediarlas y sacar la raíz. |
+| Sesgo en mM | ¿El método tiende a estimar por encima o por debajo? Se promedia «estimación menos medición»; un valor positivo indica sobreestimación en promedio. |
+| Error relativo a la variabilidad | ¿Es grande la diferencia frente a la variación habitual del metabolito? Se divide el error absoluto por el rango intercuartílico del entrenamiento Ishii: la distancia entre los percentiles 25 y 75. Se omite si ese rango es cero. |
+
+Solo las estimaciones del método iterativo elegido llevan **intervalo de predicción**. El modelo genera 200 concentraciones plausibles por casilla, o 100 cuando utiliza una proteína, mediante muestreo de su distribución posterior. Los percentiles 2,5 y 97,5 de esos valores definen los extremos del intervalo nominal del 95 %. Son límites del modelo, no límites del instrumento de medición.
+
+Hay dos recuentos distintos. En la prueba individual por perturbación, de **3.402 mediciones ocultas**, la regla entrega 3.325 estimaciones y **809 intervalos**. De esos 809, **704 contienen la medición**: la cobertura observada es 87,0 %. Al apartar una serie completa contienen la medición 488 de 640 intervalos (76,25 %). Para una casilla sin medición no se puede saber si su intervalo contiene el valor real.
+
+## Cómo seguir una estimación hasta su origen
+
+Los archivos por cultivo se generan en `salida_protocolo/`. En `auditoria_huecos.csv` se puede buscar un cultivo y un metabolito para ver la celda del Excel, el motivo del blanco, el método, las fuentes y la estimación en mM. Para KNN también se registran los cultivos vecinos. Si hay casos comparables en la prueba externa, se informa su error y cuántas mediciones y grupos lo respaldan. **Ese error describe otros casos con respuesta conocida**, no el error individual de la casilla vacía.
+
+La [tabla de estadísticas](resultados/descriptivos.csv) describe los mismos 30 cultivos: cuenta las mediciones, las estimaciones y las casillas pendientes, y resume las concentraciones mediante media, mediana, desviación estándar muestral y rango intercuartílico. El coeficiente de variación (CV) expresa la desviación estándar como porcentaje de la media; se deja sin valor si hay menos de dos datos o la media no es positiva. Se muestran tanto los resultados disponibles de cada método como los de las mismas casillas estimables por todos. El cambio en una media al añadir estimaciones describe el contenido de la tabla, no valida las estimaciones.
+
+| Si se quiere revisar… | Archivo del programa |
+| --- | --- |
+| De qué hoja sale una concentración y cómo se convierte a mM | [datos.py](datos.py) |
+| Qué cultivos se apartan, qué valores se ocultan y cómo se eligen predictores | [diseno.py](diseno.py) y [validar.py](validar.py) |
+| Cómo funcionan los tres métodos y cómo se comparan las fuentes | [modelos.py](modelos.py) y [ensayos.py](ensayos.py) |
+| Qué evidencia permite elegir un método y cómo se aplica a cada casilla | [regla.py](regla.py) y [aplicar.py](aplicar.py) |
+| Cómo se obtienen los intervalos y las tablas de resultados | [intervalos.py](intervalos.py) e [informe.py](informe.py) |
+
+Para reproducir la evaluación se fija la semilla 20261109; los sorteos de los intervalos usan semillas consecutivas desde 20262109. `reglas.json` guarda las decisiones y `congelado.json` guarda huellas digitales (SHA-256) que permiten comprobar que las entradas y las máscaras corresponden a la evaluación. Las [instrucciones de ejecución](../README.md) indican en qué orden usar los programas.

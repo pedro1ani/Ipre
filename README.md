@@ -1,28 +1,51 @@
-# IPre · Imputación de concentraciones intracelulares de *E. coli*
+# IPre · Estimación de concentraciones de metabolitos en *Escherichia coli*
 
-La pregunta es **qué se puede estimar para un cultivo de Ishii, con qué método y con qué evidencia**. Primero ocultamos mediciones originales y retiramos sus grupos del entrenamiento. Solo después aplicamos la regla a los huecos reales. El resultado se expresa en mM y conserva cada medición original.
+Un **metabolito** es una sustancia que participa en las reacciones de una célula. El estudio de Ishii mide la concentración de estas sustancias dentro de la bacteria *Escherichia coli*, pero para algunos cultivos no informa un valor. Este proyecto estudia **cuándo se puede estimar esa concentración a partir de las mediciones disponibles y con qué error**. Ese cálculo se llama *imputación*. Una estimación se registra por separado de lo que mide el laboratorio.
 
-| Notebook | Para qué abrirlo |
+| Cuaderno | Qué explica |
 | --- | --- |
-| [01 · ¿Qué midió Ishii y qué entra al análisis?](01_auditoria_preparacion.ipynb) | Revisar las 579 filas analíticas, el filtro de identidad y disponibilidad y la celda de origen de cada concentración. |
-| [02 · ¿Qué método usar para este hueco?](02_imputacion_evaluacion.ipynb) | Comparar métodos sobre las mismas mediciones ocultas, ver cuándo aporta MMC2 y revisar por separado las estimaciones reales y las de respaldo. |
+| [01 · Datos y selección de metabolitos](01_auditoria_preparacion.ipynb) | Qué mide cada experimento, por qué algunas señales entran en el análisis y cómo encontrar su celda de origen. |
+| [02 · Evaluación y estimación de concentraciones](02_imputacion_evaluacion.ipynb) | Cómo se prueban los métodos con mediciones conocidas y qué decisión se toma cuando falta un valor. |
 
-**Resultado de esta versión.** De 579 señales de Ishii, 149 tienen diez o más mediciones en los 30 cultivos. Se retuvieron 135 señales nominales: 17 compartidas con Gerosa y 118 exclusivas de Ishii. Los 648 huecos del panel se distribuyen en **221 estimaciones con elección validada internamente, 418 medianas de respaldo y 9 pendientes**. La matriz conserva las 3.402 mediciones originales del panel. El fichero con *solo* la elección validada deja expresamente en blanco los respaldos y los pendientes.
+Los dos cuadernos se pueden leer en GitHub sin instalar programas.
 
-| Método | MAE micro en mM | MAE macro en mM |
-| --- | ---: | ---: |
-| Mediana fija | 0,246 | 0,220 |
-| KNN fijo, 3 vecinos | 0,163 | 0,147 |
-| Iterativo fijo | 0,168 | 0,151 |
-| Regla por objetivo y perfil | 0,204 | 0,184 |
+## Qué contiene la tabla de datos
 
-Comparación externa individual por perturbación: **las mismas 3.302 mediciones de 25 grupos**. La regla reduce el error frente a la mediana, pero los otros dos controles fijos tuvieron menor error global. Selección interna no equivale a una garantía para un hueco real. En el Excel de Ishii un blanco puede indicar «no detectable» o «por debajo del límite» sin especificar cuál: toda estimación de esos blancos es exploratoria.
+Cada fila representa uno de los **30 cultivos de Ishii**. Cada columna representa una señal del laboratorio y cada casilla contiene una concentración en **mM** (milimoles por litro de volumen intracelular) o queda vacía.
 
-**Para revisar los resultados:** [método y límites](protocolo/METODO.md), [inventario de las 579 señales](protocolo/resultados/inventario.csv), [comparación global](protocolo/resultados/metricas.csv), [error por objetivo en celdas comunes](protocolo/resultados/por_objetivo.csv), [aportación de MMC2](protocolo/resultados/MMC2_pareado.csv), [intervalos](protocolo/resultados/intervalos.csv) y [estadísticas antes/después](protocolo/resultados/descriptivos.csv).
+El [inventario](protocolo/resultados/inventario.csv) contiene 579 señales, que no necesariamente son 579 sustancias distintas. De ellas, 149 tienen mediciones en al menos diez cultivos. En 14 de esas señales la identidad es incierta o se registra una mezcla. **Las 135 restantes forman la tabla de análisis.** Para 17 de ellas también hay mediciones comparables en un segundo estudio, el de Gerosa. Su archivo **MMC2** aporta ocho condiciones de cultivo que se prueban como información adicional. Las otras 118 señales se estudian solo con Ishii.
 
-## Reproducir
+## Cómo se evalúa la estimación
 
-Desde la raíz, con Python 3.12 y un entorno virtual (para abrir los notebooks, seleccionarlo como kernel de Jupyter):
+Se oculta una concentración conocida de Ishii, se la estima y se compara el resultado con la medición original. Los cultivos con la misma perturbación experimental, por ejemplo la inactivación del mismo gen, se mantienen juntos. Cuando se evalúa uno de esos grupos, el método aprende solo de los demás.
+
+| Estrategia | Cómo obtiene el valor | Error medio por medición (mM) |
+| --- | --- | ---: |
+| Mediana | Usa el valor central del metabolito en los cultivos de entrenamiento. | 0,246 |
+| Vecinos (KNN), con tres vecinos | Promedia las concentraciones del metabolito en cultivos parecidos según las otras sustancias medidas. | 0,163 |
+| Método iterativo | Estima la concentración a partir de relaciones entre metabolitos y refina el cálculo en varias rondas. | 0,168 |
+| Regla de elección | Elige un método cuando las pruebas lo respaldan para ese metabolito y ese patrón de datos faltantes. | 0,204 |
+
+Los cuatro resultados corresponden a **las mismas 3.302 mediciones ocultas** de 25 grupos. El error es la distancia promedio a la medición, tanto si el método se queda corto como si se excede. KNN con tres vecinos tiene el menor error promedio en esta prueba; el [resultado por metabolito](protocolo/resultados/por_objetivo.csv) permite revisar una sustancia en particular.
+
+## Qué se obtiene para los valores faltantes
+
+La tabla contiene **3.402 mediciones originales y 648 casillas vacías**. Ishii usa el mismo blanco cuando una sustancia no se detecta o queda por debajo del límite de detección. Por eso un blanco no equivale a cero y su estimación se interpreta como exploratoria.
+
+| De las 648 casillas vacías | Casillas | Interpretación |
+| --- | ---: | --- |
+| Método elegido en las pruebas | 221 | Hay evidencia para elegir el método en ese caso; la concentración real sigue siendo desconocida. |
+| Mediana de respaldo | 418 | Se informa un valor central del entrenamiento sin evidencia suficiente para preferir un método para ese caso. |
+| Sin estimación | 9 | Los datos disponibles no permiten aplicar la regla. La casilla queda vacía. |
+
+**Ejemplo: fumarato.** Ishii informa 23 concentraciones en 30 cultivos. Para dos de las siete casillas vacías se elige KNN, para tres se elige el método iterativo y para dos se usa la mediana de respaldo. Las 23 mediciones conservan su valor original.
+
+El [protocolo de análisis](protocolo/METODO.md) explica los criterios y la organización del código. También se pueden consultar las tablas de [errores](protocolo/resultados/metricas.csv), [aporte de Gerosa](protocolo/resultados/MMC2_pareado.csv), [intervalos de predicción](protocolo/resultados/intervalos.csv) y [estadísticas por metabolito](protocolo/resultados/descriptivos.csv).
+
+<details>
+<summary><strong>Cómo ejecutar el análisis y dónde encontrar los archivos por cultivo</strong></summary>
+
+Desde la carpeta principal del repositorio, con Python 3.12 en un entorno virtual, estos comandos preparan los datos y evalúan los métodos sobre mediciones conocidas:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -31,7 +54,7 @@ python -m protocolo.validar --procesos 4
 python -m protocolo.informe --solo-validacion
 ```
 
-Aquí se puede detener la ejecución y revisar el error externo **antes de imputar**. Para completar los huecos autorizados:
+Los siguientes comandos aplican la regla a los valores faltantes, calculan los intervalos y generan las tablas del informe:
 
 ```bash
 python -m protocolo.aplicar
@@ -40,6 +63,15 @@ python -m protocolo.informe
 python -m unittest discover -s tests
 ```
 
-Los agregados quedan en `protocolo/resultados/`. En `salida_protocolo/` se generan las matrices, `auditoria_huecos.csv`, las máscaras por partición, los ajustes y la regla congelada. Ese directorio no se sube a Git. `original_30_completa.csv` y `resultado_30_completo.csv` conservan las 579 columnas; `matriz_solo_con_eleccion_validada.csv` contiene el panel de 135. Cada ejecución puede dirigirse a un directorio distinto con la variable de entorno `IPRE_DETALLE`.
+Los resúmenes se guardan en `protocolo/resultados/`. Los datos por cultivo se generan en `salida_protocolo/`:
 
-Los [bloques 1–4](ampliacion/BLOQUES_1_4.md), [5–6](ampliacion/BLOQUES_5_6.md) y [7–8](ampliacion/BLOQUES_7_8.md) documentan los ensayos anteriores. Los [notebooks anteriores a este cambio](https://github.com/pedro1ani/Ipre/tree/2fac38dca143f872a6b9d8c8db7377e9d6690d13) y la [auditoría original](historico/) siguen disponibles. Sus cifras no son resultados del panel de 135 señales.
+| Archivo generado | Contenido |
+| --- | --- |
+| `matriz_solo_con_eleccion_validada.csv` | Las 3.402 mediciones y las 221 estimaciones con elección de método. Las otras 427 casillas siguen vacías. |
+| `matriz_regla.csv` | Las mismas mediciones y estimaciones, más las 418 medianas de respaldo. Quedan nueve casillas vacías. |
+| `auditoria_huecos.csv` | Una fila por casilla vacía: cultivo, metabolito, celda original, decisión, método y evidencia disponible. |
+| `original_30_completa.csv` y `resultado_30_completo.csv` | Las tablas con las 579 señales del inventario, antes y después de aplicar la regla a las 135 seleccionadas. |
+
+Para guardar el detalle en otra carpeta, establece la variable de entorno `IPRE_DETALLE`. Para trabajar en Jupyter, selecciona el mismo entorno de Python como kernel.
+
+</details>
