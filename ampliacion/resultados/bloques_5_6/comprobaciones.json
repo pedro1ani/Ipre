@@ -1,0 +1,16 @@
+{
+  "base": "182eb7fb6a490d53e67a34375cb4bb356d7ccf60",
+  "python": "3.12.14",
+  "pruebas": 17,
+  "celdas_nuevas_notebook_ejecutadas": 3,
+  "celdas_individuales": 457,
+  "celdas_comunes": 416,
+  "grupos_externos": 25,
+  "controles_max_delta_mM": {
+    "comun": 1.1102230246251565e-16,
+    "ampliado": 4.440892098500626e-16
+  },
+  "archivos_aplicacion_previa_sin_cambios": 9,
+  "reajustes": 4000,
+  "limites_reconstruidos": true
+}

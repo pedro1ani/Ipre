@@ -1,0 +1,5 @@
+prueba,tipo,candidatas,con_prediccion,con_intervalo,dentro,grupos_con_intervalo,disponibilidad_intervalo,cobertura_entre_intervalos,ancho_mediano_mM
+perturbacion,conjunta_anclas,2201,2054,224,192,20,0.10177192,0.85714286,0.062710422
+perturbacion,individual,3402,3325,809,704,22,0.23780129,0.87021014,0.071064714
+serie,conjunta_anclas,1455,1111,104,68,20,0.071477663,0.65384615,0.056475426
+serie,individual,3402,3135,640,488,20,0.18812463,0.7625,0.084047206

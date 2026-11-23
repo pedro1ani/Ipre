@@ -1,0 +1,7 @@
+proteina,objetivo,reaccion,fila_mmc4,formula,relacion,identidad,UniProt,fila_proteina,cultivos
+eno,pep,ENO,13,2pg[c]  <=> h2o[c] + pep[c],single_enzyme_or_stage; source_flux_is_grouped,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0A6P9,18,26
+pykF,pep,PYK,63,adp[c] + h[c] + pep[c]  -> atp[c] + pyr[c],isoenzyme,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0AD61,20,25
+pykF,pyr,PYK,63,adp[c] + h[c] + pep[c]  -> atp[c] + pyr[c],isoenzyme,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0AD61,20,25
+talB,s7p,TALA,70,g3p[c] + s7p[c]  <=> e4p[c] + f6p[c],isoenzyme,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0A870,31,26
+fumA,fum,FUM,88,fum[c] + h2o[c]  -> mal-L[c],isoenzyme,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0AC33,51,26
+sucC,succ,SUCOAS,69,atp[c] + coa[c] + succ[c]  <=> adp[c] + pi[c] + succoa[c],multi_subunit_complex; source_flux_is_grouped,symbol_in_Ishii_SOM_only; K12_locus_BW25113_sequence_unchecked,P0A836,46,26

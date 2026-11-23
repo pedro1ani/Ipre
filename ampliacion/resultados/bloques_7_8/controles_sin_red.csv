@@ -1,0 +1,8 @@
+par,sin_red,coincidencia_directa_documentada,bloques,max_diferencia_disponibilidad,minimo_cultivos_comunes_train
+eno_pep,adk,,4,0,20
+eno_pep,gnd,,1,0,20
+fumA_fum,adhE,,5,0,20
+pykF_pep,aceE,,5,1,19
+pykF_pyr,icdA,,5,1,19
+sucC_succ,sdhB,SUCDH3,5,0,20
+talB_s7p,aceA,,5,0,20

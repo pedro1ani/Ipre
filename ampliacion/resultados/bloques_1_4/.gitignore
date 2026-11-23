@@ -1,0 +1,11 @@
+# Las máscaras y tablas por consulta se reconstruyen desde las fuentes fijadas.
+*
+!.gitignore
+!comparacion.csv
+!objetivos_MMC2.csv
+!reproduccion.csv
+!ejecucion.json
+!elegibilidad.csv
+!inventario_resumen.csv
+!patrones_por_bloque.csv
+!cultivos_y_patrones.svg

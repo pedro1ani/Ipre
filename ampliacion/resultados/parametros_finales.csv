@@ -1,0 +1,7 @@
+escenario,metodo,k
+A,Iterative,0
+A,KNN,1
+B,Iterative,1
+B,KNN,3
+A,Mediana,0
+B,Mediana,0
