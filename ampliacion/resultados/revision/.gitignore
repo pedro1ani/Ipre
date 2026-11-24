@@ -1,7 +1,0 @@
-# Solo se versionan los resúmenes. Los notebooks generan el detalle localmente.
-*.csv
-*.csv.gz
-!resumen_comparaciones.csv
-!error_panel_ampliado.csv
-!aporte_captacion.csv
-!equivalencia.csv

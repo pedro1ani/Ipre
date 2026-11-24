@@ -1,5 +1,12 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.pytest_cache/
 .venv/
-salida_protocolo/
+venv/
+.env/
+*.tmp
+*.swp
+*~
+/tmp/
+/salida_protocolo/

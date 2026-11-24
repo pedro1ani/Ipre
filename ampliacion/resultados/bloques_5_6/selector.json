@@ -1,9 +1,0 @@
-{
-  "celdas_minimas": 10,
-  "grupos_minimos": 5,
-  "bloques_minimos": 2,
-  "empate_mM": 1e-12,
-  "sha256_individual": "47f0788978afbf5d0ba4350cec855c8b6a99f2d7121139babb9d2516f093465b",
-  "sha256_conjunta": "9a91ae0af2cf776a36557aea86e94fb17f9080b9f58ef197589cce3ea6b7acbc",
-  "sha256_opciones": "438e1dde9e3b793bcbb95f1b69c645192d39f7fe7ad4de1cb296ad5de95f980c"
-}

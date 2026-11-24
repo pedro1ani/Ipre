@@ -100,7 +100,8 @@ def validar(procesos=NPROC, reutilizar=False):
     splits,externas=particiones(ish,meta)
     fuentes=huellas_entradas()
     modulos={p.name:huella(p) for p in sorted((PUB.parent).glob("*.py")) if p.name in
-             {"modelos.py","diseno.py","ensayos.py","datos.py","regla.py","validar.py"}}
+             {"modelos.py","diseno.py","ensayos.py","datos.py","regla.py","validar.py",
+              "fuentes.py","fisiologia.py","proteinas.py"}}
     manifest=dict(entradas=fuentes,codigo=modulos,semilla=SEMILLA,versiones=versiones(),
                   particiones={n:dict(train=list(tr),test=list(te)) for n,(tr,te) in splits.items()})
     archivo=PRIV/"diseno.json"

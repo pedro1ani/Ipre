@@ -15,6 +15,19 @@ Cada fila representa uno de los **30 cultivos de Ishii**. Cada columna represent
 
 El [inventario](protocolo/resultados/inventario.csv) contiene 579 señales, que no necesariamente son 579 sustancias distintas. De ellas, 149 tienen mediciones en al menos diez cultivos. En 14 de esas señales la identidad es incierta o se registra una mezcla. **Las 135 restantes forman la tabla de análisis.** Para 17 de ellas también hay mediciones comparables en un segundo estudio, el de Gerosa. Su archivo **MMC2** aporta ocho condiciones de cultivo que se prueban como información adicional. Las otras 118 señales se estudian solo con Ishii.
 
+## Dónde están las fuentes y los resultados
+
+| Ubicación | Qué contiene |
+| --- | --- |
+| [data](data/) | La **base de trabajo permanente**, `concentraciones_mM.db`, sus exportaciones por estudio y la evidencia de conversión. Reúne 20.483 posiciones de concentración, incluidas las que carecen de medición. |
+| [sources](sources/) | Los Excel y documentos experimentales de Ishii y Gerosa y la base multi-ómica `ecoli_auditada_v3.db`. Esta última también contiene datos de proteínas, fisiología y flujos. |
+| [auditoria](auditoria/) | Mediciones con sus coordenadas originales, homologación química y metadatos de cultivos. Son las entradas tabulares que la preparación coteja con los Excel. |
+| [protocolo](protocolo/METODO.md) | Preparación, diseño de validación, modelos, elección por casilla, intervalos y síntesis. Las **13 tablas y resúmenes científicos vigentes** se publican en [resultados](protocolo/resultados/). |
+| [estudios_complementarios](estudios_complementarios/) | Documentación de tasas y pares proteína–metabolito que permite interpretar los predictores auxiliares. |
+| [tests](tests/) | Comprobaciones de las fuentes, el aislamiento de cultivos, las máscaras, los controles y los productos por cultivo. |
+
+MMC2 aporta las ocho condiciones estacionarias de Gerosa. MMC3 contiene mediciones a lo largo de transiciones y se conserva para consulta. MMC4 documenta reacciones y ayuda a interpretar los vínculos con proteínas. El protocolo prueba el aporte de MMC2 utilizando mediciones de Ishii como referencia de evaluación.
+
 ## Cómo se evalúa la estimación
 
 Se oculta una concentración conocida de Ishii, se la estima y se compara el resultado con la medición original. Los cultivos con la misma perturbación experimental, por ejemplo la inactivación del mismo gen, se mantienen juntos. Cuando se evalúa uno de esos grupos, el método aprende solo de los demás.
@@ -45,10 +58,11 @@ El [protocolo de análisis](protocolo/METODO.md) explica los criterios y la orga
 <details>
 <summary><strong>Cómo ejecutar el análisis y dónde encontrar los archivos por cultivo</strong></summary>
 
-Desde la carpeta principal del repositorio, con Python 3.12 en un entorno virtual, estos comandos preparan los datos y evalúan los métodos sobre mediciones conocidas:
+Desde la carpeta principal del repositorio, con Python 3.12.14 en un entorno virtual, estos comandos preparan los datos y evalúan los métodos sobre mediciones conocidas:
 
 ```bash
 python -m pip install -r requirements.txt
+python -m auditoria.verificar
 python -m protocolo.datos
 python -m protocolo.validar --procesos 4
 python -m protocolo.informe --solo-validacion
@@ -72,6 +86,6 @@ Los resúmenes se guardan en `protocolo/resultados/`. Los datos por cultivo se g
 | `auditoria_huecos.csv` | Una fila por casilla vacía: cultivo, metabolito, celda original, decisión, método y evidencia disponible. |
 | `original_30_completa.csv` y `resultado_30_completo.csv` | Las tablas con las 579 señales del inventario, antes y después de aplicar la regla a las 135 seleccionadas. |
 
-Para guardar el detalle en otra carpeta, establece la variable de entorno `IPRE_DETALLE`. Para trabajar en Jupyter, selecciona el mismo entorno de Python como kernel.
+Para guardar el detalle en otra carpeta, establece la variable de entorno `IPRE_DETALLE`. Para trabajar en Jupyter, selecciona el mismo entorno de Python como kernel. Ejecuta el cuaderno 01 desde la raíz y luego el 02. Este último abre los resúmenes publicados por defecto y, si ya se generó el detalle, muestra también ejemplos por cultivo.
 
 </details>

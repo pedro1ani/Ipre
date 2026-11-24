@@ -8,14 +8,13 @@ import numpy as np
 import pandas as pd
 from openpyxl import load_workbook
 
-from ampliacion.fisiologia import auditar
-from ampliacion.preparar import EXTRAS, RAIZ
-from ampliacion.proteinas import leer_proteinas
+from .fisiologia import auditar
+from .fuentes import EXTRAS, RAIZ, SEMILLA
+from .proteinas import leer_proteinas
 
 PRIV = Path(os.environ.get("IPRE_DETALLE", RAIZ / "salida_protocolo")).resolve()
 PUB = RAIZ / "protocolo" / "resultados"
 ANCLAS = ("fum", "pep", "s7p", "succ")
-SEMILLA = 20261109
 
 
 def huella(ruta):

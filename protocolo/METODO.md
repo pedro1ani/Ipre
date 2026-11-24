@@ -10,6 +10,8 @@ Los 30 cultivos principales crecen con glucosa a la misma tasa de dilución (0,2
 
 Las concentraciones de Ishii se leen en **mM** (milimoles por litro de volumen intracelular). Gerosa publica micromoles por gramo de peso seco. Para obtener concentraciones comparables se divide la cantidad por gramo por el volumen intracelular documentado de **2,3 mL por gramo de peso seco**. La unidad resultante, µmol/mL, equivale a mM. Se conserva la cantidad original y su procedencia.
 
+La [base de trabajo en mM](../data/concentraciones_mM.db) conserva 19.950 posiciones de Ishii, 344 de MMC2 y 189 de MMC3. La [base experimental](../sources/ecoli_auditada_v3.db) reúne además proteínas, corridas técnicas y variables fisiológicas. [La auditoría](../auditoria/README.md) describe qué tablas se consultan, cómo se cotejan por identificador y de dónde se leen las matrices. Las ocho condiciones estacionarias de MMC2 entran solo en los ensayos de aporte de datos externos. MMC3 documenta transiciones y MMC4 aporta las anotaciones de reacciones.
+
 ## Qué señales tienen datos suficientes
 
 De las 579 señales registradas, 149 tienen al menos diez mediciones. Entre esas 149 hay 11 con identidad incierta y tres que reúnen distintas sustancias en una misma señal. Las 135 restantes se consideran posibles objetivos. Ishii y Gerosa comparten una identidad documentada para 17 de ellas. Las otras 118 se pueden estimar dentro de Ishii sin suponer una equivalencia entre estudios.
@@ -79,7 +81,8 @@ La [tabla de estadísticas](resultados/descriptivos.csv) describe los mismos 30 
 
 | Si se quiere revisar… | Archivo del programa |
 | --- | --- |
-| De qué hoja sale una concentración y cómo se convierte a mM | [datos.py](datos.py) |
+| De qué hoja sale una concentración y cómo se convierte a mM | [datos.py](datos.py), [identificadores de señales](fuentes.py) y [verificación de fuentes](../auditoria/verificar.py) |
+| Cómo se cotejan tasas, corridas de proteínas y candidatos de control | [fisiologia.py](fisiologia.py) y [proteinas.py](proteinas.py) |
 | Qué cultivos se apartan, qué valores se ocultan y cómo se eligen predictores | [diseno.py](diseno.py) y [validar.py](validar.py) |
 | Cómo funcionan los tres métodos y cómo se comparan las fuentes | [modelos.py](modelos.py) y [ensayos.py](ensayos.py) |
 | Qué evidencia permite elegir un método y cómo se aplica a cada casilla | [regla.py](regla.py) y [aplicar.py](aplicar.py) |

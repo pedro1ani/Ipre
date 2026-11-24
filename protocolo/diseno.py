@@ -64,3 +64,15 @@ def escoger_companeros(train, eleg, y, maximo=3):
     orden = (corr * pares / max(1,len(z))).dropna().sort_index().sort_values(
         ascending=False, kind="stable")
     return orden.head(maximo).index.tolist()
+
+
+def elegibilidad(train, grupos, minimo=10):
+    medidas = train.notna().astype(int)
+    n = medidas.sum()
+    ng = medidas.groupby(grupos.loc[train.index]).max().sum()
+    basicas = (n >= minimo) & (ng >= 5) & (train.nunique() >= 2)
+    pares = (medidas.T @ medidas).to_numpy(copy=True)
+    np.fill_diagonal(pares, 0)  # Un metabolito no puede respaldarse a sí mismo.
+    respaldo = (pares[:, basicas] >= 5).sum(axis=1)
+    return pd.DataFrame({"n": n, "grupos": ng, "predictores_con_5_pares": respaldo,
+                         "elegible": basicas & (respaldo >= 2)})

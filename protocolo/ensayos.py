@@ -3,8 +3,8 @@
 import numpy as np
 import pandas as pd
 
-from ampliacion.modelos import elegibilidad
-from ampliacion.proteinas import PARES, elegir_sin_red
+from .diseno import elegibilidad
+from .proteinas import PARES, elegir_sin_red
 from .datos import PRIV, PUB, leer_matriz
 from .diseno import consultas, escoger_companeros
 from .modelos import estimar, matriz_consultas
