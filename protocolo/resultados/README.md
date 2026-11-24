@@ -2,6 +2,8 @@
 
 Los CSV en esta carpeta resumen la regla original, los controles Ishii/MMC2, convergencia y trazabilidad del panel. La ejecución completa escribe **las comparaciones entre estrategias** en `salida_protocolo/revision/resultados/` (o en la carpeta elegida mediante `IPRE_DETALLE`). Estos resultados se calculan a partir de las fuentes y no se incorporan a la base experimental.
 
+**Gráficos que se pueden ver en GitHub:** [panel de Ishii](figuras/panel_ishii.png), [error de cuatro estrategias de referencia](figuras/error_metodos.png) y [cobertura de los intervalos](figuras/cobertura_intervalos.png). Se dibujan a partir de `ejecucion.json`, `metricas.csv` e `intervalos.csv` de esta misma carpeta. Para regenerarlos sin entrenar modelos: `python -m protocolo.graficos_resumen`. Las doce figuras del estudio completo se generan por separado con el protocolo.
+
 | Pregunta | Archivo generado en `revision/resultados/` |
 | --- | --- |
 | ¿Qué método tiene menos error y con qué cobertura? | `comparacion_estrategias.csv`, `diferencias_pareadas.csv`, `error_por_metabolito.csv.gz`. Filtre prueba, máscara y alcance antes de comparar. |

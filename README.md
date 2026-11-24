@@ -9,9 +9,13 @@ Ishii midió concentraciones intracelulares en 30 cultivos. La tabla de análisi
 
 Para consultar una sustancia en los cuadernos, cambie `METABOLITO`, por ejemplo a `fum` (fumarato), `cit` (citrato) o `atp`. El [inventario de señales](protocolo/resultados/inventario.csv) permite buscar su nombre y protocolo analítico.
 
+![Señales incluidas, concentraciones medidas y casillas sin medición en Ishii.](protocolo/resultados/figuras/panel_ishii.png)
+
 ## Qué se compara
 
 Se oculta una concentración conocida de Ishii y se entrena sin los cultivos de su grupo de perturbación. También se ocultan varias concentraciones a la vez y se apartan series analíticas completas. Todos los métodos reciben las mismas máscaras. El [resumen de la regla original](protocolo/resultados/metricas.csv) muestra por qué hace falta evaluarla: en 3.302 mediciones comunes, su error medio absoluto (MAE) es 0,204 mM, frente a 0,163 mM de KNN3, 0,168 mM del iterativo y 0,246 mM de la mediana.
+
+![Error absoluto medio de cuatro estrategias de referencia, por perturbación y por serie.](protocolo/resultados/figuras/error_metodos.png)
 
 El cuaderno 02 compara **ocho estrategias**: cuatro métodos fijos (mediana, KNN3, KNN5 e iterativo), la regla original, dos reglas que cambian el respaldo y una regla jerárquica. Muestra el error en las mismas casillas, la cobertura sobre todos los intentos, la contribución de cada decisión y el intervalo de la diferencia entre métodos. El referente ideal por casilla conoce la medición: solo sirve para cuantificar el margen de mejora. Nunca se aplica a un dato faltante.
 
@@ -23,6 +27,10 @@ El cuaderno 02 compara **ocho estrategias**: cuatro métodos fijos (mediana, KNN
 - **Un blanco de Ishii** puede significar «no detectado» o «por debajo del límite de detección». El error medido al ocultar valores conocidos no demuestra la exactitud de los realmente ausentes. Tampoco basta con conservar la distribución para dar por correcta una predicción individual.
 
 KNN es una referencia sencilla para reconstruir concentraciones individuales con soporte. La regla adaptativa debe demostrar una mejora estable frente a ese referente en ambas pruebas externas. Para estudiar varianzas, balances y relaciones con proteínas o flujos conviene contrastar la matriz observada con varias matrices imputadas, manteniendo identificadas las estimaciones y sus respaldos.
+
+![Disponibilidad del intervalo y proporción de intervalos que contienen la medición oculta.](protocolo/resultados/figuras/cobertura_intervalos.png)
+
+La primera mitad de la figura cuenta cuántas casillas recibieron un intervalo. La segunda comprueba cuántos de esos intervalos contienen el valor medido. [Ver los datos de cobertura](protocolo/resultados/intervalos.csv).
 
 ## Fuentes y ejecución
 
