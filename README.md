@@ -1,91 +1,43 @@
-# IPre · Estimación de concentraciones de metabolitos en *Escherichia coli*
+# IPre · Imputación de concentraciones de metabolitos en *Escherichia coli*
 
-Un **metabolito** es una sustancia que participa en las reacciones de una célula. El estudio de Ishii mide la concentración de estas sustancias dentro de la bacteria *Escherichia coli*, pero para algunos cultivos no informa un valor. Este proyecto estudia **cuándo se puede estimar esa concentración a partir de las mediciones disponibles y con qué error**. Ese cálculo se llama *imputación*. Una estimación se registra por separado de lo que mide el laboratorio.
+Ishii midió concentraciones intracelulares en 30 cultivos. La tabla de análisis contiene **135 metabolitos, 3.402 concentraciones medidas y 648 casillas sin medición**. El proyecto estudia dos preguntas: ¿qué error comete un método al reconstruir una concentración conocida? Y, cuando se completan los huecos reales, ¿qué cambia en la dispersión y en las relaciones entre metabolitos? Las concentraciones se conservan en **mM**.
 
-| Cuaderno | Qué explica |
+| Dónde empezar | Qué explica |
 | --- | --- |
-| [01 · Datos y selección de metabolitos](01_auditoria_preparacion.ipynb) | Qué mide cada experimento, por qué algunas señales entran en el análisis y cómo encontrar su celda de origen. |
-| [02 · Evaluación y estimación de concentraciones](02_imputacion_evaluacion.ipynb) | Cómo se prueban los métodos con mediciones conocidas y qué decisión se toma cuando falta un valor. |
+| [01 · Auditoría, preparación y análisis exploratorio](01_auditoria_preparacion.ipynb) | Qué midió cada estudio, cómo se eligieron las señales, qué falta y cómo se distribuyen las mediciones originales. |
+| [02 · Evaluación, imputación y análisis estadístico](02_imputacion_evaluacion.ipynb) | Cómo se ocultan mediciones, se comparan métodos, se evalúan intervalos y se estudia el efecto de completar las casillas vacías. |
 
-Los dos cuadernos se pueden leer en GitHub sin instalar programas.
+Para consultar una sustancia en los cuadernos, cambie `METABOLITO`, por ejemplo a `fum` (fumarato), `cit` (citrato) o `atp`. El [inventario de señales](protocolo/resultados/inventario.csv) permite buscar su nombre y protocolo analítico.
 
-## Qué contiene la tabla de datos
+## Qué se compara
 
-Cada fila representa uno de los **30 cultivos de Ishii**. Cada columna representa una señal del laboratorio y cada casilla contiene una concentración en **mM** (milimoles por litro de volumen intracelular) o queda vacía.
+Se oculta una concentración conocida de Ishii y se entrena sin los cultivos de su grupo de perturbación. También se ocultan varias concentraciones a la vez y se apartan series analíticas completas. Todos los métodos reciben las mismas máscaras. El [resumen de la regla original](protocolo/resultados/metricas.csv) muestra por qué hace falta evaluarla: en 3.302 mediciones comunes, su error medio absoluto (MAE) es 0,204 mM, frente a 0,163 mM de KNN3, 0,168 mM del iterativo y 0,246 mM de la mediana.
 
-El [inventario](protocolo/resultados/inventario.csv) contiene 579 señales, que no necesariamente son 579 sustancias distintas. De ellas, 149 tienen mediciones en al menos diez cultivos. En 14 de esas señales la identidad es incierta o se registra una mezcla. **Las 135 restantes forman la tabla de análisis.** Para 17 de ellas también hay mediciones comparables en un segundo estudio, el de Gerosa. Su archivo **MMC2** aporta ocho condiciones de cultivo que se prueban como información adicional. Las otras 118 señales se estudian solo con Ishii.
+El cuaderno 02 compara **ocho estrategias**: cuatro métodos fijos (mediana, KNN3, KNN5 e iterativo), la regla original, dos reglas que cambian el respaldo y una regla jerárquica. Muestra el error en las mismas casillas, la cobertura sobre todos los intentos, la contribución de cada decisión y el intervalo de la diferencia entre métodos. El referente ideal por casilla conoce la medición: solo sirve para cuantificar el margen de mejora. Nunca se aplica a un dato faltante.
 
-## Dónde están las fuentes y los resultados
+## Cómo interpretar una estimación
 
-| Ubicación | Qué contiene |
-| --- | --- |
-| [data](data/) | La **base de trabajo permanente**, `concentraciones_mM.db`, sus exportaciones por estudio y la evidencia de conversión. Reúne 20.483 posiciones de concentración, incluidas las que carecen de medición. |
-| [sources](sources/) | Los Excel y documentos experimentales de Ishii y Gerosa y la base multi-ómica `ecoli_auditada_v3.db`. Esta última también contiene datos de proteínas, fisiología y flujos. |
-| [auditoria](auditoria/) | Mediciones con sus coordenadas originales, homologación química y metadatos de cultivos. Son las entradas tabulares que la preparación coteja con los Excel. |
-| [protocolo](protocolo/METODO.md) | Preparación, diseño de validación, modelos, elección por casilla, intervalos y síntesis. Las **13 tablas y resúmenes científicos vigentes** se publican en [resultados](protocolo/resultados/). |
-| [estudios_complementarios](estudios_complementarios/) | Documentación de tasas y pares proteína–metabolito que permite interpretar los predictores auxiliares. |
-| [tests](tests/) | Comprobaciones de las fuentes, el aislamiento de cultivos, las máscaras, los controles y los productos por cultivo. |
+- **KNN** utiliza cultivos parecidos. Requiere al menos dos predictores compartidos y tres donantes que hayan medido el objetivo. Los vecinos se eligen de nuevo dentro de cada entrenamiento.
+- **El método iterativo** estima mediante relaciones entre metabolitos y puede producir un intervalo por casilla. Su calibración se mide sobre concentraciones ocultas. La SD de los sorteos de una predicción y la SD experimental entre cultivos responden a preguntas distintas.
+- **La mediana de respaldo** representa el centro del entrenamiento. Si se necesita información específica del cultivo y esta falta, se puede dejar la casilla pendiente. Las salidas distinguen método fijo, elección con evidencia, respaldo y ausencia de estimación.
+- **Un blanco de Ishii** puede significar «no detectado» o «por debajo del límite de detección». El error medido al ocultar valores conocidos no demuestra la exactitud de los realmente ausentes. Tampoco basta con conservar la distribución para dar por correcta una predicción individual.
 
-MMC2 aporta las ocho condiciones estacionarias de Gerosa. MMC3 contiene mediciones a lo largo de transiciones y se conserva para consulta. MMC4 documenta reacciones y ayuda a interpretar los vínculos con proteínas. El protocolo prueba el aporte de MMC2 utilizando mediciones de Ishii como referencia de evaluación.
+KNN es una referencia sencilla para reconstruir concentraciones individuales con soporte. La regla adaptativa debe demostrar una mejora estable frente a ese referente en ambas pruebas externas. Para estudiar varianzas, balances y relaciones con proteínas o flujos conviene contrastar la matriz observada con varias matrices imputadas, manteniendo identificadas las estimaciones y sus respaldos.
 
-## Cómo se evalúa la estimación
+## Fuentes y ejecución
 
-Se oculta una concentración conocida de Ishii, se la estima y se compara el resultado con la medición original. Los cultivos con la misma perturbación experimental, por ejemplo la inactivación del mismo gen, se mantienen juntos. Cuando se evalúa uno de esos grupos, el método aprende solo de los demás.
+La [base permanente en mM](data/concentraciones_mM.db), los [archivos experimentales](sources/) y la [auditoría](auditoria/) conservan las mediciones y su procedencia. De las 135 señales, 17 tienen equivalencias que permiten probar las ocho condiciones de Gerosa (MMC2); las otras 118 se estudian dentro de Ishii. Gerosa aporta entrenamiento auxiliar, nunca la medición que verifica una estimación. El [método](protocolo/METODO.md) documenta los criterios y los controles.
 
-| Estrategia | Cómo obtiene el valor | Error medio por medición (mM) |
-| --- | --- | ---: |
-| Mediana | Usa el valor central del metabolito en los cultivos de entrenamiento. | 0,246 |
-| Vecinos (KNN), con tres vecinos | Promedia las concentraciones del metabolito en cultivos parecidos según las otras sustancias medidas. | 0,163 |
-| Método iterativo | Estima la concentración a partir de relaciones entre metabolitos y refina el cálculo en varias rondas. | 0,168 |
-| Regla de elección | Elige un método cuando las pruebas lo respaldan para ese metabolito y ese patrón de datos faltantes. | 0,204 |
-
-Los cuatro resultados corresponden a **las mismas 3.302 mediciones ocultas** de 25 grupos. El error es la distancia promedio a la medición, tanto si el método se queda corto como si se excede. KNN con tres vecinos tiene el menor error promedio en esta prueba; el [resultado por metabolito](protocolo/resultados/por_objetivo.csv) permite revisar una sustancia en particular.
-
-## Qué se obtiene para los valores faltantes
-
-La tabla contiene **3.402 mediciones originales y 648 casillas vacías**. Ishii usa el mismo blanco cuando una sustancia no se detecta o queda por debajo del límite de detección. Por eso un blanco no equivale a cero y su estimación se interpreta como exploratoria.
-
-| De las 648 casillas vacías | Casillas | Interpretación |
-| --- | ---: | --- |
-| Método elegido en las pruebas | 221 | Hay evidencia para elegir el método en ese caso; la concentración real sigue siendo desconocida. |
-| Mediana de respaldo | 418 | Se informa un valor central del entrenamiento sin evidencia suficiente para preferir un método para ese caso. |
-| Sin estimación | 9 | Los datos disponibles no permiten aplicar la regla. La casilla queda vacía. |
-
-**Ejemplo: fumarato.** Ishii informa 23 concentraciones en 30 cultivos. Para dos de las siete casillas vacías se elige KNN, para tres se elige el método iterativo y para dos se usa la mediana de respaldo. Las 23 mediciones conservan su valor original.
-
-El [protocolo de análisis](protocolo/METODO.md) explica los criterios y la organización del código. También se pueden consultar las tablas de [errores](protocolo/resultados/metricas.csv), [aporte de Gerosa](protocolo/resultados/MMC2_pareado.csv), [intervalos de predicción](protocolo/resultados/intervalos.csv) y [estadísticas por metabolito](protocolo/resultados/descriptivos.csv).
-
-<details>
-<summary><strong>Cómo ejecutar el análisis y dónde encontrar los archivos por cultivo</strong></summary>
-
-Desde la carpeta principal del repositorio, con Python 3.12.14 en un entorno virtual, estos comandos preparan los datos y evalúan los métodos sobre mediciones conocidas:
+Desde la raíz del repositorio, con **Python 3.12.14** en un entorno virtual:
 
 ```bash
 python -m pip install -r requirements.txt
 python -m auditoria.verificar
-python -m protocolo.datos
-python -m protocolo.validar --procesos 4
-python -m protocolo.informe --solo-validacion
-```
-
-Los siguientes comandos aplican la regla a los valores faltantes, calculan los intervalos y generan las tablas del informe:
-
-```bash
-python -m protocolo.aplicar
-python -m protocolo.intervalos --procesos 4
-python -m protocolo.informe
+python -m protocolo.revision --procesos 4
 python -m unittest discover -s tests
 ```
 
-Los resúmenes se guardan en `protocolo/resultados/`. Los datos por cultivo se generan en `salida_protocolo/`:
+En Jupyter seleccione el mismo entorno y ejecute los cuadernos de arriba abajo. El cuaderno 01 solo necesita la preparación de fuentes. El 02 reutiliza los resultados si están completos; en su primera ejecución puede tardar varios minutos porque ajusta modelos y genera sorteos posteriores.
 
-| Archivo generado | Contenido |
-| --- | --- |
-| `matriz_solo_con_eleccion_validada.csv` | Las 3.402 mediciones y las 221 estimaciones con elección de método. Las otras 427 casillas siguen vacías. |
-| `matriz_regla.csv` | Las mismas mediciones y estimaciones, más las 418 medianas de respaldo. Quedan nueve casillas vacías. |
-| `auditoria_huecos.csv` | Una fila por casilla vacía: cultivo, metabolito, celda original, decisión, método y evidencia disponible. |
-| `original_30_completa.csv` y `resultado_30_completo.csv` | Las tablas con las 579 señales del inventario, antes y después de aplicar la regla a las 135 seleccionadas. |
+Los [resúmenes de la validación de referencia](protocolo/resultados/) están en el repositorio. Las tablas detalladas, matrices, sorteos y figuras de la comparación de estrategias se generan en su equipo dentro de `salida_protocolo/`, separadas de SQLite y de los archivos versionados. El [índice de salidas](protocolo/resultados/README.md) indica qué abrir para responder cada pregunta. Para cambiar la carpeta de trabajo, defina la variable de entorno `IPRE_DETALLE`.
 
-Para guardar el detalle en otra carpeta, establece la variable de entorno `IPRE_DETALLE`. Para trabajar en Jupyter, selecciona el mismo entorno de Python como kernel. Ejecuta el cuaderno 01 desde la raíz y luego el 02. Este último abre los resúmenes publicados por defecto y, si ya se generó el detalle, muestra también ejemplos por cultivo.
-
-</details>
